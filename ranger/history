@@ -1,6 +1,6 @@
 unzip cvim.zip
-dD
-delete
-rename gruvbox
+mkdir bundle
+open_with 
 
-rename vim-airline
+open_with j
+delete
