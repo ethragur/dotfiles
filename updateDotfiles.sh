@@ -9,3 +9,5 @@ ln -sf /home/effi/dotfiles/xconfig/.Xresources /home/effi/.Xresources
 ln -sf /home/effi/dotfiles/fish/config.fish /home/effi/.config/fish/config.fish
 ln -sf /home/effi/dotfiles/vim/.vim /home/effi/.vim
 ln -sf /home/effi/dotfiles/.bashrc /home/effi/.bashrc
+sudo ln -sf /home/effi/dotfiles/slim/slim.conf /etc/slim.conf
+
