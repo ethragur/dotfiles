@@ -1,0 +1,6 @@
+unzip cvim.zip
+dD
+delete
+rename gruvbox
+
+rename vim-airline
