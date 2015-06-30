@@ -1,7 +1,7 @@
  
 #!/bin/bash
 pkill mpv
-FILES="/home/effi/Data/Movies&TV-Shows/Futurama/*"
+FILES="/home/effi/Data/Movies/Futurama/*"
 i=0
 sudo shutdown -c
 ep1=""
@@ -26,4 +26,4 @@ do
   let "i += 1"
 done
 sudo shutdown -h 45
-vlc "$ep1" "$ep2"
+mpv "$ep1" "$ep2"
