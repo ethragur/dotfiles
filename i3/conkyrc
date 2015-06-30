@@ -7,98 +7,56 @@ TEXT
  
 [\
 # CPU temperature:
-{"full_text":"  CPU","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-{"full_text":"${if_match ${acpitemp}<50}${acpitemp}°C","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${acpitemp}<60}${acpitemp}°C","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${acpitemp}>=60}${acpitemp}°C","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${else}"},\
-{"full_text":"${endif}${endif}${endif}"},\
- 
+{"full_text":"CoreI","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${execi 30 sensors | grep 'Core 0' | cut -c18-19}°C","color":"\#d3869b","separator":false,"separator_block_width":3},\
+{"full_text":" CoreII","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${execi 30 sensors | grep 'Core 1' | cut -c18-19}°C","color":"\#d3869b","separator":false,"separator_block_width":3},\
+{"full_text":" CoreIII","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${execi 30 sensors | grep 'Core 2' | cut -c18-19}°C","color":"\#d3869b","separator":false,"separator_block_width":3},\
+{"full_text":" CoreIV","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${execi 30 sensors | grep 'Core 3' | cut -c18-19}°C","color":"\#d3869b","separator":false,"separator_block_width":3},\
+# GPU temp: 
+{"full_text":"| GPU0","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${execi 30 nvidia-smi -a | grep 'GPU Current Temp' | awk 'NR==1' | cut -c39-40}°C","color":"\#d3869b","separator":false,"separator_block_width":3},\
+{"full_text":" GPU1","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${execi 30 nvidia-smi -a | grep 'GPU Current Temp' | awk 'NR==2' | cut -c39-40}°C","color":"\#d3869b","separator":false,"separator_block_width":3},\
+
+#{"full_text":"${execi 30 nvidia-settings -q gpucoretemp | grep '):' | awk '{print $4}'}°C","color":"\#d3869b","separator":false,"separator_block_width":3},\
+
+
+{"full_text":"|","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
 # wlan_sig_quality ${wireless_link_qual_perc wlp0s26u1u2}%${alignr}${wireless_link_qual wlp0s26u1u2} / ${wireless_link_qual_max wlp0s26u1u2}
 # Wlan signal strength:
-{"full_text":"SIGNAL","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-{"full_text":"${if_match ${wireless_link_qual_perc wlp0s26u1u2}>66}${wireless_link_qual_perc wlp0s26u1u2}%","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 20},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${wireless_link_qual_perc wlp0s26u1u2}>33}${wireless_link_qual_perc wlp0s26u1u2}%","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 20},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${wireless_link_qual_perc wlp0s26u1u2}>=0}${wireless_link_qual_perc wlp0s26u1u2}%","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 20},\
-{"full_text":"${endif}${endif}${endif}"},\
+{"full_text":"SIGNAL","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${wireless_link_qual_perc wlp0s26u1u2}%","color":"\#d3869b","separator":false,"separator_block_width":3, "min_width" : 20},\
  
+{"full_text":"|","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
  
 # Download:
-{"full_text":"DOWN","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-{"full_text":"${if_match ${downspeedf wlp0s26u1u2}<1000}${downspeed wlp0s26u1u2}","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 33},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${downspeedf wlp0s26u1u2}<3000}${downspeed wlp0s26u1u2}","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 33},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${downspeedf wlp0s26u1u2}>=3000}${downspeed wlp0s26u1u2}","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 33},\
-{"full_text":"${endif}${endif}${endif}"},\
+{"full_text":"DOWN","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${downspeed wlp0s26u1u2}","color":"\#d3869b","separator":false,"separator_block_width":3, "min_width" : 33},\
 # Upload:
-{"full_text":"UP","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-{"full_text":"${if_match ${upspeedf wlp0s26u1u2}<300}${upspeed wlp0s26u1u2}","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 33},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${upspeedf wlp0s26u1u2}<800}${upspeed wlp0s26u1u2}","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 33},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${upspeedf wlp0s26u1u2}>=800}${upspeed wlp0s26u1u2}","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 33},\
-{"full_text":"${endif}${endif}${endif}"},\
+{"full_text":"UP","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${upspeed wlp0s26u1u2}","color":"\#d3869b","separator":false,"separator_block_width":3, "min_width" : 33},\
+{"full_text":"|","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
 # Memory:
-{"full_text":"MEM","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-{"full_text":"${if_match ${memperc}<30}${memeasyfree}","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${memperc}<70}${memeasyfree}","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${memperc}>=70}${memeasyfree}","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${endif}${endif}${endif}"},\
+{"full_text":"MEM","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${memeasyfree}","color":"\#d3869b","separator":false,"separator_block_width":3},\
+{"full_text":"|","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
 # CPU:
-{"full_text":"CPU","color":"\#ebdbb2","separator":false,"separator_block_width":6, "min_width" : 20},\
-{"full_text":"${if_match ${cpu cpu0}<50}${cpu cpu0}%","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 20},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${cpu cpu0}<60E}${cpu cpu0}%","color":"\#d3869b","separator":false,"separator_block_width":6, "min_width" : 20},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${cpu cpu0}<=100}${cpu cpu0}%","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${endif}${endif}${endif}"},\
-# Weather:
-{"full_text":"☀","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-# --- Weather --- #
-###################
-\
-# --- WOEID (Location id) --- #
-${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=550763&u=c" -o ~/.cache/weather.xml}\
-\
-# --- Temperature --- #
-#######################
-\
-{"full_text":"${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}° ","color":"\#ebdbb2","seperator":false,"seperator_block_width":6},\
-{"full_text":"${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"} ${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}° / ${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°","color":"\#ebdbb2","seperator":false,"seperator_block_width":6},\
-#{"full_text":"${execi 300 ~/bin/weather_simple "EUR|UK|UK241|LONDON"}","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-# Mail:
-#{"full_text":"MAIL","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-#{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}<=0}${execpi 60 python ~/bin/gmail.py}","color":"\#d3869b","separator":false,"separator_block_width":6},\
-#{"full_text":"${else}"},\
-#{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}<2}${execpi 60 python ~/bin/gmail.py}","color":"\#d3869b","separator":false,"separator_block_width":6},\
-#{"full_text":"${else}"},\
-#{"full_text":"${if_match ${execpi 60 python ~/bin/gmail.py}>2}${execpi 60 python ~/bin/gmail.py}","color":"\#d3869b","separator":false,"separator_block_width":6},\
-#{"full_text":"${endif}${endif}${endif}"},\
+{"full_text":"CPU","color":"\#ebdbb2","separator":false,"separator_block_width":3, "min_width" : 20},\
+{"full_text":"${cpu cpu0}%","color":"\#d3869b","separator":false,"separator_block_width":3, "min_width" : 20},\
+{"full_text":"|","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
 # Battery:
-{"full_text":"BAT","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-{"full_text":"${if_match ${battery_percent BAT1}<30}${battery_percent BAT1}%","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${battery_percent BAT1}<70}${battery_percent BAT1}%","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${else}"},\
-{"full_text":"${if_match ${battery_percent BAT1}>=70}${battery_percent BAT1}%","color":"\#d3869b","separator":false,"separator_block_width":6},\
-{"full_text":"${endif}${endif}${endif}"},\
-# Dropbox
-#{"full_text":"DB","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-#{"full_text":"${execi 6 dropbox status | sed -n 1p}","color":"\#d3869b","separator":false},\
+{"full_text":"BAT","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${battery_percent BAT1}%","color":"\#d3869b","separator":false,"separator_block_width":3},\
 # Volume:
-{"full_text":"VOL","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
+{"full_text":"VOL","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
 {"full_text":"${execi 0.5 amixer sget Master,0 | grep 'Mono' | egrep -o '([0-9]+%|\[(on|off)\])' | sed ':a;N;$!ba;s/\n/ /g'}","color":"\#d3869b","separator":false},\
 # Date:
-{"full_text":"|","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-{"full_text":"${time %d.%m.%y}","color":"\#aaaaaa","separator":false,"separator_block_width":6},\
+{"full_text":"|","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${time %y.%m.%d}","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
 # Time:
-{"full_text":"|","color":"\#ebdbb2","separator":false,"separator_block_width":6},\
-{"full_text":"${time %H:%M:%S}","color":"\#aaaaaa","separator":false}\
+{"full_text":"|","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${time %H:%M:%S}","color":"\#ebdbb2","separator":false}\
 ],
