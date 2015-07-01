@@ -8,3 +8,5 @@ set laststatus=2
 set relativenumber
 set nowrap
 filetype plugin on
+
+let g:neocomplete#enable_at_startup = 1

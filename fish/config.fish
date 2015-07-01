@@ -6,6 +6,7 @@ alias inst 'sudo pacman -S'
 alias uinst 'sudo pacman -Rsnc'
 alias i3conf 'vim ~/.i3/config'
 alias battlenet 'wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Battle.net/Battle.net\ Launcher.exe'
+alias cddot 'cd ~/dotfiles/'
 
 set EDITOR vim
 set WINEDEBUG -all
