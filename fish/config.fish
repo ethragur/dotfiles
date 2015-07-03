@@ -12,3 +12,4 @@ set EDITOR vim
 set WINEDEBUG -all
 set TERMINAL urxvt
 set WINEARCH win64 
+set fish_greeting ""

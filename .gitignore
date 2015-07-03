@@ -1,4 +1,7 @@
 vim/.vim/bundle/gruvbox
 vim/.vim/bundle/cvim
 vim/.vim/bundle/vim-airline
+vim/.vim/bundle/vim-surround
+vim/.vim/bundle/vim-fugitive
+
 

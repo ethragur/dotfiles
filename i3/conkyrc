@@ -50,6 +50,9 @@ TEXT
 # Battery:
 {"full_text":"BAT","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
 {"full_text":"${battery_percent BAT1}%","color":"\#d3869b","separator":false,"separator_block_width":3},\
+#Backlight
+{"full_text":"L","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${execi 30 xbacklight | cut -c1-3}%","color":"\#d3869b","separator":false,"separator_block_width":3},\
 # Volume:
 {"full_text":"VOL","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
 {"full_text":"${execi 0.5 amixer sget Master,0 | grep 'Mono' | egrep -o '([0-9]+%|\[(on|off)\])' | sed ':a;N;$!ba;s/\n/ /g'}","color":"\#d3869b","separator":false},\

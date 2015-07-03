@@ -23,6 +23,7 @@ exec_always xsetroot -solid "#333333"
 
 #Background Picture
 exec_always feh --bg-scale /home/effi/Pictures/bg6.jpg --bg-scale /home/effi/Pictures/bg8.png
+bindsym $mod+$alt+w exec feh --bg-scale /home/effi/Pictures/bg6.jpg --bg-scale /home/effi/Pictures/bg8.png
 
 #redshift
 exec --no-startup-id redshift -l 47.267:11.383
@@ -35,9 +36,15 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmu
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -SIGUSR1 i3status
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle  && killall -SIGUSR1 i3status
 
+#Lock
+bindsym $mod+$alt+l exec ~/dotfiles/scripts/lock.sh
+
+#Reconf Displays
+bindsym $mod+$alt+d exec ~/dotfiles/scripts/configure_xrandr.sh 
+
 #BrightnessControl
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 40
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 40
 
 #window gaps
 new_window pixel 1
