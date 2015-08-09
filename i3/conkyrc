@@ -6,6 +6,9 @@ update_interval 1
 TEXT
  
 [\
+
+{"full_text":"TMP Test","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
+{"full_text":"${platform coretemp.0 temp 1}°C","color":"\#d3869b","separator":false,"separator_block_width":3},\
 # CPU temperature:
 {"full_text":"CoreI","color":"\#ebdbb2","separator":false,"separator_block_width":3},\
 {"full_text":"${execi 30 sensors | grep 'Core 0' | cut -c18-19}°C","color":"\#d3869b","separator":false,"separator_block_width":3},\

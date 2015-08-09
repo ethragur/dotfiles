@@ -1,7 +1,7 @@
  
 #!/bin/bash
 pkill mpv
-FILES="/home/effi/Data/Movies/Futurama/*"
+FILES="/home/effi/extHDD/movies_tvshows/Futurama/*"
 i=0
 sudo shutdown -c
 ep1=""
@@ -25,5 +25,6 @@ do
   fi
   let "i += 1"
 done
-sudo shutdown -h 45
 mpv "$ep1" "$ep2"
+sleep 3000
+#sudo systemctl suspend

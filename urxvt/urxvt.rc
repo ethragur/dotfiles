@@ -1,0 +1,24 @@
+! CONFIGURATION     ! ! ! !
+URxvt*font: -*-termsynu-medium-*-normal-*-11-*-*-*-*-*-*-*
+URxvt*boldFont: -*-termsynu-bold-*-normal-*-11-*-*-*-*-*-*-*
+URxvt.urgentOnBell: true
+URxvt*geometry: 80x25
+URxvt*scrollBar: false
+URxvt*saveLines: 9001
+
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: true
+
+
+! EXTENSIONS     ! ! ! !
+URxvt*perl-lib: /home/effi/dotfiles/xconfig/extensions/
+URxvt*perl-ext-common: default,matcher,clipboard
+
+! URL
+URxvt*url-launcher: /usr/bin/chromium
+URxvt*matcher.button: 1
+URxvt*matcher.pattern.1: \\bww\\.[\\w-]\\.[\\.[\\w./?&@#-]*[\\w/-]
+
+! PRESSE PAPIER
+URxvt*keysym.C-S-c: perl:clipboard:copy
+URxvt*keysym.C-S-v: perl:clipboard:paste

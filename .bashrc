@@ -4,7 +4,7 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
+alias shutdown='echo'
 alias ls='ls --color=auto'
 alias nani='livestreamer http://www.twitch.tv/naniwasc2 high'
 alias ll='ls -l --color=auto'

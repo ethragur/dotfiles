@@ -3,5 +3,10 @@ vim/.vim/bundle/cvim
 vim/.vim/bundle/vim-airline
 vim/.vim/bundle/vim-surround
 vim/.vim/bundle/vim-fugitive
+vim/.vim/bundle/auto-pairs
+vim/.vim/bundle/LaTeX-Box
+vim/.vim/bundle/neocomplete.vim
+vim/.vim/bundle/vim-go
+vim/.vim/bundle
 
 
