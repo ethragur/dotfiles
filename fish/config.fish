@@ -14,10 +14,12 @@ set VISUAL vim
 set WINEDEBUG -all
 set WINEPREFIX /home/effi/.wine/
 
-set TERMINAL urxvt
+
+set TERMINAL termite
 set WINEARCH win64 
 set fish_greeting ""
 
+eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
 
 
 set LD_PRELOAD "libpthread.so.0 libGL.so.1"
