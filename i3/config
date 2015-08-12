@@ -22,8 +22,8 @@ exec_always --no-startup-id setxkbmap de
 #exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/bg6.jpg --bg-scale /home/effi/Pictures/bg8.png
 exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/multiwall/bg1.jpg
 
-#Compositor
-exec_always --no-startup-id compton -c --vsync opengl
+#Compositor //kills performance
+#exec_always --no-startup-id compton -c --vsync opengl
 
 
 #redshift
@@ -232,7 +232,7 @@ bindsym $mod+r mode "resize"
 bar {
   status_command i3blocks
   strip_workspace_numbers yes
-  tray_output none
+  tray_output VGA-0
   mode dock
   position top
   font pango:DejaVu Sans Mono, Icons 7
