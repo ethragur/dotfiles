@@ -22,6 +22,9 @@ exec_always --no-startup-id setxkbmap de
 #exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/bg6.jpg --bg-scale /home/effi/Pictures/bg8.png
 exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/multiwall/bg1.jpg
 
+#load Xresources
+exec_always --no-startup-id xrdb -load /home/effi/dotfiles/urxvt/Xresources
+
 #Compositor //kills performance
 #exec_always --no-startup-id compton -c --vsync opengl
 
@@ -235,7 +238,7 @@ bar {
   tray_output VGA-0
   mode dock
   position top
-  font pango:DejaVu Sans Mono, Icons 7
+  font pango:DejaVu Sans Mono, Icons 6
   colors {
     separator #888888
     background #282828

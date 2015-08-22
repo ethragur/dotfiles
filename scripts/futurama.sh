@@ -1,7 +1,7 @@
  
 #!/bin/bash
 pkill mpv
-FILES="/home/effi/extHDD/movies_tvshows/Futurama/*"
+FILES="/home/effi/Data/Movies/movies_tvshows/Futurama/*"
 i=0
 sudo shutdown -c
 ep1=""
