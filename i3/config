@@ -19,14 +19,14 @@ exec_always --no-startup-id setxkbmap de
 #exec_always xsetroot -solid "#333333"
 
 #Background Picture
-#exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/bg6.jpg --bg-scale /home/effi/Pictures/bg8.png
-exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/multiwall/bg1.jpg
+exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/bgCave.jpg --bg-scale /home/effi/Pictures/bgLake.jpg
+#exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/bgwSF.jpg
 
 #load Xresources
 exec_always --no-startup-id xrdb -load /home/effi/dotfiles/urxvt/Xresources
 
 #Compositor //kills performance
-#exec_always --no-startup-id compton -c --vsync opengl
+exec_always --no-startup-id compton -c -C --vsync opengl --backend glx --config /home/effi/.compton.conf
 
 
 #redshift
@@ -63,7 +63,7 @@ new_float pixel 1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 6
+font pango:Hack 6
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -78,6 +78,7 @@ floating_modifier $mod
 #start browser
 bindsym $mod+c exec chromium
 
+
 # start a terminal
 bindsym $mod+Return exec termite
 
@@ -91,8 +92,8 @@ bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -nf '#ebd
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 
-gaps inner 8
-gaps outer 6
+gaps inner 20
+gaps outer 10
 smart_gaps on
 
 # change focus
@@ -150,12 +151,35 @@ set $ws1 1:
 set $ws2 2:
 set $ws3 3:
 set $ws4 4:
-set $ws5 5:
-set $ws6 6:
+set $ws5 5:
+set $ws6 6:
 set $ws7 7:
 set $ws8 8:
 set $ws9 9:
 set $ws0 0:
+
+
+workspace $ws1 output HDMI-0
+workspace $ws3 output HDMI-0
+workspace $ws5 output HDMI-0
+workspace $ws7 output HDMI-0
+workspace $ws9 output HDMI-0
+
+workspace $ws2 output VGA-0
+workspace $ws4 output VGA-0
+workspace $ws6 output VGA-0
+workspace $ws8 output VGA-0
+workspace $ws0 output VGA-0
+
+for_window [class="^mpv$"] border none focus
+assign [class="(?i)mpv"] $ws5
+
+for_window [class="pavucontrol"] focus
+assign [class="pavucontrol"] $ws6
+
+
+#start ranger on $WS2
+#bindsym $mod+m exec i3-msg 'workspace $ws2' && exec termite -e ranger 
 
 # switch to workspace bindsym $mod+1 workspace $ws1
 bindsym $mod+1 workspace $ws1
@@ -186,7 +210,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Dou you want to quit?' -b 'Exit i3' 'i3-msg exit' -b 'Reboot' 'reboot' -b 'Shutdown' 'poweroff' -b 'Suspend' 'sudo systemctl suspend'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -221,15 +245,7 @@ bindsym $mod+r mode "resize"
 #  tray_output none
 #  mode dock
 #  position top
-#  colors {
-#    separator #888888
-#    background #282828
-#    statusline #EBDBB2
-#    focused_workspace #D3869B #D3869B #EBDBB2
-#    active_workspace #333333 #333333 #EBDBB2
-#    inactive_workspace #333333 #333333 #888888
-#    urgent_workspace #C20000 #C20000 #EBDBB2
-#  }
+#
 #}
 
 bar {
@@ -238,19 +254,19 @@ bar {
   tray_output VGA-0
   mode dock
   position top
-  font pango:DejaVu Sans Mono, Icons 6
+  font pango:Hack, Icons 6
   colors {
-    separator #888888
-    background #282828
-    statusline #EBDBB2
-    focused_workspace #D3869B #D3869B #EBDBB2
-    active_workspace #333333 #333333 #EBDBB2
-    inactive_workspace #333333 #333333 #888888
-    urgent_workspace #C20000 #C20000 #EBDBB2
+    separator #dc322f
+    background #002b36
+    statusline #268bd2
+    focused_workspace #fdf6e3 #859900 #fdf6e3
+    active_workspace #fdf6e3 #6c71c4 #fdf6e3
+    inactive_workspace #586e75 #93a1a1 #002b36
+    urgent_workspace #d33682 #d33682 #fdf6e3
   }
 }
 
-client.focused #D3869B #D3869B #EBDBB2 #EBDBB2
-client.focused_inactive #D79921 #D79921 #888888 #EBDBB2
-client.unfocused #333333 #333333 #888888 #EBDBB2
-client.urgent #C20000 #C20000 #EBDBB2 #EBDBB2
+client.focused #859900 #859900 #fdf6e3 #859900
+client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
+client.unfocused #073642 #073642 #93a1a1 #586e75
+client.urgent #d33682 #d33682 #fdf6e3 #dc322f

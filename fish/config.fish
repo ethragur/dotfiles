@@ -14,6 +14,8 @@ set VISUAL vim
 set WINEDEBUG -all
 set WINEPREFIX /home/effi/.wine/
 
+set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ 
+
 
 set TERMINAL termite
 set WINEARCH win64 
@@ -34,3 +36,9 @@ function sudo
     end
 end
 
+# start X at login
+if status --is-login
+    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
+        exec startx -- -keeptty
+    end
+end

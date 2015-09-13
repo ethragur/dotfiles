@@ -1,1 +1,2 @@
-i3 rxvt-unicode ranger vim feh slim slim-themes fish networkmanager slim-theme-arch-tetra w3m transmission mpv atool chromium chromium-widevine mpdpdf 
+nvidia ranger vim feh fish networkmanager w3m transmission-gtk mpv chromium chromium-widevine lxappearance termite i3-gaps-git i3blocks-git xorg-xinit ttf-font-awesome xdotool pulseaudio pavucontrol pulseaudio-alsa xorg-xrandr lm_sensorsa xorg-xrdb flattr-icon-theme ponymix sysstat alsa-utils acpi i3lock valgrind gdb redshift thermald htop wget
+

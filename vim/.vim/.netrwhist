@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/effi/dotfiles/.git'
 let g:netrw_dirhist_2='/home/effi/dotfiles/vim'
 let g:netrw_dirhist_3='/home/effi/winDocs/Heroes of the Storm'
+let g:netrw_dirhist_4='/home/effi/dotfiles'
