@@ -1,7 +1,12 @@
 unzip cvim.zip
 mkdir bundle
-open_with 
 open_with j
 deletey
-
+open_with unzip
+w
+rename trextex.png
 delete
+
+rename trex.mxl
+open_with 
+rename trex.xml

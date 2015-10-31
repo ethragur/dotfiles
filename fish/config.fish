@@ -8,13 +8,14 @@ alias i3conf 'vim ~/.i3/config'
 alias battlenet 'wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Battle.net/Battle.net\ Launcher.exe'
 alias cddot 'cd ~/dotfiles/'
 alias shutdown 'echo hahahahahahahaha'
+alias givepw 'base64 /dev/urandom | head -c 10'
 
 set EDITOR vim
 set VISUAL vim
 set WINEDEBUG -all
 set WINEPREFIX /home/effi/.wine/
 
-set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ 
+set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
 
 
 set TERMINAL termite
