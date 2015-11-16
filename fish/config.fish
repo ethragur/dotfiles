@@ -2,16 +2,17 @@ alias ls 'ls --color=auto'
 alias nani 'livestreamer http://www.twitch.tv/naniwasc2 high'
 alias ll 'ls -l --color=auto'
 alias la 'ls -l -a --color=auto'
-alias inst 'sudo yaourt -S'
+alias inst 'yaourt -S'
 alias uinst 'sudo pacman -Rsnc'
 alias i3conf 'vim ~/.i3/config'
 alias battlenet 'wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Battle.net/Battle.net\ Launcher.exe'
 alias cddot 'cd ~/dotfiles/'
 alias shutdown 'echo hahahahahahahaha'
 alias givepw 'base64 /dev/urandom | head -c 10'
+alias vim 'nvim'
 
-set EDITOR vim
-set VISUAL vim
+set EDITOR nvim
+set VISUAL nvim
 set WINEDEBUG -all
 set WINEPREFIX /home/effi/.wine/
 
@@ -30,6 +31,16 @@ set __GL_THREADED_OPTIMIZATIONS 1
 
 fish_vi_mode
 
+function feh_browser
+	sh /home/effi/dotfiles/scripts/feh_browser.sh $argv -F -Z
+end
+
+function mcd
+	mkdir -p $argv
+	cd $argv
+end
+
+
 
 function sudo
     if test "$argv" = !!
@@ -45,3 +56,39 @@ if status --is-login
         exec startx -- -keeptty
     end
 end
+
+
+
+# Path to Oh My Fish install.
+set -gx OMF_PATH /home/effi/.local/share/omf
+
+# Customize Oh My Fish configuration path.
+#set -gx OMF_CONFIG /home/effi/.config/omf
+
+# Load oh-my-fish configuration.
+source $OMF_PATH/init.fish
+
+set -g theme_display_user yes
+
+function fish_mode_prompt
+# Do nothing if not in vi mode
+  if set -q __fish_vi_mode
+    switch $fish_bind_mode
+      case default
+        set_color --background blue purple
+        echo ' N '
+      case insert
+        set_color --background blue white
+        echo ' I '
+      case replace-one
+        set_color --background blue black
+        echo ' R '
+      case visual
+        set_color --background blue magenta
+        echo ' V '
+    end
+    set_color blue --background black
+    echo ''
+  end
+end
+

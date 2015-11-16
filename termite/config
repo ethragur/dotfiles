@@ -1,6 +1,5 @@
-
 [options]
-font = Hack 10
+font = Hack 12
 geometry                = 600x600
 scrollback_lines        = 5000
 browser                 = chromium
@@ -12,11 +11,6 @@ transparency 		= 0.35
 #allow_bold              = false
 #dynamic_title           = true
 #search_wrap             = true
-
-
-
-
-
 
 [colors]
 background = #002b36

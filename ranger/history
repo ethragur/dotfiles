@@ -3,10 +3,20 @@ mkdir bundle
 open_with j
 deletey
 open_with unzip
-w
 rename trextex.png
-delete
-
 rename trex.mxl
 open_with 
 rename trex.xml
+w
+deletejj
+unzip
+extract
+rename ex3
+rename ex4
+rename ex1
+rename ex2
+delete
+mkdir ex5
+unzip %
+
+deletekk

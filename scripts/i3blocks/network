@@ -8,3 +8,7 @@ else
 	STRENGTH=$(nmcli device wifi | grep $SSID | awk '{print $7;}')
 	echo  $SSID  $STRENGTH%
 fi
+
+case $BLOCK_BUTTON in
+	1) termite -e nmtui ;;
+esac

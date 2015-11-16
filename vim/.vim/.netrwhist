@@ -1,8 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/effi/dotfiles/.git'
-let g:netrw_dirhist_2='/home/effi/dotfiles/vim'
-let g:netrw_dirhist_3='/home/effi/winDocs/Heroes of the Storm'
-let g:netrw_dirhist_4='/home/effi/dotfiles'
-let g:netrw_dirhist_5='/boot/EFI/refind'
-let g:netrw_dirhist_6='/home/effi/dev/para/matmult/tmp/ps2_matrix_mul_cllib'
+let g:netrw_dirhist_cnt =0
