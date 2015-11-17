@@ -9,6 +9,7 @@ alias shutdown 'echo hahahahahahahaha'
 alias givepw 'base64 /dev/urandom | head -c 10'
 alias yolo 'yaourt -Syua --force --devel --noconfirm'
 alias vim 'nvim'
+alias rsync 'rsync -a --stats --progress'
 
 set EDITOR nvim
 set VISUAL nvim
@@ -16,6 +17,25 @@ set WINEDEBUG -all
 set WINEPREFIX /home/effi/.wine/
 
 set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
+
+
+# declare solarize colors
+set u_col0 "#002b36"
+set u_col1 "#657b83"
+set u_col2 "#073642"
+set u_col3 "#dc322f"
+set u_col4 "#859900"
+set u_col5 "#b58900"
+set u_col6 "#268bd2"
+set u_col7 "#d33682"
+set u_col8 "#2aa198"
+set u_col9 "#eee8d5"
+set u_cola "#cb4b16"
+set u_colb "#586e75"
+set u_colc "#839496"
+set u_cold "#6c71c4"
+set u_cole "#93a1a1"
+set u_colf "#fdf6e3"
 
 
 set TERMINAL termite
@@ -69,24 +89,26 @@ source $OMF_PATH/init.fish
 
 set -g theme_display_user yes
 
+
+
 function fish_mode_prompt
 # Do nothing if not in vi mode
   if set -q __fish_vi_mode
     switch $fish_bind_mode
       case default
-        set_color --background brown black
+        set_color --bold --background $u_col8 $u_colb
         echo ' N '
       case insert
-        set_color --background brown white
+        set_color --bold --background $u_col8 $u_colf
         echo ' I '
       case replace-one
-        set_color --background brown black
+        set_color --bold --background $u_col8 $u_col1 
         echo ' R '
       case visual
-        set_color --background brown blue
+        set_color --bold --background $u_col8 $u_col3
         echo ' V '
     end
-    set_color brown --background black
+    set_color $u_col8 --background $u_cole
     echo ''
   end
 end
