@@ -1,11 +1,9 @@
 alias ls 'ls --color=auto'
-alias nani 'livestreamer http://www.twitch.tv/naniwasc2 high'
 alias ll 'ls -l --color=auto'
 alias la 'ls -l -a --color=auto'
 alias inst 'yaourt -S'
 alias uinst 'sudo pacman -Rsnc'
 alias i3conf 'vim ~/.i3/config'
-alias battlenet 'wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Battle.net/Battle.net\ Launcher.exe'
 alias cddot 'cd ~/dotfiles/'
 alias shutdown 'echo hahahahahahahaha'
 alias givepw 'base64 /dev/urandom | head -c 10'
@@ -75,19 +73,19 @@ function fish_mode_prompt
   if set -q __fish_vi_mode
     switch $fish_bind_mode
       case default
-        set_color --background blue purple
+        set_color --background brown black
         echo ' N '
       case insert
-        set_color --background blue white
+        set_color --background brown white
         echo ' I '
       case replace-one
-        set_color --background blue black
+        set_color --background brown black
         echo ' R '
       case visual
-        set_color --background blue magenta
+        set_color --background brown blue
         echo ' V '
     end
-    set_color blue --background black
+    set_color brown --background black
     echo ''
   end
 end

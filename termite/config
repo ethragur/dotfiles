@@ -7,7 +7,6 @@ clickable_url           = true
 resize_grip             = false
 audible_bell            = false
 visible_bell            = false
-transparency 		= 0.35
 #allow_bold              = false
 #dynamic_title           = true
 #search_wrap             = true

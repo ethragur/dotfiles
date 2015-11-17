@@ -26,7 +26,7 @@ exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/bgCave.jpg --bg-s
 exec_always --no-startup-id xrdb -load /home/effi/dotfiles/urxvt/Xresources
 
 #Compositor //kills performance
-#exec_always --no-startup-id compton -c -C --vsync opengl --backend glx --config /home/effi/.compton.conf
+exec_always --no-startup-id compton -c -c --vsync opengl --backend glx --config /home/effi/.compton.conf
 
 
 #redshift
@@ -254,7 +254,7 @@ bar {
   tray_output VGA-0
   mode dock
   position top
-  font pango:Hack, Icons 8
+  font pango:Hack, Icons 9
   colors {
     separator #dc322f
     background #002b36
