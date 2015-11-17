@@ -20,6 +20,6 @@ elif [[ $state == *"Thunder"* ]]
 then
 	echo " $temp°"
 else
-	echo "$state $ftemp°"
+	echo " $ftemp°"
 fi
 

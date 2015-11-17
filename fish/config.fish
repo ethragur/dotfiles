@@ -7,6 +7,7 @@ alias i3conf 'vim ~/.i3/config'
 alias cddot 'cd ~/dotfiles/'
 alias shutdown 'echo hahahahahahahaha'
 alias givepw 'base64 /dev/urandom | head -c 10'
+alias yolo 'yaourt -Syua --force --devel --noconfirm'
 alias vim 'nvim'
 
 set EDITOR nvim
