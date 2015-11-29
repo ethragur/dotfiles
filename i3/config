@@ -13,9 +13,9 @@ exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 #exec_always xsetroot -solid "#333333"
 
 #Background Picture
-#exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/bgCave.jpg --bg-scale /home/effi/Pictures/bgLake.jpg
+exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/DigitalArt/bg2.jpg --bg-scale /home/effi/Pictures/DigitalArt/bg2.jpg
 #Widescreen Wallpaper
-exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/bgwsw.jpg
+#exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/bgwsw.jpg
 
 #load Xresources
 exec_always --no-startup-id xrdb -load /home/effi/dotfiles/urxvt/Xresources

@@ -18,7 +18,6 @@ set WINEPREFIX /home/effi/.wine/
 
 set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
 
-
 # declare solarize colors
 set u_col0 "#002b36"
 set u_col1 "#657b83"
