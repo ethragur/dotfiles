@@ -27,13 +27,6 @@ let mapleader = ","
 let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
-" remap ESC to Tab
-nnoremap <Tab> <Esc>
-vnoremap <Tab> <Esc>gV
-onoremap <Tab> <Esc>
-inoremap <Tab> <Esc>`^
-inoremap <Leader><Tab> <Tab>
-
 "set tabs and shifts to 4 spaces
 set tabstop=4
 set shiftwidth=4

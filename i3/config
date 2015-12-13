@@ -7,6 +7,8 @@ exec_always --no-startup-id ~/dotfiles/scripts/configure_xrandr.sh
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap de
+exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+
 #exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 #Background Color
