@@ -17,6 +17,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'petRUShka/vim-opencl'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -32,10 +33,11 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax on
 set background=dark
 let g:solarized_termcolor=256
-colorscheme solarized
+colorscheme gruvbox
 set laststatus=2
 set relativenumber
 set number
