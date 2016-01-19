@@ -8,7 +8,6 @@ call vundle#begin('~/.config/nvim/bundle')
 Plugin 'VundleVim/Vundle.vim'
 
 
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-latex/vim-latex'
 Plugin 'c.vim'
 Plugin 'scrooloose/syntastic'
@@ -18,6 +17,10 @@ Plugin 'petRUShka/vim-opencl'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'morhetz/gruvbox'
+Plugin 'dantler/vim-alternate'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'ervandew/supertab'
+Plugin 'JesseKPhillips/d.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -33,6 +36,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
+" color and optical enhancements
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax on
 set background=dark
@@ -43,21 +47,21 @@ set relativenumber
 set number
 set nowrap
 
-let g:neocomplete#enable_at_startup = 1
-
+" highlights
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
+" Airline
 let g:airline_powerline_fonts = 1
-
-let g:deoplete#enable_at_startup = 1
+let g:airline#extensions#tabline#enabled = 1
 
 set wildmenu
 set showcmd
 set hlsearch
+nnoremap <F3> :set hlsearch!<CR>
 set ruler
 
 set ignorecase
@@ -70,6 +74,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+"syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -77,3 +82,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntasitc_c_clang_check_post_args = ""
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11'
+
+"ycm
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_instertion = 1
+let g:ycm_confirm_extra_conf = 0

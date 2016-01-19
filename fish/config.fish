@@ -5,13 +5,12 @@ alias inst 'yaourt -S'
 alias uinst 'sudo pacman -Rsnc'
 alias i3conf 'vim ~/.i3/config'
 alias cddot 'cd ~/dotfiles/'
-alias shutdown 'echo hahahahahahahaha'
 alias givepw 'base64 /dev/urandom | head -c 10'
 alias yolo 'yaourt -Syua --force --devel --noconfirm'
 alias vim 'nvim'
 alias rsync 'rsync -a --stats --progress'
-alias goodnight 'sleep 1h; and poweroff'
-
+alias goodnight 'sleep 1h; and poweroff' 
+alias ccmake 'cmake .; and make'
 set EDITOR nvim
 set VISUAL nvim
 set WINEDEBUG -all
@@ -86,7 +85,42 @@ function mcd
 	cd $argv
 end
 
+function x
+	switch (echo $argv)
+		case '*.zip'
+			unzip $argv
+		case '*.tar.bz2'
+			tar xjf $argv	
+		case '*.tar.gz'
+			tar xzf $argv	
+		case '*.bz2'
+			bunzip2 $argv	
+		case '*.rar'
+			unrar x $argv	
+		case '*.gz'
+			gunzip $argv	
+		case '*.tar'
+			tar xf $argv	
+		case '*.tbz2'
+			tar xjf $argv	
+		case '*.tgz'
+			tar xzf $argv	
+		case '*.Z'
+			uncompress $argv	
+		case '*.7z'
+			7x x $argv	
+		case '*'
+			echo "Cannot extract file"
+	end
+end
 
+function reload
+	source ~/.config/fish/config.fish
+end
+
+function please
+	sudo $history[1]
+end
 
 function sudo
     if test "$argv" = !!
@@ -97,11 +131,11 @@ function sudo
 end
 
 # start X at login
-if status --is-login
-    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
-        exec startx -- -keeptty
-    end
-end
+#if status --is-login
+#    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
+##        exec startx -- -keeptty
+#    end
+#end
 
 
 

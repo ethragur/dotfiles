@@ -8,7 +8,7 @@ exec_always --no-startup-id $dotdir/scripts/configure_xrandr.sh
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap de
-exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+exec_always --no-startup-id sleep 3 && xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 #exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
@@ -68,6 +68,7 @@ font pango:Hack 8
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
+bindsym $mod+p exec mpv $(xclip -o)
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -83,14 +84,14 @@ bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 
 # start dmenu2
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.8 -l 100 -w 300 -p '>' -nf '#839496' -nb '#002b36' -sb '#586e75' -sf '#002b36' -fn 'Hack-13'" --term="i3-sensible-terminal"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.8 -l 100 -w 300 -p '>' -nf '#b8bb26' -nb '#282828' -sb '#928374' -sf '#282828' -fn 'Hack-13'" --term="i3-sensible-terminal"
 #bindsym $mod+g exec --no-startup-id lighthouse | sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 
-gaps inner 20
-gaps outer 10
+gaps inner 10
+gaps outer 5
 smart_gaps on
 
 # change focus
