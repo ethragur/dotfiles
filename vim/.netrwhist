@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/effi/.config/fish/functions'
-let g:netrw_dirhist_2='/home/effi/dotfiles'
-let g:netrw_dirhist_3='/home/effi/Downloads/Telegram Desktop/week3/CMakeFiles'
-let g:netrw_dirhist_4='/home/effi/dotfiles'
-let g:netrw_dirhist_5='/home/effi/tmp/suckless/dwm'
-let g:netrw_dirhist_6='/home/effi/dev/AdvCGfinal'
