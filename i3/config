@@ -234,11 +234,14 @@ bindsym $mod+r mode "resize"
 
 bar {
   status_command i3blocks -c $dotdir/i3/i3blocks.conf 2>~/.i3blocks.err
+  mode hide	
+  hidden_state hide
+  modifier $mod
+  height 22
   strip_workspace_numbers yes
   tray_output VGA-0
-  mode dock
   position top
-  font pango:Hack, Icons 9
+  font pango:Hack, Icons 10
   colors {
     separator #928374
     background #282828
