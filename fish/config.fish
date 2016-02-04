@@ -1,16 +1,22 @@
 alias ls 'ls --color=auto'
 alias ll 'ls -l --color=auto'
 alias la 'ls -l -a --color=auto'
-alias inst 'yaourt -S'
-alias uinst 'sudo pacman -Rsnc'
+
+alias inst 'pacaur -S'
+alias install 'pacaur -S'
+alias update 'pacaur -Syu'
+alias search 'pacaur -Ss'
+alias uinst 'pacaur -Rsnc'
+alias uninstall 'pacaur -Rsnc'
+
 alias i3conf 'vim ~/.i3/config'
 alias cddot 'cd ~/dotfiles/'
 alias givepw 'base64 /dev/urandom | head -c 10'
-alias yolo 'yaourt -Syua --force --devel --noconfirm'
 alias vim 'nvim'
 alias rsync 'rsync -a --stats --progress'
 alias goodnight 'sleep 1h; and poweroff' 
 alias ccmake 'cmake .; and make'
+
 set EDITOR nvim
 set VISUAL nvim
 set WINEDEBUG -all
@@ -131,11 +137,11 @@ function sudo
 end
 
 # start X at login
-#if status --is-login
-#    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
-##        exec startx -- -keeptty
-#    end
-#end
+if status --is-login
+    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
+        exec startx -- -keeptty
+    end
+end
 
 
 
