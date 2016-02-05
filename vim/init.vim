@@ -21,6 +21,7 @@ Plugin 'dantler/vim-alternate'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ervandew/supertab'
 Plugin 'JesseKPhillips/d.vim'
+Plugin 'tikhomirov/vim-glsl'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
