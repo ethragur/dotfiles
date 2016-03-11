@@ -46,10 +46,12 @@ printf "%.2f%%\n", $cpu_usage;
 
 # Print color, if needed
 if ($cpu_usage >= $t_crit) {
-    print "#FF0000\n";
+    print $ENV{'color1'};
     exit 33;
 } elsif ($cpu_usage >= $t_warn) {
-    print "#FFFC00\n";
+    print $ENV{'color13'};
+} else {
+	print $ENV{'color6'};
 }
 
 exit 0;

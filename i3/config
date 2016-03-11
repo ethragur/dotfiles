@@ -3,17 +3,15 @@ set $mod Mod4
 set $alt Mod1
 
 set $dotdir /home/effi/dotfiles
-#Monitor
+
+#Set up multiple Monitors with xrandr
 exec_always --no-startup-id $dotdir/scripts/configure_xrandr.sh 
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap de
-exec_always --no-startup-id sleep 3 && xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+exec_always --no-startup-id sleep 1 && xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 #exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-
-#Background Color
-#exec_always xsetroot -solid "#333333"
 
 #Background Picture
 exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/Gruvbox/air.jpg --bg-scale /home/effi/Pictures/Gruvbox/fire.jpg
@@ -26,14 +24,15 @@ exec_always --no-startup-id xrdb -load $dotdir/urxvt/Xresources
 #Compositor //kills performance
 exec_always --no-startup-id compton -c --vsync opengl --backend glx --config $dotdir/compton/compton.conf
 
-
 #redshift
 exec --no-startup-id redshift -l 47.267:11.383
 
 #Audio Control
+#for PulseAudio
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% &&killall -SIGUSR1 i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% &&killall -SIGUSR1 i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle &&killall -SIGUSR1 i3status
+#for Alsa
 #bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmute && killall -SIGUSR1 i3status
 #bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -SIGUSR1 i3status
 #bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle  && killall -SIGUSR1 i3status
@@ -42,7 +41,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym $mod+$alt+l exec $dotdir/scripts/lock.sh
 
 #Futurama
-bindsym $mod+$alt+f exec $dotdir/scripts/futurama.sh
+bindsym $mod+$alt+f exec $dotdir/scripts/futurama.fish
 
 #Reconf Displays
 bindsym $mod+$alt+d exec $dotdir/scripts/configure_xrandr.sh 
@@ -56,18 +55,9 @@ new_float pixel 2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:monospace 6 
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:Hack 8
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+#open current clipboard link in mpv (for example youtube)
 bindsym $mod+p exec mpv $(xclip -o)
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -75,7 +65,6 @@ floating_modifier $mod
 
 #start browser
 bindsym $mod+c exec chromium
-
 
 # start a terminal
 bindsym $mod+Return exec termite
@@ -85,13 +74,11 @@ bindsym $mod+Shift+q kill
 
 # start dmenu2
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.8 -l 100 -w 300 -p '>' -nf '#b8bb26' -nb '#282828' -sb '#928374' -sf '#282828' -fn 'Hack-13'" --term="i3-sensible-terminal"
-#bindsym $mod+g exec --no-startup-id lighthouse | sh
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
 
+#gaps settings
 gaps inner 10
 gaps outer 5
+#no gaps when there is only one window on the screen
 smart_gaps on
 
 # change focus
@@ -100,23 +87,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
@@ -156,26 +131,28 @@ set $ws8 8:
 set $ws9 9:
 set $ws0 0:
 
+set $DISPLAY-0 HDMI-0
+set $DISPLAY-1 VGA-0
 
-workspace $ws1 output HDMI-0
-workspace $ws3 output HDMI-0
-workspace $ws5 output HDMI-0
-workspace $ws7 output HDMI-0
-workspace $ws9 output HDMI-0
+#assign workspaces to different screen
+workspace $ws1 output $DISPLAY-0
+workspace $ws3 output $DISPLAY-0
+workspace $ws5 output $DISPLAY-0
+workspace $ws7 output $DISPLAY-0
+workspace $ws9 output $DISPLAY-0
 
-workspace $ws2 output VGA-0
-workspace $ws4 output VGA-0
-workspace $ws6 output VGA-0
-workspace $ws8 output VGA-0
-workspace $ws0 output VGA-0
+workspace $ws2 output $DISPLAY-1
+workspace $ws4 output $DISPLAY-1
+workspace $ws6 output $DISPLAY-1
+workspace $ws8 output $DISPLAY-1
+workspace $ws0 output $DISPLAY-1
 
-for_window [class="^mpv$"] border none focus
 assign [class="(?i)mpv"] $ws5
+#
+#hide borders when only one window on screen
+hide_edge_borders both
 
-#start ranger on $WS2
-#bindsym $mod+m exec i3-msg 'workspace $ws2' && exec termite -e ranger 
-
-# switch to workspace bindsym $mod+1 workspace $ws1
+# switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -214,16 +191,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -234,17 +205,39 @@ bindsym $mod+r mode "resize"
 
 bar {
   status_command i3blocks -c $dotdir/i3/i3blocks.conf 2>~/.i3blocks.err
-  mode hide	
+  i3bar_command i3bar -t
+  mode dock
+  strip_workspace_numbers yes
+  tray_output VGA-0
+  output VGA-0
+  position top 
+  font pango:Hack, Icons 10
+  colors {
+    separator #928374
+    background #28282866
+    statusline #ebdbb2
+    focused_workspace #689d6a #689d6a #282828
+    active_workspace #1d2021 #1d2021 #928374
+    inactive_workspace #32302f #32302f #928374
+    urgent_workspace #cc241d #cc241d #ebdbb2
+  }
+}
+
+bar {
+  status_command i3blocks -c $dotdir/i3/i3blocks.conf 2>~/.i3blocks.err
+  i3bar_command i3bar -t
+  mode hide
   hidden_state hide
   modifier $mod
   height 22
   strip_workspace_numbers yes
-  tray_output VGA-0
-  position top
+  output HDMI-0
+  tray_output none
+  position top 
   font pango:Hack, Icons 10
   colors {
     separator #928374
-    background #282828
+    background #28282866
     statusline #ebdbb2
     focused_workspace #689d6a #689d6a #282828
     active_workspace #1d2021 #1d2021 #928374

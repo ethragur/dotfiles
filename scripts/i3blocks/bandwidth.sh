@@ -1,15 +1,17 @@
 #!/bin/sh
 
-read rx < "/sys/class/net/$1/statistics/rx_bytes"
-read tx < "/sys/class/net/$1/statistics/tx_bytes"
+
+DEVICE="$(ip addr show | grep wlp | head -n 1 | awk '{print $2;}'| rev | cut -c 2- | rev)"
+read rx < "/sys/class/net/$DEVICE/statistics/rx_bytes"
+read tx < "/sys/class/net/$DEVICE/statistics/tx_bytes"
 
 sleep 1s
 
-read rxo < "/sys/class/net/$1/statistics/rx_bytes"
-read txo < "/sys/class/net/$1/statistics/tx_bytes"
+read rxo < "/sys/class/net/$DEVICE/statistics/rx_bytes"
+read txo < "/sys/class/net/$DEVICE/statistics/tx_bytes"
 
 
 rspeed=$(( ($rxo - $rx ) / 1000 ))
 tspeed=$(( ($txo - $tx ) / 1000 ))
 
-echo ${rspeed}K  ${tspeed}K
+echo -e "${rspeed}K  ${tspeed}K \n\n$color9"

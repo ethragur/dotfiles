@@ -17,10 +17,14 @@ alias rsync 'rsync -a --stats --progress'
 alias goodnight 'sleep 1h; and poweroff' 
 alias ccmake 'cmake .; and make'
 
-set EDITOR nvim
-set VISUAL nvim
-set WINEDEBUG -all
-set WINEPREFIX /home/effi/.wine/
+alias battlenet 'wine "/home/effi/.wine/drive_c/Program Files (x86)/Battle.net/Battle.net Launcher.exe"'
+alias hots32 'wine "/home/effi/.wine/drive_c/Program Files (x86)/Heroes of the Storm/Support/HeroesSwitcher.exe"'
+alias hots64 'wine "/home/effi/.wine/drive_c/Program Files (x86)/Heroes of the Storm/Support64/HeroesSwitcher.exe"'
+
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx WINEDEBUG -all
+set -gx WINEPREFIX /home/effi/.wine/
 
 set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
 
@@ -42,22 +46,22 @@ set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl
 #set u_cole "#93a1a1"
 #set u_colf "#fdf6e3"
 
-set color0 "#282828"
-set color8 "#928374"
-set color1 "#cc241d"
-set color9 "#fb4934"
-set color2 "#98971a"
-set color3 "#d79921"
-set color4 "#458588"
-set color5 "#b16286"
-set color6 "#689d6a"
-set color7 "#a89984"
-set color11 "#fabd2f"
-set color12 "#83a598"
-set color13 "#d3869b"
-set color14 "#8ec07c"
-set color15 "#ebdbb2"
-set color10 "#b8bb26"
+set -gx color0 "#282828"
+set -gx color8 "#928374"
+set -gx color1 "#cc241d"
+set -gx color9 "#fb4934"
+set -gx color2 "#98971a"
+set -gx color3 "#d79921"
+set -gx color4 "#458588"
+set -gx color5 "#b16286"
+set -gx color6 "#689d6a"
+set -gx color7 "#a89984"
+set -gx color11 "#fabd2f"
+set -gx color12 "#83a598"
+set -gx color13 "#d3869b"
+set -gx color14 "#8ec07c"
+set -gx color15 "#ebdbb2"
+set -gx color10 "#b8bb26"
 
 set red $color1
 set yellow $color3
@@ -70,15 +74,15 @@ set grey $color8
 set purple $color13
 set aqua $color14
 
-set TERMINAL termite
-set WINEARCH win64 
+set -gx TERMINAL termite
+set -gx WINEARCH win64 
 set fish_greeting ""
 
 eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
 
 
-set LD_PRELOAD "libpthread.so.0 libGL.so.1"
-set __GL_THREADED_OPTIMIZATIONS 1
+#set LD_PRELOAD "libpthread.so.0 libGL.so.1"
+#set __GL_THREADED_OPTIMIZATIONS 1
 
 fish_vi_mode
 
@@ -143,16 +147,19 @@ if status --is-login
     end
 end
 
+function win_reboot
+	sudo efibootmgr -n 0004
+	reboot
+end
+
 
 
 # Path to Oh My Fish install.
-set -gx OMF_PATH /home/effi/.local/share/omf
 
 # Customize Oh My Fish configuration path.
-#set -gx OMF_CONFIG /home/effi/.config/omf
 
 # Load oh-my-fish configuration.
-source $OMF_PATH/init.fish
+source ~/dotfiles/fish/functions/fish_prompt.fish
 
 set -g theme_display_user yes
 

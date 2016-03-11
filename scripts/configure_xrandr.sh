@@ -1,8 +1,9 @@
 #! /bin/bash
 
-PRIMARY="LVDS-0"
-EXT1="VGA-0"
-EXT2="HDMI-0"
+PRIMARY=$(xrandr | grep connected | awk '{print $1;}' | grep LVD)
+EXT1=$(xrandr | grep connected | awk '{print $1;}' | grep VGA)
+EXT2=$(xrandr | grep connected | awk '{print $1;}' | grep HDMI)
+
 
 if ((xrandr | grep "$EXT1 connected") && (xrandr | grep "$EXT2 connected")); then
 	xrandr --output $PRIMARY --off
