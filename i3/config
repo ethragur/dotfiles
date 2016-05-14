@@ -2,6 +2,12 @@
 set $mod Mod4 
 set $alt Mod1
 
+##Sway mouse config
+#input "2:8:AlpsPS/2_ALPS_GlidePoint" {
+#	tap enabled
+#	natural_scroll disabled
+#	dwt enabled
+#}
 set $dotdir /home/effi/dotfiles
 
 #Set up multiple Monitors with xrandr
@@ -14,7 +20,7 @@ exec_always --no-startup-id sleep 1 && xmodmap -e 'clear Lock' -e 'keycode 0x42 
 #exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 #Background Picture
-exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/Gruvbox/air.jpg --bg-scale /home/effi/Pictures/Gruvbox/fire.jpg
+exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/Wallpapers/bg2.jpg
 #Widescreen Wallpaper
 #exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/bgwsw.jpg
 
@@ -22,16 +28,17 @@ exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/Gruvbox/air.jpg -
 exec_always --no-startup-id xrdb -load $dotdir/urxvt/Xresources
 
 #Compositor //kills performance
-exec_always --no-startup-id compton -c --vsync opengl --backend glx --config $dotdir/compton/compton.conf
+#for nvidia vsync
+exec_always --no-startup-id compton -c --vsync opengl-oml --backend glx --config $dotdir/compton/compton.conf
 
 #redshift
 exec --no-startup-id redshift -l 47.267:11.383
 
 #Audio Control
 #for PulseAudio
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% &&killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% &&killall -SIGUSR1 i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle &&killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5
+bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 5
+bindsym XF86AudioMute exec --no-startup-id ponymix toggle
 #for Alsa
 #bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmute && killall -SIGUSR1 i3status
 #bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -SIGUSR1 i3status
@@ -47,8 +54,8 @@ bindsym $mod+$alt+f exec $dotdir/scripts/futurama.fish
 bindsym $mod+$alt+d exec $dotdir/scripts/configure_xrandr.sh 
 
 #BrightnessControl
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 40
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 40
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
 new_window pixel 2
 new_float pixel 2
@@ -71,9 +78,6 @@ bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start dmenu2
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.8 -l 100 -w 300 -p '>' -nf '#b8bb26' -nb '#282828' -sb '#928374' -sf '#282828' -fn 'Hack-13'" --term="i3-sensible-terminal"
 
 #gaps settings
 gaps inner 10
@@ -131,8 +135,8 @@ set $ws8 8:
 set $ws9 9:
 set $ws0 0:
 
-set $DISPLAY-0 HDMI-0
-set $DISPLAY-1 VGA-0
+set $DISPLAY-0 eDP-1
+set $DISPLAY-1 HDMI-1
 
 #assign workspaces to different screen
 workspace $ws1 output $DISPLAY-0
@@ -203,50 +207,47 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bar {
-  status_command i3blocks -c $dotdir/i3/i3blocks.conf 2>~/.i3blocks.err
-  i3bar_command i3bar -t
-  mode dock
-  strip_workspace_numbers yes
-  tray_output VGA-0
-  output VGA-0
-  position top 
-  font pango:Hack, Icons 10
-  colors {
-    separator #928374
-    background #28282866
-    statusline #ebdbb2
-    focused_workspace #689d6a #689d6a #282828
-    active_workspace #1d2021 #1d2021 #928374
-    inactive_workspace #32302f #32302f #928374
-    urgent_workspace #cc241d #cc241d #ebdbb2
-  }
-}
+set $base00 #282828
+set $basetransperant #28282866
+set $base01 #cc241d
+set $base02 #98971a
+set $base03 #d79921
+set $base04 #458588
+set $base05 #b16286
+set $base06 #689d6a
+set $base07 #a89984
+set $base08 #928374
+set $base09 #fb4934
+set $base0A #b8bb26
+set $base0B #fabd2f
+set $base0C #83a598
+set $base0D #d3869b
+set $base0E #8ec07c
+set $base0F #ebdbb2
+
+# start dmenu2
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.8 -l 100 -w 300 -p '>' -nf '$base03' -nb '$base00' -sb '$base0D' -sf '$base00' -fn 'Hack-13'" --term="i3-sensible-terminal"
+
 
 bar {
-  status_command i3blocks -c $dotdir/i3/i3blocks.conf 2>~/.i3blocks.err
-  i3bar_command i3bar -t
-  mode hide
-  hidden_state hide
-  modifier $mod
-  height 22
-  strip_workspace_numbers yes
-  output HDMI-0
-  tray_output none
-  position top 
-  font pango:Hack, Icons 10
-  colors {
-    separator #928374
-    background #28282866
-    statusline #ebdbb2
-    focused_workspace #689d6a #689d6a #282828
-    active_workspace #1d2021 #1d2021 #928374
-    inactive_workspace #32302f #32302f #928374
-    urgent_workspace #cc241d #cc241d #ebdbb2
-  }
+	status_command ~/tmp/i3blocks/./i3blocks -c $dotdir/i3/i3blocks.conf
+	i3bar_command i3bar -t
+	mode dock
+	strip_workspace_numbers yes
+	position top 
+	font pango:Hack, Icons 10
+	colors {
+		separator $base03
+		background $basetransperant
+		statusline $base05
+		focused_workspace $base0C $base0E $base00
+		active_workspace $base0F $base02 $base07
+		inactive_workspace $base07 $base0F $base07
+		urgent_workspace $base08 $base08 $base07
+	}
 }
 
-client.focused #689d6a #689d6a #282828 #282828
-client.focused_inactive #1d2021 #1d2021 #928374 #282828
-client.unfocused #32302f #32302f #928374 #282828
-client.urgent #cc241d #cc241d #ebdbb2 #282828
+client.focused $base02 $base02 $base00 $base01
+client.focused_inactive $base0D $base0D $base03 $base01
+client.unfocused $base0F $base07 $base03 $base01
+client.urgent $base02 $base08 $base07 $base08

@@ -6,6 +6,7 @@ alias inst 'pacaur -S'
 alias install 'pacaur -S'
 alias update 'pacaur -Syu'
 alias search 'pacaur -Ss'
+alias searchr 'pacman -Ss'
 alias uinst 'pacaur -Rsnc'
 alias uninstall 'pacaur -Rsnc'
 
@@ -19,32 +20,15 @@ alias ccmake 'cmake .; and make'
 
 alias battlenet 'wine "/home/effi/.wine/drive_c/Program Files (x86)/Battle.net/Battle.net Launcher.exe"'
 alias hots32 'wine "/home/effi/.wine/drive_c/Program Files (x86)/Heroes of the Storm/Support/HeroesSwitcher.exe"'
-alias hots64 'wine "/home/effi/.wine/drive_c/Program Files (x86)/Heroes of the Storm/Support64/HeroesSwitcher.exe"'
+alias hots64 'wine "/home/effi/.wine/drive_c/Program Files (x86)/Heroes of the Storm/Support64/HeroesSwitcher_x64.exe"'
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx WINEDEBUG -all
 set -gx WINEPREFIX /home/effi/.wine/
+set -gx XKB_DEFAULT_LAYOUT de
 
 set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
-
-# declare solarize colors
-#set u_col0 "#002b36"
-#set u_col1 "#657b83"
-#set u_col2 "#073642"
-#set u_col3 "#dc322f"
-#set u_col4 "#859900"
-#set u_col5 "#b58900"
-#set u_col6 "#268bd2"
-#set u_col7 "#d33682"
-#set u_col8 "#2aa198"
-#set u_col9 "#eee8d5"
-#set u_cola "#cb4b16"
-#set u_colb "#586e75"
-#set u_colc "#839496"
-#set u_cold "#6c71c4"
-#set u_cole "#93a1a1"
-#set u_colf "#fdf6e3"
 
 set -gx color0 "#282828"
 set -gx color8 "#928374"
@@ -118,7 +102,7 @@ function x
 		case '*.Z'
 			uncompress $argv	
 		case '*.7z'
-			7x x $argv	
+			7z x $argv	
 		case '*'
 			echo "Cannot extract file"
 	end
@@ -141,14 +125,14 @@ function sudo
 end
 
 # start X at login
-if status --is-login
-    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
-        exec startx -- -keeptty
-    end
-end
+#if status --is-login
+#    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
+#        exec startx -- -keeptty
+#    end
+#end
 
 function win_reboot
-	sudo efibootmgr -n 0004
+	sudo efibootmgr -n 0000
 	reboot
 end
 

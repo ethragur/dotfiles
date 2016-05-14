@@ -1,5 +1,5 @@
 [options]
-font = Hack 10
+font = Hack 11
 geometry                = 600x600
 scrollback_lines        = 5000
 browser                 = chromium
@@ -10,27 +10,6 @@ visible_bell            = false
 #allow_bold              = false
 #dynamic_title           = true
 #search_wrap             = true
-
-#Solarized Dark
-#[colors]
-#background = #002b36
-#foreground = #657b83
-#color0 = #073642
-#color1 = #dc322f
-#color2 = #859900
-#color3 = #b58900
-#color4 = #268bd2
-#color5 = #d33682
-#color6 = #2aa198
-#color7 = #eee8d5
-#color8 = #002b36
-#color9 = #cb4b16
-#color10 = #586e75
-#color11 = #657b83
-#color12 = #839496
-#color13 = #6c71c4
-#color14 = #93a1a1
-#color15 = #fdf6e3
 
 [colors]
 background = #282828

@@ -12,12 +12,11 @@ Plugin 'vim-latex/vim-latex'
 Plugin 'c.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'petRUShka/vim-opencl'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
-Plugin 'morhetz/gruvbox'
 Plugin 'dantler/vim-alternate'
+Plugin 'morhetz/gruvbox'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ervandew/supertab'
 Plugin 'JesseKPhillips/d.vim'
@@ -37,11 +36,11 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
+
 " color and optical enhancements
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax on
 set background=dark
-let g:solarized_termcolor=256
 colorscheme gruvbox
 set laststatus=2
 set relativenumber
@@ -58,6 +57,7 @@ let g:go_highlight_build_constraints = 1
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme = 'sky'
 
 set wildmenu
 set showcmd
@@ -88,3 +88,5 @@ let g:syntastic_cpp_compiler_options = '-std=c++11'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_instertion = 1
 let g:ycm_confirm_extra_conf = 0
+
+

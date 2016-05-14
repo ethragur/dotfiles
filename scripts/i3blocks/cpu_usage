@@ -54,6 +54,8 @@ if ($cpu_usage >= $t_crit) {
 	print $ENV{'color6'};
 }
 
+printf "\n";
+
 exit 0;
 
 
