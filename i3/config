@@ -2,12 +2,6 @@
 set $mod Mod4 
 set $alt Mod1
 
-##Sway mouse config
-#input "2:8:AlpsPS/2_ALPS_GlidePoint" {
-#	tap enabled
-#	natural_scroll disabled
-#	dwt enabled
-#}
 set $dotdir /home/effi/dotfiles
 
 #Set up multiple Monitors with xrandr
@@ -26,6 +20,8 @@ exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/Wallpapers/bg2.jp
 
 #load Xresources
 exec_always --no-startup-id xrdb -load $dotdir/urxvt/Xresources
+
+exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
 
 #Compositor //kills performance
 #for nvidia vsync
@@ -47,18 +43,15 @@ bindsym XF86AudioMute exec --no-startup-id ponymix toggle
 #Lock
 bindsym $mod+$alt+l exec $dotdir/scripts/lock.sh
 
-#Futurama
-bindsym $mod+$alt+f exec $dotdir/scripts/futurama.fish
-
 #Reconf Displays
 bindsym $mod+$alt+d exec $dotdir/scripts/configure_xrandr.sh 
 
-#BrightnessControl
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+#BrightnessControl done via acpi now
+#bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
-new_window pixel 2
-new_float pixel 2
+new_window pixel 4
+new_float pixel 4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -84,6 +77,7 @@ gaps inner 10
 gaps outer 5
 #no gaps when there is only one window on the screen
 smart_gaps on
+smart_borders on
 
 # change focus
 bindsym $mod+h focus left
@@ -117,6 +111,9 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# make window sticky
+bindsym $mod+Shift+s sticky toggle
+
 # focus the parent container
 #bindsym $mod+a focus parent
 
@@ -124,61 +121,59 @@ bindsym $mod+space focus mode_toggle
 #bindsym $mod+d focus child
 
 #bindworkspaces
-set $ws1 1:
-set $ws2 2:
-set $ws3 3:
-set $ws4 4:
-set $ws5 5:
-set $ws6 6:
-set $ws7 7:
-set $ws8 8:
-set $ws9 9:
-set $ws0 0:
+#set $ws1 1:
+#set $ws2 2:
+#set $ws3 3:
+#set $ws4 4:
+#set $ws5 5:
+#set $ws6 6:
+#set $ws7 7:
+#set $ws8 8:
+#set $ws9 9:
+#set $ws0 0:
 
 set $DISPLAY-0 eDP-1
 set $DISPLAY-1 HDMI-1
 
 #assign workspaces to different screen
-workspace $ws1 output $DISPLAY-0
-workspace $ws3 output $DISPLAY-0
-workspace $ws5 output $DISPLAY-0
-workspace $ws7 output $DISPLAY-0
-workspace $ws9 output $DISPLAY-0
+workspace 1 output $DISPLAY-0
+workspace 3 output $DISPLAY-0
+workspace 5 output $DISPLAY-0
+workspace 7 output $DISPLAY-0
+workspace 9 output $DISPLAY-0
 
-workspace $ws2 output $DISPLAY-1
-workspace $ws4 output $DISPLAY-1
-workspace $ws6 output $DISPLAY-1
-workspace $ws8 output $DISPLAY-1
-workspace $ws0 output $DISPLAY-1
+workspace 2 output $DISPLAY-1
+workspace 4 output $DISPLAY-1
+workspace 6 output $DISPLAY-1
+workspace 8 output $DISPLAY-1
+workspace 0 output $DISPLAY-1
 
-assign [class="(?i)mpv"] $ws5
-#
 #hide borders when only one window on screen
 hide_edge_borders both
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws0
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -186,6 +181,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Dou you want to quit?' -b 'Exit i3' 'i3-msg exit' -b 'Reboot' 'reboot' -b 'Shutdown' 'poweroff' -b 'Suspend' 'sudo systemctl suspend'"
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -207,43 +203,45 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $base00 #282828
-set $basetransperant #28282866
-set $base01 #cc241d
-set $base02 #98971a
-set $base03 #d79921
-set $base04 #458588
-set $base05 #b16286
-set $base06 #689d6a
-set $base07 #a89984
-set $base08 #928374
-set $base09 #fb4934
-set $base0A #b8bb26
-set $base0B #fabd2f
-set $base0C #83a598
-set $base0D #d3869b
-set $base0E #8ec07c
-set $base0F #ebdbb2
 
-# start dmenu2
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.8 -l 100 -w 300 -p '>' -nf '$base03' -nb '$base00' -sb '$base0D' -sf '$base00' -fn 'Hack-13'" --term="i3-sensible-terminal"
+set_from_resource $transparent transparent
+set_from_resource $base00 color0
+set_from_resource $base01 color1
+set_from_resource $base02 color2
+set_from_resource $base03 color3
+set_from_resource $base04 color4
+set_from_resource $base05 color5
+set_from_resource $base06 color6
+set_from_resource $base07 color7
+set_from_resource $base08 color8
+set_from_resource $base09 color9
+set_from_resource $base0A color10
+set_from_resource $base0B color11
+set_from_resource $base0C color12
+set_from_resource $base0D color13
+set_from_resource $base0E color14
+set_from_resource $base0F color15
+
+
+# start rofi 
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
 
 
 bar {
-	status_command ~/tmp/i3blocks/./i3blocks -c $dotdir/i3/i3blocks.conf
+	status_command i3blocks -c $dotdir/i3/i3blocks.conf
 	i3bar_command i3bar -t
 	mode dock
-	strip_workspace_numbers yes
+#	strip_workspace_numbers yes
 	position top 
 	font pango:Hack, Icons 10
 	colors {
 		separator $base03
-		background $basetransperant
+		background $transparent
 		statusline $base05
-		focused_workspace $base0C $base0E $base00
-		active_workspace $base0F $base02 $base07
-		inactive_workspace $base07 $base0F $base07
-		urgent_workspace $base08 $base08 $base07
+		focused_workspace $base0E $base0E $base00
+		active_workspace $base0B $base0B $base00
+		inactive_workspace $transparent $transparent $base07
+		urgent_workspace $base01 $base01 $base00
 	}
 }
 

@@ -27,8 +27,27 @@ set -gx VISUAL nvim
 set -gx WINEDEBUG -all
 set -gx WINEPREFIX /home/effi/.wine/
 set -gx XKB_DEFAULT_LAYOUT de
+set -gx VDPAU_DRIVER va_gl
 
 set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
+
+#get colors from Xresources file (not working, xrdb needs active xserver)
+#set -gx color0 (xrdb -query | grep -w "*color0" | grep -o -P '#[a-f0-9]*')
+#set -gx color1 (xrdb -query | grep -w "*color1" | grep -o -P '#[a-f0-9]*')
+#set -gx color2 (xrdb -query | grep -w "*color2" | grep -o -P '#[a-f0-9]*')
+#set -gx color3 (xrdb -query | grep -w "*color3" | grep -o -P '#[a-f0-9]*')
+#set -gx color4 (xrdb -query | grep -w "*color4" | grep -o -P '#[a-f0-9]*')
+#set -gx color5 (xrdb -query | grep -w "*color5" | grep -o -P '#[a-f0-9]*')
+#set -gx color6 (xrdb -query | grep -w "*color6" | grep -o -P '#[a-f0-9]*')
+#set -gx color7 (xrdb -query | grep -w "*color7" | grep -o -P '#[a-f0-9]*')
+#set -gx color8 (xrdb -query | grep -w "*color8" | grep -o -P '#[a-f0-9]*')
+#set -gx color9 (xrdb -query | grep -w "*color9" | grep -o -P '#[a-f0-9]*')
+#set -gx color10 (xrdb -query | grep -w "*color10" | grep -o -P '#[a-f0-9]*')
+#set -gx color11 (xrdb -query | grep -w "*color11" | grep -o -P '#[a-f0-9]*')
+#set -gx color12 (xrdb -query | grep -w "*color12" | grep -o -P '#[a-f0-9]*')
+#set -gx color13 (xrdb -query | grep -w "*color13" | grep -o -P '#[a-f0-9]*')
+#set -gx color14 (xrdb -query | grep -w "*color14" | grep -o -P '#[a-f0-9]*')
+#set -gx color15 (xrdb -query | grep -w "*color15" | grep -o -P '#[a-f0-9]*')
 
 set -gx color0 "#282828"
 set -gx color8 "#928374"
@@ -46,6 +65,8 @@ set -gx color13 "#d3869b"
 set -gx color14 "#8ec07c"
 set -gx color15 "#ebdbb2"
 set -gx color10 "#b8bb26"
+
+
 
 set red $color1
 set yellow $color3

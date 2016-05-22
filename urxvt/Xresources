@@ -47,8 +47,6 @@ URxvt.cursorUnderline:      false
 ! Pointer
 URxvt.pointerBlank:         true
  
-!!Source http://github.com/altercation/solarized
- 
 ! hard contrast: *background: #1d2021
 *background: #282828
 ! soft contrast: *background: #32302f
@@ -77,3 +75,25 @@ URxvt.pointerBlank:         true
 ! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
+*transparent: #28282828
+
+
+! Xresources
+
+! Layout
+rofi.width:                          50
+rofi.lines:                          15
+rofi.columns:                        1
+rofi.color-enabled:                  true
+rofi.color-normal:                   #282828,#ebdbb2,#353535,#458588,#ebdbb2
+rofi.color-urgent:                   #282828,#d79921,#353535,#d79921,#282828
+rofi.color-active:                   #282828,#ebdbb2,#353535,#458588,#ebdbb2
+rofi.color-window:                   #282828,#282828
+
+! Behaviour
+rofi.terminal:                       termite 
+rofi.levenshtein-sort:               true
+rofi.fuzzy:                          true
+rofi.kb-cancel:                      Escape,Control+c
+rofi.opacity:						 75
+rofi.font:							 Hack 14

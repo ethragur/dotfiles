@@ -1,0 +1,4 @@
+#!/bin/bash
+url=$@
+number=$(youtube-dl -F "$url" | grep "audio only" | tail -n 1 | awk '{print $1;}')
+youtube-dl -f $number $url -o test.webm
