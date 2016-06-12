@@ -29,6 +29,8 @@ set -gx WINEPREFIX /home/effi/.wine/
 set -gx XKB_DEFAULT_LAYOUT de
 set -gx VDPAU_DRIVER va_gl
 
+set -g fish_vi_key_bindings 1
+
 set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
 
 #get colors from Xresources file (not working, xrdb needs active xserver)
@@ -89,8 +91,6 @@ eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
 #set LD_PRELOAD "libpthread.so.0 libGL.so.1"
 #set __GL_THREADED_OPTIMIZATIONS 1
 
-fish_vi_mode
-
 function feh_browser
 	sh /home/effi/dotfiles/scripts/feh_browser.sh $argv -F -Z
 end
@@ -127,6 +127,10 @@ function x
 		case '*'
 			echo "Cannot extract file"
 	end
+end
+
+function twitch
+	livestreamer --player mpv https://www.twitch.tv/$argv high
 end
 
 function reload
@@ -168,19 +172,20 @@ source ~/dotfiles/fish/functions/fish_prompt.fish
 
 set -g theme_display_user yes
 
+fish_vi_key_bindings
 
-function fish_mode_prompt
+#function fish_mode_prompt
 # Do nothing if not in vi mode
-  if set -q __fish_vi_mode
-    switch $fish_bind_mode
-      case default
-	    prompt_segment $grey $green "N"
-      case insert
-	    prompt_segment $grey $white "I"
-      case replace-one
-	    prompt_segment $grey $red "R"
-      case visual
-	    prompt_segment $grey $purple "V"
-    end
-  end
-end
+#  if set -q fish_vi_key_bindings
+#    switch $fish_bind_mode
+#      case default
+#	    prompt_segment $grey $green "N"
+#      case insert
+#	    prompt_segment $grey $white "I"
+#      case replace-one
+#	    prompt_segment $grey $red "R"
+#      case visual
+#	    prompt_segment $grey $purple "V"
+#    end
+#  end
+#end

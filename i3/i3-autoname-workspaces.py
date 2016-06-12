@@ -49,6 +49,8 @@ FA_GAME = '\uf11b'
 FA_STEAM = '\uf1b6'
 FA_VOIP = '\uf2a0'
 FA_CHAT = '\uf27a'
+FA_POWER = '\uf011'
+FA_DOWNLOAD = '\uf019'
 WINDOW_ICONS = {
     'urxvt': FA_TERMINAL,
     'termite': FA_TERMINAL,
@@ -58,6 +60,7 @@ WINDOW_ICONS = {
     'libreoffice': FA_FILE_TEXT_O,
     'feh': FA_PICTURE_O,
     'mupdf': FA_FILE_PDF_O,
+    'kile': FA_FILE_PDF_O,
     'nautilus': FA_FILES_O,
     'mpv': FA_VIDEO,
     'explorer.exe' : FA_GAME,
@@ -66,6 +69,8 @@ WINDOW_ICONS = {
     'telegram-desktop' : FA_CHAT,
     'Telegram' : FA_CHAT,
     'dolphin-emu' : FA_GAME,
+    'pavucontrol' : FA_MUSIC,
+    'transmission-gtk' : FA_DOWNLOAD,
 }
 
 
