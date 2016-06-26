@@ -41,7 +41,7 @@ bindsym XF86AudioMute exec --no-startup-id ponymix toggle
 #bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle  && killall -SIGUSR1 i3status
 
 #Lock
-bindsym $mod+$alt+l exec $dotdir/scripts/lock.sh
+bindsym $mod+$alt+l exec $dotdir/scripts/i3blocks/i3lock.sh
 
 #Reconf Displays
 bindsym $mod+$alt+d exec $dotdir/scripts/configure_xrandr.sh 

@@ -2,8 +2,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set shell=/bin/bash
 
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
+set rtp+=$DOTFILES/vim/bundle/Vundle.vim
+call vundle#begin('$DOTFILES/vim/bundle')
 
 Plugin 'VundleVim/Vundle.vim'
 

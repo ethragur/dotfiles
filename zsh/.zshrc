@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/effi/.oh-my-zsh
+source ~/dotfiles/zsh/colors.zsh
+source ~/dotfiles/zsh/dotfiles.zsh
+export ZSH="$HOMEDIR/.oh-my-zsh"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -62,7 +64,7 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
- export EDITOR='vim'
+export EDITOR='vim'
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -88,15 +90,13 @@ alias update='pacaur -Syua'
 alias search='pacaur -Ss'
 alias searchr='pacman -Ss'
 
-alias i3conf='vim ~/.i3/config'
-alias cddot='cd ~/dotfiles/'
+alias i3conf="vim $DOTFILES/i3/config"
+alias cddot="cd $DOTFILES"
 alias givepw='base64 /dev/urandom | head -c 10'
 alias ccmake='cmake . && make'
 
-#set colors for scripts
-source ~/dotfiles/zsh/colors.zsh
-autoload -Uz compinit
-compinit
+autoload -Uz compinit -u
+compinit -u
 zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 
