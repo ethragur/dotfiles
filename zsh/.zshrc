@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/effi/.oh-my-zsh
+export ZSH=/home/effi/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,7 +49,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions history-substring-search zsh-directory-history dirhistory vi-mode)
+plugins=(git zsh-autosuggestions history-substring-search zsh-directory-history dirhistory vi-mode zsh-syntax-highlighting)
 
 # User configuration
 
@@ -100,4 +100,3 @@ compinit
 zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

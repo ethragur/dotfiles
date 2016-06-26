@@ -2,7 +2,7 @@
 set $mod Mod4 
 set $alt Mod1
 
-set $dotdir /home/effi/dotfiles
+set $dotdir $HOME/dotfiles
 
 #Set up multiple Monitors with xrandr
 exec_always --no-startup-id $dotdir/scripts/configure_xrandr.sh 
@@ -14,7 +14,7 @@ exec_always --no-startup-id sleep 1 && xmodmap -e 'clear Lock' -e 'keycode 0x42 
 #exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 #Background Picture
-exec_always --no-startup-id feh --bg-scale /home/effi/Pictures/Wallpapers/bg2.jpg
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Gruvbox/air.jpg
 #Widescreen Wallpaper
 #exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/bgwsw.jpg
 
@@ -132,8 +132,8 @@ bindsym $mod+Shift+s sticky toggle
 #set $ws9 9:
 #set $ws0 0:
 
-set $DISPLAY-0 eDP-1
-set $DISPLAY-1 HDMI-1
+set $DISPLAY-0 HDMI-0
+set $DISPLAY-1 VGA-0
 
 #assign workspaces to different screen
 workspace 1 output $DISPLAY-0
