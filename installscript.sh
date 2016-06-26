@@ -1,15 +1,17 @@
 #!/bin/bash
+
+dotdir='~/dotfiles'
 #update System before starting
 sudo pacman -Syu
 
 #pacaur
-mkdir ~/.tmp
-git clone https://aur.archlinux.org/cower.git ~/.tmp
-git clone https://aur.archlinux.org/pacaur.git ~/.tmp
-cd ~/.tmp/cower/
+git clone https://aur.archlinux.org/cower.git /tmp
+git clone https://aur.archlinux.org/pacaur.git /tmp
+cd /tmp/cower/
 makepkg -s -i 
-cd ~/.tmp/pacaur/
+cd /tmp/pacaur/
 makepkg -s -i 
+
 
 #install all the dotfile dependecies
 pacaur -S $(cat dotfiles/dependecy.txt)
@@ -21,10 +23,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 rm ~/.zshrc
-ln -sf ~/dotfiles/zsh/.zshrc ~/.zshrc
 
 #vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/dotfiles/vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git $dotdir/vim/bundle/Vundle.vim
 vim -c PluginInstall -c :q -c :q
 
 sudo npm install -g typescript
@@ -36,6 +37,7 @@ cd ~/dotfiles/vim/bundle/YouCompleteMe
 #other installations
 yes | sudo sensors-detect
 sudo pip install i3ipc
+sudo chsh -s /usr/bin/zsh
 
 
-
+sh $dotdir/installDotfiles.sh
