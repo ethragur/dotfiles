@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dotdir="/home/$USER/dotfiles"
-#update System before starting
+update System before starting
 sudo pacman -Syu
 
 #pacaur

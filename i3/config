@@ -14,12 +14,9 @@ exec_always --no-startup-id sleep 1 && xmodmap -e 'clear Lock' -e 'keycode 0x42 
 #exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 #Background Picture
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Gruvbox/air.jpg
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/background.jpg
 #Widescreen Wallpaper
 #exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/bgwsw.jpg
-
-#load Xresources
-exec_always --no-startup-id xrdb -load $dotdir/urxvt/Xresources
 
 exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
 
@@ -132,21 +129,21 @@ bindsym $mod+Shift+s sticky toggle
 #set $ws9 9:
 #set $ws0 0:
 
-set $DISPLAY-0 HDMI-0
-set $DISPLAY-1 VGA-0
-
-#assign workspaces to different screen
-workspace 1 output $DISPLAY-0
-workspace 3 output $DISPLAY-0
-workspace 5 output $DISPLAY-0
-workspace 7 output $DISPLAY-0
-workspace 9 output $DISPLAY-0
-
-workspace 2 output $DISPLAY-1
-workspace 4 output $DISPLAY-1
-workspace 6 output $DISPLAY-1
-workspace 8 output $DISPLAY-1
-workspace 0 output $DISPLAY-1
+#set $DISPLAY-0 HDMI-0
+#set $DISPLAY-1 VGA-0
+#
+##assign workspaces to different screen
+#workspace 1 output $DISPLAY-0
+#workspace 3 output $DISPLAY-0
+#workspace 5 output $DISPLAY-0
+#workspace 7 output $DISPLAY-0
+#workspace 9 output $DISPLAY-0
+#
+#workspace 2 output $DISPLAY-1
+#workspace 4 output $DISPLAY-1
+#workspace 6 output $DISPLAY-1
+#workspace 8 output $DISPLAY-1
+#workspace 0 output $DISPLAY-1
 
 #hide borders when only one window on screen
 hide_edge_borders both

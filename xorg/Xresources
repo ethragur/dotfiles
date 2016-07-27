@@ -1,3 +1,6 @@
+#include "/home/effi/dotfiles/xorg/current.xcolors"
+
+
 !-------------------------------------------------------------------------------
 ! Xft settings
 !-------------------------------------------------------------------------------
@@ -47,35 +50,37 @@ URxvt.cursorUnderline:      false
 ! Pointer
 URxvt.pointerBlank:         true
  
+
+
 ! hard contrast: *background: #1d2021
-*background: #282828
+*background: BG
 ! soft contrast: *background: #32302f
-*foreground: #ebdbb2
+*foreground: FG
 ! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
+*color0:  C0
+*color8:  C8
 ! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
+*color1:  C1
+*color9:  C9
 ! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
+*color2:  C2
+*color10: C10
 ! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
+*color3:  C3
+*color11: C11
 ! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
+*color4:  C4
+*color12: C12
 ! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
+*color5:  C5
+*color13: C13
 ! DarkCyan + Cyan
-*color6:  #689d6a
-*color14: #8ec07c
+*color6:  C6
+*color14: C14
 ! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
-*transparent: #28282828
+*color7:  C7
+*color15: C15
+*transparent: TP
 
 
 ! Xresources
@@ -85,15 +90,15 @@ rofi.width:                          50
 rofi.lines:                          15
 rofi.columns:                        1
 rofi.color-enabled:                  true
-rofi.color-normal:                   #282828,#ebdbb2,#353535,#458588,#ebdbb2
-rofi.color-urgent:                   #282828,#d79921,#353535,#d79921,#282828
-rofi.color-active:                   #282828,#ebdbb2,#353535,#458588,#ebdbb2
-rofi.color-window:                   #282828,#282828
+rofi.color-normal:                   BG,FG,BG,C7,FG
+rofi.color-urgent:                   BG,C3,BG,C3,BG
+rofi.color-active:                   BG,FG,BG,C4,FG
+rofi.color-window:                   BG,BG
 
 ! Behaviour
 rofi.terminal:                       termite 
 rofi.levenshtein-sort:               true
-rofi.fuzzy:                          true
 rofi.kb-cancel:                      Escape,Control+c
+rofi.case-sensitive:				 false
 rofi.opacity:						 75
 rofi.font:							 Hack 14
