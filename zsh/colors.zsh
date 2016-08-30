@@ -18,22 +18,21 @@ export color15="#ebdbb2"
 export color10="#b8bb26"
 export transparent="#28282828"
 
+#export color0='#1c2023'
+#export color8='#747c84'
+#export color1='#c7ae95'
+#export color9='#c7ae95'
+#export color2='#95c7ae'
+#export color10='#95c7ae'
+#export color3='#aec795'
+#export color11='#aec795'
+#export color4='#ae95c7'
+#export color12='#ae95c7'
+#export color5='#c795ae'
+#export color13='#c795ae'
+#export color6='#95aec7'
+#export color14='#95aec7'
+#export color7='#c7ccd1'
+#export color15='#f3f4f5'
+#export transparent='#1c202328'
 
-renew_colorscheme() {
-	rm $DOTFILES/xorg/current.xcolors 2> /dev/null
-	touch $DOTFILES/xorg/current.xcolors
-	echo "#define BG $color0" >> $DOTFILES/xorg/current.xcolors
-	echo "#define FG $color15" >> $DOTFILES/xorg/current.xcolors
-	echo "#define TP $transparent" >> $DOTFILES/xorg/current.xcolors
-	sed -i "s/background = .*/background = $color0/g" $DOTFILES/termite/config
-	sed -i "s/foreground = .*/foreground = $color15/g" $DOTFILES/termite/config
-	sed -i "s/foreground_bold = .*/foreground_bold = $color15/g" $DOTFILES/termite/config
-
-	for i in {0..15};
-	do
-		a="color$i";
-		col=$(eval "echo \$$a");
-		echo "#define C$i $col" >> $DOTFILES/xorg/current.xcolors;
-		sed -i "s/color$i = .*/color$i = $col/g" $DOTFILES/termite/config
-	done
-}

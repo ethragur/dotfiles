@@ -22,7 +22,7 @@ exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
 
 #Compositor //kills performance
 #for nvidia vsync
-exec_always --no-startup-id compton -c --vsync opengl-oml --backend glx --config $dotdir/compton/compton.conf
+exec_always --no-startup-id compton -c --vsync drm --backend glx --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
 
 #redshift
 exec --no-startup-id redshift -l 47.267:11.383
@@ -43,9 +43,22 @@ bindsym $mod+$alt+l exec $dotdir/scripts/i3blocks/i3lock.sh
 #Reconf Displays
 bindsym $mod+$alt+d exec $dotdir/scripts/configure_xrandr.sh 
 
+#Rotate Screen
+bindsym $mod+$alt+r exec $dotdir/scripts/rotate-screen.sh -j
+
 #BrightnessControl done via acpi now
 #bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 #bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+
+for_window [class="Wine"] floating enable
+for_window [class="Steam"] floating enable
+
+for_window [class="Onboard"] floating enable
+for_window [class="Onboard"] sticky enable
+for_window [class="Onboard"] border none
+
+
 
 new_window pixel 4
 new_float pixel 4
@@ -221,7 +234,7 @@ set_from_resource $base0F color15
 
 
 # start rofi 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.7 -l 100 -w 300 -p '>' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13'"
 
 
 bar {
