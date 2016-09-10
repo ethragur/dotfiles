@@ -13,14 +13,13 @@ Plugin 'c.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'petRUShka/vim-opencl'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
 Plugin 'dantler/vim-alternate'
 Plugin 'morhetz/gruvbox'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ervandew/supertab'
 Plugin 'JesseKPhillips/d.vim'
 Plugin 'tikhomirov/vim-glsl'
+Plugin 'Shougo/deoplete.nvim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -71,6 +70,10 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
+map <F7> :w !xclip<CR><CR>
+vmap <F7> "*y
+map <S-F7> :r!xclip -o<CR>
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -89,4 +92,4 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_instertion = 1
 let g:ycm_confirm_extra_conf = 0
 
-
+let g:deoplete#enable_at_startup = 1

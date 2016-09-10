@@ -26,8 +26,17 @@ export PLAYER='mpv'
 
 # Aliases
 alias ls='ls --color=auto'
-alias ll='ls -l --color=auto'
-alias la='ls -l -a --color=auto'
+alias ll='ls -lh --color=auto'
+alias la='ls -lha --color=auto'
+
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+alias netstat='ping 8.8.8.8'
+alias wget='wget -c'
+alias mkdir='mkdir -pv'
+alias dd='dd status=progress'
 
 alias inst='pacaur -S'
 alias install='pacaur -S'
@@ -37,12 +46,17 @@ alias update='sudo pacman -Syu && pacaur -Sua'
 alias search='pacaur -Ss'
 alias searchr='pacman -Ss'
 
+alias sysen='sudo systemctl enable --now'
+alias sysdis='sudo systemctl disable --now'
+alias sysstart='sudo systemctl start'
+alias sysstop='sudo systemctl stop'
+alias sysstat='sudo systemctl status'
+
 alias i3conf="vim $DOTFILES/i3/config"
 alias cddot="cd $DOTFILES"
 alias givepw='base64 /dev/urandom | head -c 10'
 alias ccmake='cmake . && make'
-
-
+alias reload='source ~/.zshrc'
 
 
 source ~/dotfiles/zsh/functions.zsh

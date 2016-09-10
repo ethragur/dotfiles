@@ -35,8 +35,7 @@ vim -c :PluginInstall -c :q -c :q
 
 sudo npm install -g typescript
 cd ~/dotfiles/vim/bundle/YouCompleteMe
-./install.py --all
-
+./install.py --clang-completer --system-libclang --system-boost
 
 
 ##other installations

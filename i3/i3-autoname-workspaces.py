@@ -64,6 +64,7 @@ WINDOW_ICONS = {
     'nautilus': FA_FILES_O,
     'mpv': FA_VIDEO,
     'explorer.exe' : FA_GAME,
+    'Wine' : FA_GAME,
     'discord' : FA_VOIP,
     'Steam' : FA_STEAM,
     'telegram-desktop' : FA_CHAT,

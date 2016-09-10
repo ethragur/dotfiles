@@ -11,6 +11,7 @@ sudo mkdir -p "$rootdir/.config/ranger/"
 ln -sf $dotfiles/ranger/rc.conf $homedir/.config/ranger/rc.conf
 ln -sf $dotfiles/zsh/.zshrc $homedir/.zshrc
 ln -sf $dotfiles/vim/init.vim $homedir/.vimrc
+ln -sf $dotfiles/vim/init.vim $homedir/.config/nvim/init.vim
 ln -sf $dotfiles/xorg/.xinitrc $homedir/.xinitrc
 ln -sf $dotfiles/termite/config $homedir/.config/termite/config
 

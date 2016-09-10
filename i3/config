@@ -14,10 +14,13 @@ exec_always --no-startup-id sleep 1 && xmodmap -e 'clear Lock' -e 'keycode 0x42 
 #exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 #Background Picture
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/background.jpg
+#exec_always --no-startup-id feh --bg-scale $HOME/Pictures/background.jpg
 #Widescreen Wallpaper
 #exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/bgwsw.jpg
+#Random Wallpaper
+exec_always feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
+#icons are showing for each open workspace
 exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
 
 #Compositor //kills performance
@@ -29,9 +32,9 @@ exec --no-startup-id redshift -l 47.267:11.383
 
 #Audio Control
 #for PulseAudio
-bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5
-bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 5
-bindsym XF86AudioMute exec --no-startup-id ponymix toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5 && pkill -RTMIN+17 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 5 && pkill -RTMIN+17 i3blocks
+bindsym XF86AudioMute exec --no-startup-id ponymix toggle && pkill -RTMIN+17 i3blocks
 #for Alsa
 #bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmute && killall -SIGUSR1 i3status
 #bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -SIGUSR1 i3status
@@ -184,6 +187,10 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 0
+
+bindsym $mod+Page_Down workspace prev
+
+bindsym $mod+Page_Up workspace next
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
