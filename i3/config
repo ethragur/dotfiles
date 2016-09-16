@@ -242,7 +242,8 @@ set_from_resource $base0F color15
 
 # start rofi 
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.7 -l 100 -w 300 -p '>' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13'"
-
+bindsym $mod+g exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' | xargs -I{} xdg-open https://www.google.com/search?q={}
+bindsym $mod+y exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
 
 bar {
 	i3bar_command i3bar -t
