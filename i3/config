@@ -58,6 +58,7 @@ for_window [class="Wine"] floating enable
 for_window [class="Steam"] floating enable
 
 for_window [class="Onboard"] floating enable
+for_window [class="Battle.net.exe"] floating enable
 for_window [class="Onboard"] sticky enable
 for_window [class="Onboard"] border none
 
