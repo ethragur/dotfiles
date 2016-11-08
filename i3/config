@@ -78,7 +78,13 @@ bindsym $mod+p exec mpv $(xclip -o)
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec chromium
+bindsym $mod+c exec chromium --new-window
+
+#take screenshot
+##whole screen
+bindsym $mod+Print exec scrot '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
+##focused window
+bindsym $mod+Shift+Print exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
 
 # start a terminal
 bindsym $mod+Return exec termite

@@ -6,10 +6,10 @@ export ZSH="$HOMEDIR/.oh-my-zsh"
 #ZSH settings
 
 ZSH_THEME="agnoster"
-ENABLE_CORRECTION="true"
+#ENABLE_CORRECTION="true"
 
 #oh-my-zsh plugins
-plugins=(git zsh-autosuggestions zsh-history-substring-search dirhistory zsh-syntax-highlighting per-directory-history)
+plugins=(git zsh-history-substring-search dirhistory per-directory-history)
 
 # User configuration
 export PATH="/usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:/usr/bin/core_perl/"
@@ -57,7 +57,6 @@ alias cddot="cd $DOTFILES"
 alias givepw='base64 /dev/urandom | head -c 10'
 alias ccmake='cmake . && make'
 alias reload='source ~/.zshrc'
-
 
 source ~/dotfiles/zsh/functions.zsh
 
