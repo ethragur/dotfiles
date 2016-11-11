@@ -86,9 +86,13 @@ URxvt.pointerBlank:         true
 ! Xresources
 
 ! Layout
-rofi.width:                          50
-rofi.lines:                          15
+rofi.width:							 1920 
+rofi.height:						 1080
+rofi.padding:						 400
+rofi.lines:                          20 
 rofi.columns:                        1
+rofi.hide-scrollbar:				 true
+rofi.fullscreen:					 true
 rofi.color-enabled:                  true
 rofi.color-normal:                   BG,FG,BG,C7,FG
 rofi.color-urgent:                   BG,C3,BG,C3,BG
@@ -100,5 +104,5 @@ rofi.terminal:                       termite
 rofi.levenshtein-sort:               true
 rofi.kb-cancel:                      Escape,Control+c
 rofi.case-sensitive:				 false
-rofi.opacity:						 75
+rofi.opacity:						 80
 rofi.font:							 Hack 14

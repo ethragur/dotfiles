@@ -24,8 +24,10 @@ exec_always feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
 
 #Compositor //kills performance
-#for nvidia vsync
-exec_always --no-startup-id compton -c --vsync drm --backend glx --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
+#if you have optimus and run the Xserver through the nv card you're out of luck, screentearing will always be there
+#normal nvidia configurations should work fine
+#intel with modesetting doesn't need vsync (DRI3), dont know about xf86-video intel
+exec_always --no-startup-id compton -c --backend glx --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
 
 #redshift
 exec --no-startup-id redshift -l 47.267:11.383
@@ -248,9 +250,14 @@ set_from_resource $base0F color15
 
 
 # start rofi 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.7 -l 100 -w 300 -p '>' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13'"
-bindsym $mod+g exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' | xargs -I{} xdg-open https://www.google.com/search?q={}
-bindsym $mod+y exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.7 -l 100 -w 300 -p '>' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13'"
+#bindsym $mod+g exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' | xargs -I{} xdg-open https://www.google.com/search?q={}
+#bindsym $mod+y exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' 
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+g exec echo "" | rofi -dmenu -p "Search Google: " | xargs -I{} xdg-open https://www.google.com/search?q={}
+bindsym $mod+y exec echo "" | rofi -dmenu -p "Search Youtube: " | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
+bindsym $mod+n exec nmcli_dmenu
+
 
 bar {
 	i3bar_command i3bar -t
