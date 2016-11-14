@@ -1,27 +1,42 @@
-set nocompatible              " be iMproved, required
 filetype off                  " required
 set shell=/bin/bash
 
-set rtp+=$DOTFILES/vim/bundle/Vundle.vim
-call vundle#begin('$DOTFILES/vim/bundle')
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
 
-Plugin 'VundleVim/Vundle.vim'
+" Required:
+set runtimepath+=/home/effi/dotfiles/vim/deinvim/repos/github.com/Shougo/dein.vim
+
+" Required:
+call dein#begin('/home/effi/dotfiles/vim/deinvim')
+
+call dein#add('Shougo/dein.vim')
 
 
-Plugin 'vim-latex/vim-latex'
-Plugin 'c.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
-Plugin 'petRUShka/vim-opencl'
-Plugin 'dantler/vim-alternate'
-Plugin 'morhetz/gruvbox'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'ervandew/supertab'
-Plugin 'JesseKPhillips/d.vim'
-Plugin 'tikhomirov/vim-glsl'
-Plugin 'Shougo/deoplete.nvim'
+call dein#add('vim-latex/vim-latex')
+call dein#add('scrooloose/syntastic')
+call dein#add('bling/vim-airline')
+call dein#add('petRUShka/vim-opencl')
+call dein#add('dantler/vim-alternate')
+call dein#add('morhetz/gruvbox')
+call dein#add('ervandew/supertab')
+call dein#add('JesseKPhillips/d.vim')
+call dein#add('tikhomirov/vim-glsl')
+call dein#add('tpope/vim-sleuth')
+call dein#add('Shougo/deoplete.nvim')
 
-call vundle#end()            " required
+
+call dein#end()
+
+"check on startupp for non installed plugins
+if dein#check_install()
+  call dein#install()
+endif
+
+
+
 filetype plugin indent on    " required
 
 let g:python_host_prog = '/usr/bin/python2.7'
@@ -92,4 +107,5 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_instertion = 1
 let g:ycm_confirm_extra_conf = 0
 
-let g:deoplete#enable_at_startup = 1
+"deoplete
+call deoplete#enable()

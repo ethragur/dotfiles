@@ -10,6 +10,7 @@ vim/.vim/bundle/neocomplete.vim
 vim/.vim/bundle/vim-go
 vim/.vim/bundle
 vim/.vim/bundle/
+vim/deinvim
 vim/bundle
 vim/undo
 vim/.netrwhist

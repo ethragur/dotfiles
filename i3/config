@@ -27,7 +27,8 @@ exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
 #if you have optimus and run the Xserver through the nv card you're out of luck, screentearing will always be there
 #normal nvidia configurations should work fine
 #intel with modesetting doesn't need vsync (DRI3), dont know about xf86-video intel
-exec_always --no-startup-id compton -c --backend glx --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
+exec_always --no-startup-id compton -c --backend glx -f --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
+
 
 #redshift
 exec --no-startup-id redshift -l 47.267:11.383
@@ -43,13 +44,13 @@ bindsym XF86AudioMute exec --no-startup-id ponymix toggle && pkill -RTMIN+17 i3b
 #bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle  && killall -SIGUSR1 i3status
 
 #Lock
-bindsym $mod+$alt+l exec $dotdir/scripts/i3blocks/i3lock.sh
+bindsym $mod+$alt+l exec sh $dotdir/scripts/i3lock.sh
 
 #Reconf Displays
-bindsym $mod+$alt+d exec $dotdir/scripts/configure_xrandr.sh 
+bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
 
 #Rotate Screen
-bindsym $mod+$alt+r exec $dotdir/scripts/rotate-screen.sh -j
+bindsym $mod+$alt+r exec sh $dotdir/scripts/rotate-screen.sh -j
 
 #BrightnessControl done via acpi now
 #bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
