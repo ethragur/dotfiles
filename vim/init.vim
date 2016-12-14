@@ -1,5 +1,4 @@
-filetype off                  " required
-set shell=/bin/bash
+set shell=/bin/fish
 
 "dein Scripts-----------------------------
 if &compatible
@@ -11,12 +10,10 @@ set runtimepath+=/home/effi/dotfiles/vim/deinvim/repos/github.com/Shougo/dein.vi
 
 " Required:
 call dein#begin('/home/effi/dotfiles/vim/deinvim')
-
 call dein#add('Shougo/dein.vim')
 
 
 call dein#add('vim-latex/vim-latex')
-call dein#add('scrooloose/syntastic')
 call dein#add('bling/vim-airline')
 call dein#add('petRUShka/vim-opencl')
 call dein#add('dantler/vim-alternate')
@@ -26,7 +23,14 @@ call dein#add('JesseKPhillips/d.vim')
 call dein#add('tikhomirov/vim-glsl')
 call dein#add('tpope/vim-sleuth')
 call dein#add('Shougo/deoplete.nvim')
-
+call dein#add('zchee/deoplete-clang')
+call dein#add('Shougo/neoinclude.vim')
+"call dein#add('neomake/neomake')
+call dein#add('jiangmiao/auto-pairs')
+call dein#add('jeetsukumaran/vim-buffergator')
+call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('Yggdroot/indentLine')
+call dein#add('sebastianmarkow/deoplete-rust')
 
 call dein#end()
 
@@ -36,10 +40,8 @@ if dein#check_install()
 endif
 
 
-
-filetype plugin indent on    " required
-
-let g:python_host_prog = '/usr/bin/python2.7'
+filetype plugin indent on    " required 
+"let g:python_host_prog = '/usr/bin/python2.7'
 
 let mapleader = ","
 let g:mapleader = ","
@@ -61,6 +63,16 @@ set relativenumber
 set number
 set nowrap
 
+"buffer bindings
+nnoremap <A-l> :bnext<cr>
+nnoremap <A-h> :bprev<cr>
+inoremap <A-l> <Esc>:bnext<cr>
+inoremap <A-h> <Esc>:bprev<cr>
+
+" delete without yanking
+nnoremap x "_x
+vnoremap x "_x
+
 " highlights
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -71,41 +83,43 @@ let g:go_highlight_build_constraints = 1
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline_theme = 'sky'
 
 set wildmenu
 set showcmd
 set hlsearch
+set hidden
 nnoremap <F3> :set hlsearch!<CR>
 set ruler
 
 set ignorecase
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
 
-map <F7> :w !xclip<CR><CR>
-vmap <F7> "*y
-map <S-F7> :r!xclip -o<CR>
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntasitc_c_clang_check_post_args = ""
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = '-std=c++11'
-
-"ycm
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_instertion = 1
-let g:ycm_confirm_extra_conf = 0
+set splitright
 
 "deoplete
 call deoplete#enable()
+
+"depoplete clang
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+let g:deoplete#sources#clang#std#cpp = 'c++14'
+
+"deoplete rust
+let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
+
+"make and run project
+nnoremap <F3> :make! <cr>
+nnoremap <F4> :make! run <cr>
+
+"indent chars
+let g:indentLine_char = '│'
+
+tnoremap <Esc> <C-\><C-n>
+"autostart
+"
+function OpenTermSplit()
+    :70vs term://fish
+endfunction
+
+"for xclip support
+set clipboard=unnamedplus
