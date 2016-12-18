@@ -30,12 +30,12 @@ rm ~/.zshrc
 #vim
 
 sh $dotdir/installDotfiles.sh
-git clone https://github.com/VundleVim/Vundle.vim.git $dotdir/vim/bundle/Vundle.vim
-vim -c :PluginInstall -c :q -c :q
 
-sudo npm install -g typescript
-cd ~/dotfiles/vim/bundle/YouCompleteMe
-./install.py --clang-completer --system-libclang --system-boost
+#deinvim installation
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
+mkdir -p $dotdir/deinvim
+sh /tmp/installer.sh $dotdir/deinvim/
+
 
 
 ##other installations

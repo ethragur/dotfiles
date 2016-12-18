@@ -56,7 +56,6 @@ WINDOW_ICONS = {
     'termite': FA_TERMINAL,
     'google-chrome': FA_CHROME,
     'chromium': FA_CHROME,
-    'Firefox': FA_FIREFOX,
     'clion' : FA_CODE,
     'libreoffice': FA_FILE_TEXT_O,
     'feh': FA_PICTURE_O,
@@ -71,7 +70,6 @@ WINDOW_ICONS = {
     'telegram-desktop' : FA_CHAT,
     'Telegram' : FA_CHAT,
     'dolphin-emu' : FA_GAME,
-    'Hearthstone.exe' : FA_GAME,
     'pavucontrol' : FA_MUSIC,
     'transmission-gtk' : FA_DOWNLOAD,
 }

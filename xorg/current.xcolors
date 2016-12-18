@@ -1,6 +1,6 @@
 #define BG #282828
 #define FG #ebdbb2
-#define TP #28282828
+#define TP #28282800
 #define C0 #282828
 #define C1 #cc241d
 #define C2 #98971a

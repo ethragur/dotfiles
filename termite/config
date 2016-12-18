@@ -12,7 +12,7 @@ visible_bell            = false
 #search_wrap             = true
 
 [colors]
-background = #282828
+background = rgba(40, 40, 40, 0.8)
 foreground = #ebdbb2
 foreground_bold = #ebdbb2
 color0 = #282828

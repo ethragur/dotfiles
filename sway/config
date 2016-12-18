@@ -2,23 +2,26 @@
 set $mod Mod4 
 set $alt Mod1
 
+
+input "2:8:AlpsPS/2_ALPS_GlidePoint" {
+    tap enabled
+    natural_scroll disabled
+    dwt enabled
+}
+
 set $dotdir $HOME/dotfiles
 
-#Set up multiple Monitors with xrandr
-exec_always --no-startup-id $dotdir/scripts/configure_xrandr.sh 
+#background
+output * bg ~/Pictures/Wallpapers/wallhaven-60221.jpg fill
 
+exec_always --no-startup-id xrdb -load $dotdir/xorg/Xresources
+#Set up multiple Monitors with xrandr
+#exec_always --no-startup-id $dotdir/scripts/configure_xrandr.sh 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap de
 exec_always --no-startup-id sleep 1 && xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 #exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-
-#Background Picture
-#exec_always --no-startup-id feh --bg-scale $HOME/Pictures/background.jpg
-#Widescreen Wallpaper
-#exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/bgwsw.jpg
-#Random Wallpaper
-exec_always feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
 #icons are showing for each open workspace
 exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
@@ -30,10 +33,6 @@ exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
 #exec_always --no-startup-id compton -c --backend glx -f --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
 
 
-
-#redshift
-exec --no-startup-id redshift -l 47.267:11.383
-
 #Audio Control
 #for PulseAudio
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5 && pkill -RTMIN+17 i3blocks
@@ -44,13 +43,11 @@ bindsym XF86AudioMute exec --no-startup-id ponymix toggle && pkill -RTMIN+17 i3b
 #bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -SIGUSR1 i3status
 #bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle  && killall -SIGUSR1 i3status
 
-#enable compositing
-bindsym $mod+z exec --no-startup-id compton -c --backend glx -f --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
 #Lock
 bindsym $mod+$alt+l exec sh $dotdir/scripts/i3lock.sh
 
 #Reconf Displays
-bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
+#bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
 
 #Rotate Screen
 bindsym $mod+$alt+r exec sh $dotdir/scripts/rotate-screen.sh -j
@@ -62,8 +59,6 @@ bindsym $mod+$alt+r exec sh $dotdir/scripts/rotate-screen.sh -j
 
 for_window [class="Wine"] floating enable
 for_window [class="Steam"] floating enable
-for_window [class="Track-o-Bot"] floating enable
-for_window [class="Hearthstone.exe"] floating enable
 
 for_window [class="Onboard"] floating enable
 for_window [class="Battle.net.exe"] floating enable
@@ -86,7 +81,7 @@ bindsym $mod+p exec mpv $(xclip -o)
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec firefox
+bindsym $mod+c exec chromium --new-window
 
 #take screenshot
 ##whole screen
@@ -128,11 +123,6 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
-
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -142,11 +132,6 @@ bindsym $mod+space focus mode_toggle
 # make window sticky
 bindsym $mod+Shift+s sticky toggle
 
-# focus the parent container
-#bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 #bindworkspaces
 #set $ws1 1:
@@ -212,7 +197,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Dou you want to quit?' -b 'Exit i3' 'i3-msg exit' -b 'Reboot' 'reboot' -b 'Shutdown' 'poweroff' -b 'Suspend' 'sudo systemctl suspend'"
+bindsym $mod+Shift+e exit
 
 
 # resize window (you can also use the mouse for that)
@@ -223,10 +208,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 1 px or 1 ppt
-        bindsym j resize grow height 1 px or 1 ppt
-        bindsym k resize shrink height 1 px or 1 ppt
-        bindsym l resize grow width 1 px or 1 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 	bindsym r resize grow width 300 px or 10 ppt; resize grow height 300 px or 10 ppt
 	bindsym s resize shrink width 300 px or 10 ppt; resize shrink grow height 300 px or 10 ppt
 
@@ -261,17 +246,15 @@ set_from_resource $base0F color15
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.7 -l 100 -w 300 -p '>' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13'"
 #bindsym $mod+g exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' | xargs -I{} xdg-open https://www.google.com/search?q={}
 #bindsym $mod+y exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' 
-bindsym $mod+d exec rofi -show drun
-bindsym $mod+g exec echo "" | rofi -dmenu -p "Search Google: " | xargs -I{} xdg-open https://www.google.com/search?q={}
-bindsym $mod+y exec echo "" | rofi -dmenu -p "Search Youtube: " | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
-bindsym $mod+n exec nmcli_dmenu
+#bindsym $mod+d exec rofi -show drun
+#bindsym $mod+g exec echo "" | rofi -dmenu -p "Search Google: " | xargs -I{} xdg-open https://www.google.com/search?q={}
+#bindsym $mod+y exec echo "" | rofi -dmenu -p "Search Youtube: " | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
+#bindsym $mod+n exec nmcli_dmenu
 
 
 bar {
-	i3bar_command i3bar -t
 	status_command i3blocks -c $dotdir/i3/i3blocks.conf
 mode dock
-#	strip_workspace_numbers yes
 	position top 
 	font pango:Hack, Icons 10
 	colors {
