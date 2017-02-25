@@ -1,5 +1,6 @@
 set shell=/bin/fish
 
+
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -13,24 +14,26 @@ call dein#begin('/home/effi/dotfiles/vim/deinvim')
 call dein#add('Shougo/dein.vim')
 
 
-call dein#add('vim-latex/vim-latex')
 call dein#add('bling/vim-airline')
 call dein#add('petRUShka/vim-opencl')
 call dein#add('dantler/vim-alternate')
 call dein#add('morhetz/gruvbox')
 call dein#add('ervandew/supertab')
-call dein#add('JesseKPhillips/d.vim')
 call dein#add('tikhomirov/vim-glsl')
 call dein#add('tpope/vim-sleuth')
+call dein#add('tpope/vim-commentary')
+call dein#add('rust-lang/rust.vim')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('zchee/deoplete-clang')
+call dein#add('sebastianmarkow/deoplete-rust')
 call dein#add('Shougo/neoinclude.vim')
 "call dein#add('neomake/neomake')
-call dein#add('jiangmiao/auto-pairs')
-call dein#add('jeetsukumaran/vim-buffergator')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('Yggdroot/indentLine')
 call dein#add('sebastianmarkow/deoplete-rust')
+call dein#add('luochen1990/rainbow')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
 
 call dein#end()
 
@@ -56,7 +59,7 @@ set softtabstop=4
 " color and optical enhancements
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax on
-set background=dark
+set termguicolors
 colorscheme gruvbox
 set laststatus=2
 set relativenumber
@@ -88,15 +91,13 @@ set wildmenu
 set showcmd
 set hlsearch
 set hidden
-nnoremap <F3> :set hlsearch!<CR>
 set ruler
 
 set ignorecase
 
-set splitright
 
 "deoplete
-call deoplete#enable()
+let g:deoplete#enable_at_startup = 1
 
 "depoplete clang
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
@@ -104,19 +105,48 @@ let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 let g:deoplete#sources#clang#std#cpp = 'c++14'
 
 "deoplete rust
-let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
+let g:deoplete#sources#rust#racer_binary='~/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
+set completeopt -=preview
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+"other addons
+let g:rainbow_active = 1 
+"indent chars
+let g:indentLine_char = '│'
+
+
+map <A-k> :A <CR>
+map <A-j> :IH <CR>
 "make and run project
 nnoremap <F3> :make! <cr>
 nnoremap <F4> :make! run <cr>
 
-"indent chars
-let g:indentLine_char = '│'
 
-tnoremap <Esc> <C-\><C-n>
 "autostart
 "
+set splitright
 function OpenTermSplit()
     :70vs term://fish
 endfunction

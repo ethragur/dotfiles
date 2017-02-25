@@ -54,6 +54,7 @@ FA_DOWNLOAD = '\uf019'
 WINDOW_ICONS = {
     'urxvt': FA_TERMINAL,
     'termite': FA_TERMINAL,
+    'st-256color': FA_TERMINAL,
     'google-chrome': FA_CHROME,
     'chromium': FA_CHROME,
     'Firefox': FA_FIREFOX,

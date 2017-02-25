@@ -5,85 +5,17 @@
 ! Xft settings
 !-------------------------------------------------------------------------------
  
-Xft.dpi:                    96
-Xft.antialias:              true
-Xft.rgba:                   rgb
-Xft.hinting:                true
-Xft.hintstyle:              hintslight 
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: 0
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.rgba: rgb
+Xft.dpi: 96
 
 !-------------------------------------------------------------------------------
-! URxvt settings
-! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
-! More info at:
-! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+! Rofi Settings
 !-------------------------------------------------------------------------------
-URxvt.depth:                32
-URxvt.geometry:             90x30
-URxvt.fading:               0
-! URxvt.urgentOnBell:         true
-! URxvt.visualBell:           true
-URxvt.loginShell:           true
-URxvt.internalBorder:       3
-URxvt.lineSpace:            0
-! Fonts
-URxvt.allow_bold:           false
-/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
-URxvt*font: xft:Monospace:pixelsize=13
-URxvt*boldFont: xft:Monospace:pixelsize=13
-
-!scrollback
-URxvt*saveLines: 65535
- 
-! Fix font space
-URxvt*letterSpace: -1
- 
-! Scrollbar
-URxvt.scrollStyle:          rxvt
-URxvt.scrollBar:            false
- 
-! Perl extensions
-! Cursor
-URxvt.cursorBlink:          true
-URxvt.cursorColor:          #657b83
-URxvt.cursorUnderline:      false
- 
-! Pointer
-URxvt.pointerBlank:         true
- 
-
-
-! hard contrast: *background: #1d2021
-*background: BG
-! soft contrast: *background: #32302f
-*foreground: FG
-! Black + DarkGrey
-*color0:  C0
-*color8:  C8
-! DarkRed + Red
-*color1:  C1
-*color9:  C9
-! DarkGreen + Green
-*color2:  C2
-*color10: C10
-! DarkYellow + Yellow
-*color3:  C3
-*color11: C11
-! DarkBlue + Blue
-*color4:  C4
-*color12: C12
-! DarkMagenta + Magenta
-*color5:  C5
-*color13: C13
-! DarkCyan + Cyan
-*color6:  C6
-*color14: C14
-! LightGrey + White
-*color7:  C7
-*color15: C15
-*transparent: TP
-
-
-! Xresources
 
 ! Layout
 rofi.width:							 1920 
@@ -94,10 +26,10 @@ rofi.columns:                        1
 rofi.hide-scrollbar:				 true
 rofi.fullscreen:					 true
 rofi.color-enabled:                  true
-rofi.color-normal:                   BG,FG,BG,C7,FG
-rofi.color-urgent:                   BG,C3,BG,C3,BG
-rofi.color-active:                   BG,FG,BG,C4,FG
-rofi.color-window:                   BG,BG
+rofi.color-normal:                   background,foreground,background,color7,foreground
+rofi.color-urgent:                   background,color3,background,color3,background
+rofi.color-active:                   background,FG,background,color4,foreground
+rofi.color-window:                   background,background
 
 ! Behaviour
 rofi.terminal:                       termite 

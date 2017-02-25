@@ -9,10 +9,5 @@ xset -dpms s off
 xrdb -load $DOTFILES/xorg/Xresources
 
 
-session=${1:-std}
-
-case $session in
-	std				) exec i3 -c $DOTFILES/i3/config;;
-	openbox				) exec openbox-session;;
-	*) exec $1;;
-esac
+exec i3 -c $DOTFILES/i3/config
+##exec awesome

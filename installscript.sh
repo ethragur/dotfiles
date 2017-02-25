@@ -32,15 +32,17 @@ rm ~/.zshrc
 sh $dotdir/installDotfiles.sh
 
 #deinvim installation
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
+wget https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
 mkdir -p $dotdir/deinvim
-sh /tmp/installer.sh $dotdir/deinvim/
+sh installer.sh $dotdir/deinvim/
+rm installer.sh
 
 
 
 ##other installations
 yes | sudo sensors-detect
 sudo pip install i3ipc
-sudo chsh -s /usr/bin/zsh
+sudo chsh -s /usr/bin/fish
+chsh -s /usr/bin/fish
 
 

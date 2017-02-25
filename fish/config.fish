@@ -27,10 +27,10 @@ alias sysstat 'sudo systemctl status'
 
 alias i3conf "vim $DOTFILES/i3/config"
 alias cddot "cd $DOTFILES"
-alias givepw 'base64 /dev/urandom | head -c 10'
+alias cddev "cd ~/Documents/dev"
+alias givepw 'base64 /dev/urandom | head -c 32'
 alias reload 'source ~/.zshrc'
 alias rsync 'rsync -a --stats --progress'
-alias goodnight 'sleep 1h; and poweroff' 
 alias ccmake 'cmake .; and make'
 
 set -gx DOTFILES /home/effi/dotfiles
@@ -50,24 +50,24 @@ set -gx VGL_READBACK pbo
 
 set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
 
-set -gx color0 "#282828"
-set -gx color8 "#928374"
-set -gx color1 "#cc241d"
-set -gx color9 "#fb4934"
-set -gx color2 "#98971a"
-set -gx color3 "#d79921"
-set -gx color4 "#458588"
-set -gx color5 "#b16286"
-set -gx color6 "#689d6a"
-set -gx color7 "#a89984"
-set -gx color11 "#fabd2f"
-set -gx color12 "#83a598"
-set -gx color13 "#d3869b"
-set -gx color14 "#8ec07c"
-set -gx color15 "#ebdbb2"
-set -gx color10 "#b8bb26"
+set -gx color0  "#fbf1c7"
+set -gx color8  "#928374"
+set -gx color1  "#cc241d"
+set -gx color9  "#9d0006"
+set -gx color2  "#98971a"
+set -gx color10 "#79740e"
+set -gx color3  "#d79921"
+set -gx color11 "#b57614"
+set -gx color4  "#458588"
+set -gx color12 "#976678"
+set -gx color5  "#b16286"
+set -gx color13 "#8f3f71"
+set -gx color6  "#689d6a"
+set -gx color14 "#427b58"
+set -gx color7  "#7c6f64"
+set -gx color15 "#3c3836"
 
-set -gx TERMINAL termite
+set -gx TERMINAL st 
 set -gx WINEARCH win64 
 set fish_greeting ""
 
@@ -111,9 +111,8 @@ function x
 	end
 end
 
-source $DOTFILES/fish/private.fish
 function twitch
-	livestreamer --twitch-oauth-token $twitch_auth --player mpv https://www.twitch.tv/$argv[1] $argv[2] 
+	mpv https://www.twitch.tv/$argv[1] --ytdl-format=$argv[2]
 end
 
 function reload
@@ -132,15 +131,27 @@ function sudo
     end
 end
 
+function mm
+    mpv --no-video --ytdl-format=bestaudio ytdl://ytsearch10:"$argv"
+end
+
+
 # start X at login
 if status --is-login
     if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
         exec startx -- -keeptty
     end
     if test -z "$DISPLAY" -a $XDG_VTNR -eq 2
-		nvidia-xrun openbox-session
+        nvidia-xrun
     end
 end
+
+function goodnight
+	sudo ~/./backlight -s 1
+	sleep 1h
+	poweroff
+end
+	
 
 function win_reboot
 	sudo efibootmgr -n 0000

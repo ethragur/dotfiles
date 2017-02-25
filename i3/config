@@ -4,8 +4,6 @@ set $alt Mod1
 
 set $dotdir $HOME/dotfiles
 
-#Set up multiple Monitors with xrandr
-exec_always --no-startup-id $dotdir/scripts/configure_xrandr.sh 
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap de
@@ -18,10 +16,13 @@ exec_always --no-startup-id sleep 1 && xmodmap -e 'clear Lock' -e 'keycode 0x42 
 #Widescreen Wallpaper
 #exec_always --no-startup-id feh --bg-max --no-xinerama /home/effi/Pictures/bgwsw.jpg
 #Random Wallpaper
-exec_always feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+exec_always feh --randomize --bg-fill ~/Documents/Pictures/Wallpapers/*
 
 #icons are showing for each open workspace
 exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
+
+#Set up multiple Monitors with xrandr
+exec_always --no-startup-id $dotdir/scripts/configure_xrandr.sh 
 
 #Compositor //kills performance
 #if you have optimus and run the Xserver through the nv card you're out of luck, screentearing will always be there
@@ -29,12 +30,6 @@ exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
 #intel with modesetting doesn't need vsync (DRI3), dont know about xf86-video intel
 #exec_always --no-startup-id compton -c --backend glx -f --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
 
-
-
-#redshift
-exec --no-startup-id redshift -l 47.267:11.383
-
-#Audio Control
 #for PulseAudio
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5 && pkill -RTMIN+17 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 5 && pkill -RTMIN+17 i3blocks
@@ -45,9 +40,12 @@ bindsym XF86AudioMute exec --no-startup-id ponymix toggle && pkill -RTMIN+17 i3b
 #bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle  && killall -SIGUSR1 i3status
 
 #enable compositing
-bindsym $mod+z exec --no-startup-id compton -c --backend glx -f --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
+bindsym $mod+z exec --no-startup-id compton -c --backend glx --vsync opengl -f --paint-on-overlay --unredir-if-possible --config $dotdir/compton/compton.conf
 #Lock
 bindsym $mod+$alt+l exec sh $dotdir/scripts/i3lock.sh
+
+#File Browser
+bindsym $mod+b exec --no-startup-id nautilus
 
 #Reconf Displays
 bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
@@ -56,8 +54,8 @@ bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh
 bindsym $mod+$alt+r exec sh $dotdir/scripts/rotate-screen.sh -j
 
 #BrightnessControl done via acpi now
-#bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
 
 for_window [class="Wine"] floating enable
@@ -90,12 +88,12 @@ bindsym $mod+c exec firefox
 
 #take screenshot
 ##whole screen
-bindsym $mod+Print exec scrot '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
+bindsym $mod+Print exec scrot '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Documents/Pictures/Screenshots/ && mv $f ~/Documents/Pictures/Screenshots/'
 ##focused window
-bindsym $mod+Shift+Print exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
+bindsym $mod+Shift+Print exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Documents/Pictures/Screenshots/ && mv $f ~/Documents/Pictures/Screenshots/'
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -160,8 +158,8 @@ bindsym $mod+Shift+s sticky toggle
 #set $ws9 9:
 #set $ws0 0:
 
-set $DISPLAY-0 HDMI-1
-set $DISPLAY-1 eDP-1
+set $DISPLAY-0 HDMI1
+set $DISPLAY-1 eDP1
 #
 ##assign workspaces to different screen
 workspace 1 output $DISPLAY-0
@@ -238,49 +236,49 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-set_from_resource $transparent transparent
-set_from_resource $base00 color0
-set_from_resource $base01 color1
-set_from_resource $base02 color2
-set_from_resource $base03 color3
-set_from_resource $base04 color4
-set_from_resource $base05 color5
-set_from_resource $base06 color6
-set_from_resource $base07 color7
-set_from_resource $base08 color8
-set_from_resource $base09 color9
-set_from_resource $base0A color10
-set_from_resource $base0B color11
-set_from_resource $base0C color12
-set_from_resource $base0D color13
-set_from_resource $base0E color14
-set_from_resource $base0F color15
+set_from_resource $base00 dcolor0
+set_from_resource $base01 dcolor1
+set_from_resource $base02 dcolor2
+set_from_resource $base03 dcolor3
+set_from_resource $base04 dcolor4
+set_from_resource $base05 dcolor5
+set_from_resource $base06 dcolor6
+set_from_resource $base07 dcolor7
+set_from_resource $base08 dcolor8
+set_from_resource $base09 dcolor9
+set_from_resource $base0A dcolor10
+set_from_resource $base0B dcolor11
+set_from_resource $base0C dcolor12
+set_from_resource $base0D dcolor13
+set_from_resource $base0E dcolor14
+set_from_resource $base0F dcolor15
 
 
+
+mouse_warping none
 # start rofi 
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.7 -l 100 -w 300 -p '>' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13'"
-#bindsym $mod+g exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' | xargs -I{} xdg-open https://www.google.com/search?q={}
-#bindsym $mod+y exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' 
-bindsym $mod+d exec rofi -show drun
-bindsym $mod+g exec echo "" | rofi -dmenu -p "Search Google: " | xargs -I{} xdg-open https://www.google.com/search?q={}
-bindsym $mod+y exec echo "" | rofi -dmenu -p "Search Youtube: " | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
-bindsym $mod+n exec nmcli_dmenu
-
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -y 20 -o 0.7 -l 100 -w 300 -p '>' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13'"
+bindsym $mod+g exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' | xargs -I{} xdg-open https://www.google.com/search?q={}
+bindsym $mod+y exec --no-startup-id echo "" | dmenu -i -y 20 -o 0.7 -p 'Search:' -nf '$base08' -nb '$base00' -sb '$base02' -sf '$base0F' -fn 'Hack-13' 
+#bindsym $mod+d exec rofi -show drun
+#bindsym $mod+g exec echo "" | rofi -dmenu -p "Search Google: " | xargs -I{} xdg-open https://www.google.com/search?q={}
+#bindsym $mod+y exec echo "" | rofi -dmenu -p "Search Youtube: " | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
+#bindsym $mod+n exec nmcli_dmenu
+#
 
 bar {
 	i3bar_command i3bar -t
 	status_command i3blocks -c $dotdir/i3/i3blocks.conf
-mode dock
-#	strip_workspace_numbers yes
+	mode dock
 	position top 
 	font pango:Hack, Icons 10
 	colors {
 		separator $base03
-		background $transparent
+		background $base00
 		statusline $base05
 		focused_workspace $base0E $base0E $base00
 		active_workspace $base0B $base0B $base00
-		inactive_workspace $transparent $transparent $base07
+		inactive_workspace $color0 $color0 $base07
 		urgent_workspace $base01 $base01 $base00
 	}
 }

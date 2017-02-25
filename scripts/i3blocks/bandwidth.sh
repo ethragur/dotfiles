@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-DEVICE="$(ip addr show | grep wlp | head -n 1 | awk '{print $2;}'| rev | cut -c 2- | rev)"
+DEVICE="$(ip addr show | grep wlp | tail -n 1 | awk '{print $8;}')"
 read rx < "/sys/class/net/$DEVICE/statistics/rx_bytes"
 read tx < "/sys/class/net/$DEVICE/statistics/tx_bytes"
 
