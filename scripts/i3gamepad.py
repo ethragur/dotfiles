@@ -2,7 +2,6 @@ from inputs import devices
 from inputs import get_gamepad
 
 import i3ipc
-import pyautogui
 
 i3 = i3ipc.Connection()
 
@@ -25,3 +24,5 @@ while 1:
                     i3.command("focus up")
             if event.code == "ABS_HAT0Y" and event.state == 1:
                     i3.command("focus down")
+            else:
+                print(event.code)

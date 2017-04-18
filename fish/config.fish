@@ -33,6 +33,8 @@ alias reload 'source ~/.zshrc'
 alias rsync 'rsync -a --stats --progress'
 alias ccmake 'cmake .; and make'
 
+alias dirty 'watch grep -e Dirty: -e Writeback: /proc/meminfo'
+
 set -gx DOTFILES /home/effi/dotfiles
 set -gx LANG en_US.UTF-8
 set -gx ARCHFLAGS "-arch x86_64"
@@ -48,7 +50,7 @@ set -gx vblank_mode 0
 set -gx VGL_READBACK pbo
 
 
-set PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
+set PATH /home/effi/go/bin /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
 
 set -gx color0  "#fbf1c7"
 set -gx color8  "#928374"

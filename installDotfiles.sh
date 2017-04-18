@@ -7,6 +7,7 @@ dotfiles="$homedir/dotfiles"
 mkdir -p "$homedir/.config/termite/"
 mkdir -p "$homedir/.config/ranger/"
 mkdir -p "$homedir/.config/fish/"
+mkdir -p "$homedir/.config/nvim/"
 
 ln -sf $dotfiles/vim/init.vim $homedir/.vimrc
 ln -sf $dotfiles/vim/init.vim $homedir/.config/nvim/init.vim

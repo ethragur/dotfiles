@@ -6,7 +6,7 @@ set $dotdir $HOME/dotfiles
 
 
 #Set Keyboard
-exec_always --no-startup-id setxkbmap de
+exec_always --no-startup-id setxkbmap us
 exec_always --no-startup-id sleep 1 && xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 #exec_always --no-startup-id setxkbmap -option ctrl:nocaps
@@ -24,6 +24,7 @@ exec_always --no-startup-id python $dotdir/i3/i3-autoname-workspaces.py
 #Set up multiple Monitors with xrandr
 exec_always --no-startup-id $dotdir/scripts/configure_xrandr.sh 
 
+exec_always --no-startup-id redshift
 #Compositor //kills performance
 #if you have optimus and run the Xserver through the nv card you're out of luck, screentearing will always be there
 #normal nvidia configurations should work fine
@@ -68,8 +69,6 @@ for_window [class="Battle.net.exe"] floating enable
 for_window [class="Onboard"] sticky enable
 for_window [class="Onboard"] border none
 
-
-
 new_window pixel 4
 new_float pixel 4
 
@@ -84,7 +83,7 @@ bindsym $mod+p exec mpv $(xclip -o)
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec firefox
+bindsym $mod+c exec firejail --seccomp firefox
 
 #take screenshot
 ##whole screen
@@ -158,8 +157,8 @@ bindsym $mod+Shift+s sticky toggle
 #set $ws9 9:
 #set $ws0 0:
 
-set $DISPLAY-0 HDMI1
-set $DISPLAY-1 eDP1
+set $DISPLAY-0 HDMI-0
+set $DISPLAY-1 VGA-0
 #
 ##assign workspaces to different screen
 workspace 1 output $DISPLAY-0
@@ -234,6 +233,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+bindsym button8 workspace prev
 
 
 set_from_resource $base00 dcolor0

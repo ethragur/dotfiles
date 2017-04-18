@@ -35,6 +35,8 @@ call dein#add('luochen1990/rainbow')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 
+call dein#add('zchee/deoplete-go', {'build': 'make'})
+
 call dein#end()
 
 "check on startupp for non installed plugins
@@ -108,6 +110,9 @@ let g:deoplete#sources#clang#std#cpp = 'c++14'
 let g:deoplete#sources#rust#racer_binary='~/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
+"depoplete go
+let g:deoplete#sources#go#gocode_binary = '/home/effi/go/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 set completeopt -=preview
 
 " Plugin key-mappings.

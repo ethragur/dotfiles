@@ -51,6 +51,7 @@ FA_VOIP = '\uf2a0'
 FA_CHAT = '\uf27a'
 FA_POWER = '\uf011'
 FA_DOWNLOAD = '\uf019'
+FA_DEFAULT = '\uf069'
 WINDOW_ICONS = {
     'urxvt': FA_TERMINAL,
     'termite': FA_TERMINAL,
@@ -75,6 +76,7 @@ WINDOW_ICONS = {
     'Hearthstone.exe' : FA_GAME,
     'pavucontrol' : FA_MUSIC,
     'transmission-gtk' : FA_DOWNLOAD,
+    'default' : FA_DEFAULT,
 }
 
 
@@ -97,8 +99,7 @@ def icon_for_window(window):
         for cls in classes:
             if cls in WINDOW_ICONS:
                 return WINDOW_ICONS[cls] + '   '
-        print('No icon available for window with classes: %s' % str(classes))
-    return '*'
+        return WINDOW_ICONS['default'] + '   '
 
 # renames all workspaces based on the windows present
 def rename():

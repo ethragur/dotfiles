@@ -1,11 +1,11 @@
 #! /bin/bash
 
-PRIMARY=$(xrandr | grep connected | awk '{print $1;}' | grep eDP)
-EXT1=$(xrandr | grep connected | awk '{print $1;}' | grep HDMI)
+PRIMARY=$(xrandr | grep connected | awk '{print $1;}' | grep HDMI)
+EXT1=$(xrandr | grep connected | awk '{print $1;}' | grep VGA)
 
 
 if ( xrandr | grep "$EXT1 connected"); then
-	xrandr --output $EXT1 --primary --auto --output $PRIMARY --set "Broadcast RGB" "Full" --auto --right-of $EXT1 
+	xrandr --output $PRIMARY --primary --auto --output $EXT1 --auto --left-of $PRIMARY
 	echo "$EXT1 & $PRIMARY enabled"
 else
 	xrandr --output $EXT1 --off
