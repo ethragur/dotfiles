@@ -3,11 +3,6 @@ set $mod Mod4
 set $alt Mod1
 
 
-input "2:8:AlpsPS/2_ALPS_GlidePoint" {
-    tap enabled
-    natural_scroll disabled
-    dwt enabled
-}
 
 set $dotdir $HOME/dotfiles
 
@@ -81,7 +76,7 @@ bindsym $mod+p exec mpv $(xclip -o)
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec chromium --new-window
+bindsym $mod+c exec firejail firefox-developer
 
 #take screenshot
 ##whole screen
@@ -90,7 +85,7 @@ bindsym $mod+Print exec scrot '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screen
 bindsym $mod+Shift+Print exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill

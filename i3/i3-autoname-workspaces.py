@@ -58,7 +58,7 @@ WINDOW_ICONS = {
     'st-256color': FA_TERMINAL,
     'google-chrome': FA_CHROME,
     'chromium': FA_CHROME,
-    'Firefox': FA_FIREFOX,
+    'firefox': FA_FIREFOX,
     'clion' : FA_CODE,
     'libreoffice': FA_FILE_TEXT_O,
     'feh': FA_PICTURE_O,
@@ -71,9 +71,9 @@ WINDOW_ICONS = {
     'discord' : FA_VOIP,
     'Steam' : FA_STEAM,
     'telegram-desktop' : FA_CHAT,
-    'Telegram' : FA_CHAT,
+    'telegram' : FA_CHAT,
     'dolphin-emu' : FA_GAME,
-    'Hearthstone.exe' : FA_GAME,
+    'hearthstone.exe' : FA_GAME,
     'pavucontrol' : FA_MUSIC,
     'transmission-gtk' : FA_DOWNLOAD,
     'default' : FA_DEFAULT,
@@ -97,7 +97,7 @@ def icon_for_window(window):
     classes = xprop(window.window, 'WM_CLASS')
     if classes != None and len(classes) > 0:
         for cls in classes:
-            if cls in WINDOW_ICONS:
+            if cls.lower() in WINDOW_ICONS:
                 return WINDOW_ICONS[cls] + '   '
         return WINDOW_ICONS['default'] + '   '
 
@@ -105,7 +105,7 @@ def icon_for_window(window):
 def rename():
     for workspace in i3.get_tree().workspaces():
         icons = [icon_for_window(w) for w in workspace.leaves()]
-        icon_str = ': ' + ' '.join(icons) if len(icons) else ''
+        icon_str = ': ' + ' '.join(set(icons)) if len(icons) else ''
         new_name = str(workspace.num) + icon_str
         i3.command('rename workspace "%s" to "%s"' % (workspace.name, new_name))
 

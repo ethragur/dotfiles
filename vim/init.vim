@@ -15,14 +15,14 @@ call dein#add('Shougo/dein.vim')
 
 
 call dein#add('bling/vim-airline')
-call dein#add('petRUShka/vim-opencl')
+call dein#add('petRUShka/vim-opencl', {'on_ft' : 'cl'})
 call dein#add('dantler/vim-alternate')
 call dein#add('morhetz/gruvbox')
 call dein#add('ervandew/supertab')
-call dein#add('tikhomirov/vim-glsl')
+call dein#add('tikhomirov/vim-glsl', { 'on_ft' : 'glsl' })
 call dein#add('tpope/vim-sleuth')
 call dein#add('tpope/vim-commentary')
-call dein#add('rust-lang/rust.vim')
+call dein#add('rust-lang/rust.vim', { 'on_ft' : 'rs' })
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('zchee/deoplete-clang')
 call dein#add('sebastianmarkow/deoplete-rust')
@@ -30,12 +30,10 @@ call dein#add('Shougo/neoinclude.vim')
 "call dein#add('neomake/neomake')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('Yggdroot/indentLine')
-call dein#add('sebastianmarkow/deoplete-rust')
+call dein#add('sebastianmarkow/deoplete-rust', { 'on_ft' : 'rs' })
 call dein#add('luochen1990/rainbow')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-
-call dein#add('zchee/deoplete-go', {'build': 'make'})
+call dein#add('zchee/deoplete-go', {'build': 'make'}, { 'on_ft' : 'go' })
+call dein#add('Chiel92/vim-autoformat')
 
 call dein#end()
 
@@ -148,6 +146,7 @@ map <A-j> :IH <CR>
 nnoremap <F3> :make! <cr>
 nnoremap <F4> :make! run <cr>
 
+noremap <F5> :Autoformat<CR>
 
 "autostart
 "

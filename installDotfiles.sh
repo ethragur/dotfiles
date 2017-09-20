@@ -15,6 +15,7 @@ ln -sf $dotfiles/xorg/.xinitrc $homedir/.xinitrc
 ln -sf $dotfiles/termite/config $homedir/.config/termite/config
 ln -sf $dotfiles/fish/config.fish $homedir/.config/fish/config.fish
 ln -sf $dotfiles/fish/functions $homedir/.config/fish/functions
+ln -sf $dotfiles/ranger/rc.conf $homedir/.config/ranger/rc.conf
 
 sudo ln -sf $dotfiles/zsh/.zshrc $rootdir/.zshrc
 sudo ln -sf $dotfiles/vim/init.vim $rootdir/.vimrc

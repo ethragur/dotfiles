@@ -1,3 +1,14 @@
+alias diff 'colordiff'
+alias dir 'dir --color=auto'
+alias egrep 'egrep --color=auto'
+alias fgrep 'fgrep --color=auto'
+alias ip 'ip -c'
+alias pcregrep 'pcregrep --color=auto'
+alias vdir 'vdir --color=auto'
+alias watch 'watch --color'
+
+alias torrent 'transmission-cli -b http://john.bitsurge.net/public/biglist.p2p.gz -ep'
+
 alias ls 'ls --color=auto'
 alias ll 'ls -l --color=auto'
 alias la 'ls -l -a --color=auto'
@@ -10,6 +21,9 @@ alias netstat 'ping 8.8.8.8'
 alias wget 'wget -c'
 alias mkdir 'mkdir -pv'
 alias dd 'dd status=progress'
+alias fj 'firejail --seccomp --private --net=none'
+alias fx 'firejail --seccomp --net=none'
+alias fjn 'firejail --seccomp --private'
 
 alias inst 'pacaur -S'
 alias install 'pacaur -S'
@@ -45,9 +59,9 @@ set -gx PLAYER mpv
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx XKB_DEFAULT_LAYOUT de
+set -gx GOPATH /home/effi/go/
+set -gx TERM xterm
 
-set -gx vblank_mode 0
-set -gx VGL_READBACK pbo
 
 
 set PATH /home/effi/go/bin /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
@@ -69,8 +83,6 @@ set -gx color14 "#427b58"
 set -gx color7  "#7c6f64"
 set -gx color15 "#3c3836"
 
-set -gx TERMINAL st 
-set -gx WINEARCH win64 
 set fish_greeting ""
 
 eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
@@ -115,6 +127,10 @@ end
 
 function twitch
 	mpv https://www.twitch.tv/$argv[1] --ytdl-format=$argv[2]
+end
+
+function ssht
+	ssh $argv[1] -t tmux a -t $argv[2]
 end
 
 function reload
