@@ -6,6 +6,7 @@ alias ip 'ip -c'
 alias pcregrep 'pcregrep --color=auto'
 alias vdir 'vdir --color=auto'
 alias watch 'watch --color'
+alias pacman 'pacman --color=auto'
 
 alias torrent 'transmission-cli -b http://john.bitsurge.net/public/biglist.p2p.gz -ep'
 
@@ -62,91 +63,89 @@ set -gx XKB_DEFAULT_LAYOUT de
 set -gx GOPATH /home/effi/go/
 set -gx TERM xterm
 
-
-
 set PATH /home/effi/go/bin /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /usr/bin/core_perl/
 
-set -gx color0  "#fbf1c7"
-set -gx color8  "#928374"
-set -gx color1  "#cc241d"
-set -gx color9  "#9d0006"
-set -gx color2  "#98971a"
-set -gx color10 "#79740e"
-set -gx color3  "#d79921"
-set -gx color11 "#b57614"
-set -gx color4  "#458588"
-set -gx color12 "#976678"
-set -gx color5  "#b16286"
-set -gx color13 "#8f3f71"
-set -gx color6  "#689d6a"
-set -gx color14 "#427b58"
-set -gx color7  "#7c6f64"
-set -gx color15 "#3c3836"
+set -gx color0		"#282828"
+set -gx color8		"#cc241d"
+set -gx color1		"#98971a"
+set -gx color9		"#d79921"
+set -gx color2		"#458588"
+set -gx color10		"#b16286"
+set -gx color3		"#689d6a"
+set -gx color11		"#a89984"
+set -gx color4		"#928374"
+set -gx color12		"#fb4934"
+set -gx color5		"#b8bb26"
+set -gx color13		"#fabd2f"
+set -gx color6		"#83a598"
+set -gx color14		"#d3869b"
+set -gx color7		"#8ec07c"
+set -gx color15		"#ebdbb2"
 
 set fish_greeting ""
 
 eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
 
 function feh_browser
-	sh /home/effi/dotfiles/scripts/feh_browser.sh $argv -F -Z
+    sh /home/effi/dotfiles/scripts/feh_browser.sh $argv -F -Z
 end
 
 function mcd
-	mkdir -p $argv
-	cd $argv
+    mkdir -p $argv
+    cd $argv
 end
 
 function x
-	switch (echo $argv)
-		case '*.zip'
-			unzip $argv
-		case '*.tar.bz2'
-			tar xjf $argv	
-		case '*.tar.gz'
-			tar xzf $argv	
-		case '*.bz2'
-			bunzip2 $argv	
-		case '*.rar'
-			unrar x $argv	
-		case '*.gz'
-			gunzip $argv	
-		case '*.tar'
-			tar xf $argv	
-		case '*.tbz2'
-			tar xjf $argv	
-		case '*.tgz'
-			tar xzf $argv	
-		case '*.Z'
-			uncompress $argv	
-		case '*.7z'
-			7z x $argv	
-		case '*'
-			echo "Cannot extract file"
-	end
+    switch (echo $argv)
+	    case '*.zip'
+		unzip $argv
+	    case '*.tar.bz2'
+		tar xjf $argv
+	    case '*.tar.gz'
+		tar xzf $argv
+	    case '*.bz2'
+		bunzip2 $argv
+	    case '*.rar'
+		unrar x $argv
+	    case '*.gz'
+		gunzip $argv
+	    case '*.tar'
+		tar xf $argv
+	    case '*.tbz2'
+		tar xjf $argv
+	    case '*.tgz'
+		tar xzf $argv
+	    case '*.Z'
+		uncompress $argv
+	    case '*.7z'
+		7z x $argv
+	    case '*'
+		echo "Cannot extract file"
+    end
 end
 
 function twitch
-	mpv https://www.twitch.tv/$argv[1] --ytdl-format=$argv[2]
+    mpv https://www.twitch.tv/$argv[1] --ytdl-format=$argv[2]
 end
 
 function ssht
-	ssh $argv[1] -t tmux a -t $argv[2]
+    ssh $argv[1] -t tmux a -t $argv[2]
 end
 
 function reload
-	source ~/.config/fish/config.fish
+    source ~/.config/fish/config.fish
 end
 
 function please
-	sudo $history[1]
+    sudo $history[1]
 end
 
 function sudo
     if test "$argv" = !!
-        eval command sudo $history[1]
-    else
-        command sudo $argv
-    end
+	eval command sudo $history[1]
+else
+    command sudo $argv
+end
 end
 
 function mm
@@ -157,21 +156,21 @@ end
 # start X at login
 if status --is-login
     if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
-        exec startx -- -keeptty
-    end
-    if test -z "$DISPLAY" -a $XDG_VTNR -eq 2
-        nvidia-xrun
-    end
+	exec startx -- -keeptty
+end
+if test -z "$DISPLAY" -a $XDG_VTNR -eq 2
+    nvidia-xrun
+end
 end
 
 function goodnight
-	sudo ~/./backlight -s 1
-	sleep 1h
-	poweroff
+    sudo ~/./backlight -s 1
+    sleep 1h
+    poweroff
 end
-	
+
 
 function win_reboot
-	sudo efibootmgr -n 0000
-	reboot
+    sudo efibootmgr -n 0000
+    reboot
 end

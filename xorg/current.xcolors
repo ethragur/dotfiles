@@ -1,58 +1,19 @@
-!-- Light color theme 
-*background:	#fbf1c7
-*foreground:	#3c3836
-*color0:		#fbf1c7
-*color8:		#928374
-*color1:		#cc241d
-*color9:		#9d0006
-*color2:		#98971a
-*color10:		#79740e
-*color3:		#d79921
-*color11:		#b57614
-*color4:		#458588
-*color12:		#976678
-*color5:		#b16286
-*color13:		#8f3f71
-*color6:		#689d6a
-*color14:		#427b58
-*color7:		#7c6f64
-*color15:		#3c3836
-
 !-- Dark color theme 
-*dbackground:	#282828
-*dforeground:	#ebdbb2
-*dcolor0:		#282828
-*dcolor8:		#cc241d
-*dcolor1:		#98971a
-*dcolor9:		#d79921
-*dcolor2:		#458588
-*dcolor10:		#b16286
-*dcolor3:		#689d6a
-*dcolor11:		#a89984
-*dcolor4:		#928374
-*dcolor12:		#fb4934
-*dcolor5:		#b8bb26
-*dcolor13:		#fabd2f
-*dcolor6:		#83a598
-*dcolor14:		#d3869b
-*dcolor7:		#8ec07c
-*dcolor15:		#ebdbb2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*background:	#282828
+*foreground:	#ebdbb2
+*color0:		#282828
+*color8:		#cc241d
+*color1:		#98971a
+*color9:		#d79921
+*color2:		#458588
+*color10:		#b16286
+*color3:		#689d6a
+*color11:		#a89984
+*color4:		#928374
+*color12:		#fb4934
+*color5:		#b8bb26
+*color13:		#fabd2f
+*color6:		#83a598
+*color14:		#d3869b
+*color7:		#8ec07c
+*color15:		#ebdbb2

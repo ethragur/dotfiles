@@ -16,13 +16,13 @@ function fish_prompt
   end
 
   set -l normal (set_color normal)
-  set -l white (set_color 3c3836)
-  set -l turquoise (set_color 076678)
-  set -l orange (set_color b57614)
-  set -l hotpink (set_color b16286)
-  set -l blue (set_color 458588)
-  set -l limegreen (set_color 98971a)
-  set -l purple (set_color 8f3f71)
+  set -l white (set_color white)
+  set -l turquoise (set_color magenta)
+  set -l orange (set_color yellow)
+  set -l hotpink (set_color cyan)
+  set -l blue (set_color blue)
+  set -l limegreen (set_color green)
+  set -l purple (set_color black)
  
   # Configure __fish_git_prompt
   set -g __fish_git_prompt_char_stateseparator ' '
@@ -39,12 +39,12 @@ function fish_prompt
   set realhome ~
   
   source /usr/share/fish/functions/prompt_pwd.fish
-  echo -n $white' ╭─'$hotpink$USER$white'@'$orange$__fish_prompt_hostname$white': '$limegreen(prompt_pwd) $turquoise
+  echo -n $white'╭─'$hotpink$USER$white'@'$orange$__fish_prompt_hostname$white': '$limegreen(prompt_pwd) $turquoise
   __fish_git_prompt " (%s)"
   echo
 
   # Line 2
-  echo -n $white' ╰─'$__fish_prompt_char $normal
+  echo -n $white'╰─'$__fish_prompt_char $normal
 end
 
 

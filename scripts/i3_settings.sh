@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-DMENU="dmenu -i -x 1320 -y 830 -l 9 -h 50 -w 1000 -p > -nf $color0 -nb $color7 -sb $color7 -sf $color6 -o 0.8 -dim 0.1 -dc $color15 -fn 'Hack-16'"
+DMENU="dmenu -i -x 1320 -y 830 -l 9 -h 50 -w 1000 -p > -nf $color15 -nb $color0 -sb $color0 -sf $color7 -o 0.8 -dim 0.1 -dc $color0 -fn 'Hack-16'"
 ACTION="$(printf "Audio Options\ni3 Options\nSystem Options\nGoodnight\nBack\n" | $DMENU $*)"
 
 
@@ -10,6 +10,9 @@ then
 	if [ "$ACTION" == "Screensaver" ]
 	then
 		sh ~/dotfiles/scripts/i3lock.sh
+	elif [ "$ACTION" == "Exit i3" ]
+	then
+		i3-msg exit
 	fi
 elif [ "$ACTION" == "Audio Options" ]
 then

@@ -12,6 +12,7 @@ xset -dpms s off
 xrdb -load $DOTFILES/xorg/Xresources
 
 
-exec i3 -c $DOTFILES/i3/config
+
+sh $DOTFILES/scripts/display.sh && exec i3 -c $DOTFILES/i3/config
 #exex lxqt-session
 ##exec awesome

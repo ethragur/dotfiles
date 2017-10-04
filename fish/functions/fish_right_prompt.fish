@@ -1,5 +1,5 @@
 function fish_right_prompt
-  printf '[%s] ' (date +%H:%M:%S)
+  printf '[%s]' (date +%H:%M:%S)
 end
 
 function __tmux_prompt

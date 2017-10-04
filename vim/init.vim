@@ -1,6 +1,5 @@
 set shell=/bin/fish
 
-
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -15,25 +14,26 @@ call dein#add('Shougo/dein.vim')
 
 
 call dein#add('bling/vim-airline')
-call dein#add('petRUShka/vim-opencl', {'on_ft' : 'cl'})
-call dein#add('dantler/vim-alternate')
 call dein#add('morhetz/gruvbox')
 call dein#add('ervandew/supertab')
-call dein#add('tikhomirov/vim-glsl', { 'on_ft' : 'glsl' })
 call dein#add('tpope/vim-sleuth')
 call dein#add('tpope/vim-commentary')
-call dein#add('rust-lang/rust.vim', { 'on_ft' : 'rs' })
 call dein#add('Shougo/deoplete.nvim')
-call dein#add('zchee/deoplete-clang')
+call dein#add('zchee/deoplete-clang', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
+call dein#add('dantler/vim-alternate', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
+call dein#add('rust-lang/rust.vim')
 call dein#add('sebastianmarkow/deoplete-rust')
+call dein#add('zchee/deoplete-go', {'build': 'make'}, { 'on_ft' : 'go' })
+call dein#add('petRUShka/vim-opencl', {'on_ft' : 'cl'})
+call dein#add('tikhomirov/vim-glsl', { 'on_ft' : 'glsl' })
 call dein#add('Shougo/neoinclude.vim')
-"call dein#add('neomake/neomake')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('Yggdroot/indentLine')
-call dein#add('sebastianmarkow/deoplete-rust', { 'on_ft' : 'rs' })
 call dein#add('luochen1990/rainbow')
-call dein#add('zchee/deoplete-go', {'build': 'make'}, { 'on_ft' : 'go' })
 call dein#add('Chiel92/vim-autoformat')
+call dein#add('vifm/neovim-vifm')
+call dein#add('vim-syntastic/syntastic')
+call dein#add('dag/vim-fish', { 'on_ft' : 'fish' } )
 
 call dein#end()
 
@@ -43,7 +43,7 @@ if dein#check_install()
 endif
 
 
-filetype plugin indent on    " required 
+filetype plugin indent on    " required
 "let g:python_host_prog = '/usr/bin/python2.7'
 
 let mapleader = ","
@@ -65,6 +65,8 @@ set laststatus=2
 set relativenumber
 set number
 set nowrap
+set background=dark
+hi Normal guibg=NONE ctermbg=NONE
 
 "buffer bindings
 nnoremap <A-l> :bnext<cr>
@@ -106,7 +108,7 @@ let g:deoplete#sources#clang#std#cpp = 'c++14'
 
 "deoplete rust
 let g:deoplete#sources#rust#racer_binary='~/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+let g:deoplete#sources#rust#rust_source_path='~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/'
 
 "depoplete go
 let g:deoplete#sources#go#gocode_binary = '/home/effi/go/bin/gocode'
@@ -114,20 +116,6 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 set completeopt -=preview
 
 " Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
 if has('conceal')
@@ -135,7 +123,7 @@ if has('conceal')
 endif
 
 "other addons
-let g:rainbow_active = 1 
+let g:rainbow_active = 1
 "indent chars
 let g:indentLine_char = '│'
 
@@ -152,8 +140,18 @@ noremap <F5> :Autoformat<CR>
 "
 set splitright
 function OpenTermSplit()
-    :70vs term://fish
+  :70vs term://fish
 endfunction
 
 "for xclip support
 set clipboard=unnamedplus
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
