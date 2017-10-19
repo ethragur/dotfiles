@@ -148,8 +148,8 @@ sed 's/.*= "\(.*\)".*/\1/')
     if [[ $SUBSCRIBE == 1 ]] ; then
         print_format "$LONG_FORMAT"
     else
-        print_format "$LONG_FORMAT"
         print_format "$SHORT_FORMAT"
+        print_format "$LONG_FORMAT"
         echo "$COLOR"
     fi
 }

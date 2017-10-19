@@ -34,6 +34,7 @@ call dein#add('Chiel92/vim-autoformat')
 call dein#add('vifm/neovim-vifm')
 call dein#add('vim-syntastic/syntastic')
 call dein#add('dag/vim-fish', { 'on_ft' : 'fish' } )
+call dein#add('posva/vim-vue', { 'on_ft' : 'vue' } )
 
 call dein#end()
 

@@ -10,9 +10,9 @@ alias pacman 'pacman --color=auto'
 
 alias torrent 'transmission-cli -b http://john.bitsurge.net/public/biglist.p2p.gz -ep'
 
-alias ls 'ls --color=auto'
-alias ll 'ls -l --color=auto'
-alias la 'ls -l -a --color=auto'
+alias ls 'exa'
+alias ll 'exa -l'
+alias la 'exa -l'
 
 alias .. 'cd ..'
 alias ... 'cd ../../'
