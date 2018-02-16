@@ -27,14 +27,14 @@ call dein#add('zchee/deoplete-go', {'build': 'make'}, { 'on_ft' : 'go' })
 call dein#add('petRUShka/vim-opencl', {'on_ft' : 'cl'})
 call dein#add('tikhomirov/vim-glsl', { 'on_ft' : 'glsl' })
 call dein#add('Shougo/neoinclude.vim')
-call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('Yggdroot/indentLine')
+call dein#add('junegunn/fzf.vim')
 call dein#add('luochen1990/rainbow')
 call dein#add('Chiel92/vim-autoformat')
-call dein#add('vifm/neovim-vifm')
 call dein#add('vim-syntastic/syntastic')
 call dein#add('dag/vim-fish', { 'on_ft' : 'fish' } )
 call dein#add('posva/vim-vue', { 'on_ft' : 'vue' } )
+call dein#add('donRaphaco/neotex', { 'on_ft': 'tex' } )
 
 call dein#end()
 
@@ -44,7 +44,7 @@ if dein#check_install()
 endif
 
 
-filetype plugin indent on    " required
+filetype plugin on    " required
 "let g:python_host_prog = '/usr/bin/python2.7'
 
 let mapleader = ","
@@ -156,3 +156,5 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" asm checkers are shitty
+let g:syntastic_asm_checkers=['']

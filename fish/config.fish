@@ -12,7 +12,7 @@ alias torrent 'transmission-cli -b http://john.bitsurge.net/public/biglist.p2p.g
 
 alias ls 'exa'
 alias ll 'exa -l'
-alias la 'exa -l'
+alias la 'exa -la'
 
 alias .. 'cd ..'
 alias ... 'cd ../../'
@@ -154,14 +154,14 @@ end
 
 
 # start X at login
-if status --is-login
-    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
-	exec startx -- -keeptty
-end
-if test -z "$DISPLAY" -a $XDG_VTNR -eq 2
-    nvidia-xrun
-end
-end
+#if status --is-login
+#    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
+#	exec startx -- -keeptty
+#end
+#if test -z "$DISPLAY" -a $XDG_VTNR -eq 2
+#    nvidia-xrun
+#end
+#end
 
 function goodnight
     sudo ~/./backlight -s 1

@@ -41,6 +41,7 @@ fi
 query="$query $primary_q $sec_q"
 
 $query
+$query
 	
 #query=$(echo $fbx $fby $primary $primary_xres $primary_yres $sec $primary_xres $scaled_x $scaled_y $primary_xres $scale_factor $scale_factor $sec_pos $primary | \
 #	awk '{printf "xrandr --fb %dx%d --output %s --mode %dx%d --output %s --pos %dx0 --panning %dx%d+%d+0 --scale %sx%s --%s-of %s", $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14}' )
@@ -48,3 +49,4 @@ $query
 #queryl=$(echo $fbx $fby $primary $primary_xres $primary_yres $scaled_x $sec $scaled_x $scaled_y $scale_factor $scale_factor $sec_pos $primary | \
 #	awk '{printf "xrandr --fb %dx%d --output %s --mode %dx%d --pos %dx0 --primary --output %s --panning %dx%d+0+0 --scale %sx%s ", $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14}' )
 
+feh --randomize --bg-fill ~/Pictures/Wallpapers/4K/*

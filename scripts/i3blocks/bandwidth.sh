@@ -14,4 +14,4 @@ read txo < "/sys/class/net/$DEVICE/statistics/tx_bytes"
 rspeed=$(( ($rxo - $rx ) / 1000 ))
 tspeed=$(( ($txo - $tx ) / 1000 ))
 
-echo -e "${rspeed}K  ${tspeed}K \n\n$color9\n"
+echo -e "${rspeed}K ${tspeed}K\n\n$color9\n"

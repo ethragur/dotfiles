@@ -5,7 +5,7 @@ set $alt Mod1
 set $dotdir $HOME/dotfiles
 
 
-#exec_always --no-startup-id sh $dotdir/scripts/display.sh 
+exec_always --no-startup-id sh $dotdir/scripts/display.sh 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap us -variant altgr-intl
 exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
@@ -54,7 +54,7 @@ font pango:Hack 8
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec firejail --seccomp firefox-developer
+bindsym $mod+c exec firejail --seccomp firefox-developer-edition
 
 bindsym $mod+s exec sh $dotdir/scripts/i3_settings.sh
 

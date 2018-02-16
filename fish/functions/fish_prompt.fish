@@ -40,7 +40,6 @@ function fish_prompt
   
   source /usr/share/fish/functions/prompt_pwd.fish
   echo -n $white'╭─'$hotpink$USER$white'@'$orange$__fish_prompt_hostname$white': '$limegreen(prompt_pwd) $turquoise
-  __fish_git_prompt " (%s)"
   echo
 
   # Line 2

@@ -10,9 +10,10 @@ export DESKTOP_SESSION=gnome
 
 xset -dpms s off
 xrdb -load $DOTFILES/xorg/Xresources
+sh $DOTFILES/scripts/display.sh
 
 
 
-sh $DOTFILES/scripts/display.sh && exec i3 -c $DOTFILES/i3/config
+exec i3 -c $DOTFILES/i3/config
 #exex lxqt-session
 ##exec awesome
