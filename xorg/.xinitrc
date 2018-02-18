@@ -10,7 +10,7 @@ export DESKTOP_SESSION=gnome
 
 xset -dpms s off
 xrdb -load $DOTFILES/xorg/Xresources
-sh $DOTFILES/scripts/display.sh
+#sh $DOTFILES/scripts/display.sh
 
 
 

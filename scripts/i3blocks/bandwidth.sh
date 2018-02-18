@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 
 DEVICE="$(ip addr show | grep en | tail -n 1 | awk '{print $8;}')"
