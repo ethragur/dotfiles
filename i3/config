@@ -1,5 +1,5 @@
 #set mod keys
-set $mod Mod1 
+set $mod Mod4 
 set $alt Mod1
 
 set $dotdir $HOME/dotfiles
@@ -54,7 +54,7 @@ font pango:Hack 8
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec firejail --seccomp firefox-developer-edition
+bindsym $mod+c exec firejail --seccomp firefox
 
 bindsym $mod+s exec sh $dotdir/scripts/i3_settings.sh
 

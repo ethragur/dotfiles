@@ -131,6 +131,10 @@ function please
     sudo $history[1]
 end
 
+function enable
+    sudo ln -s /etc/sv/$argv[1] /var/service/
+end
+
 function sudo
     if test "$argv" = !!
 	eval command sudo $history[1]

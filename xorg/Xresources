@@ -11,7 +11,7 @@ Xft.autohint: 0
 Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
-Xft.dpi:  136
+Xft.dpi:  96
 
 !-------------------------------------------------------------------------------
 ! Rofi Settings

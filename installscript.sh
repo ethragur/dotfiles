@@ -2,12 +2,11 @@
 
 dotdir="/home/$USER/dotfiles"
 #update System before starting
-#sudo pacman -Syu
 sudo xbps-install -Su
 
 
 #install all the dotfile dependecies
-#pacaur -S $(cat $dotdir/dependency.txt)
+sudo xbps-install -S $(cat $dotdir/packages)
 
 
 ##deinvim installation
