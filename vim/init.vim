@@ -35,6 +35,9 @@ call dein#add('vim-syntastic/syntastic')
 call dein#add('dag/vim-fish', { 'on_ft' : 'fish' } )
 call dein#add('posva/vim-vue', { 'on_ft' : 'vue' } )
 call dein#add('donRaphaco/neotex', { 'on_ft': 'tex' } )
+call dein#add('arcticicestudio/nord-vim')
+call dein#add('morhetz/gruvbox')
+call dein#add('arcticicestudio/nord-vim')
 
 call dein#end()
 
@@ -61,12 +64,13 @@ set softtabstop=4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax on
 set termguicolors
-colorscheme gruvbox
 set laststatus=2
 set relativenumber
 set number
+colorscheme nord
 set nowrap
 set background=dark
+let &t_ut=''
 hi Normal guibg=NONE ctermbg=NONE
 
 "buffer bindings
@@ -86,9 +90,12 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
-" Airline
+"" Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='nord'
+
+"let g:lightline = { 'colorscheme': 'nord', }
 
 set wildmenu
 set showcmd
@@ -109,6 +116,7 @@ let g:deoplete#sources#clang#std#cpp = 'c++14'
 
 "deoplete rust
 let g:deoplete#sources#rust#racer_binary='~/.cargo/bin/racer'
+"nord
 let g:deoplete#sources#rust#rust_source_path='~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/'
 
 "depoplete go
@@ -158,3 +166,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " asm checkers are shitty
 let g:syntastic_asm_checkers=['']
+let g:nord_comment_brightness = 20
+"let g:nord_uniform_diff_background = 1
+
+set background=dark

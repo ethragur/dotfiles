@@ -5,19 +5,18 @@ set $alt Mod1
 set $dotdir $HOME/dotfiles
 
 
-#exec_always --no-startup-id sh $dotdir/scripts/display.sh 
+exec_always --no-startup-id bash $dotdir/scripts/display.sh 
 #Set Keyboard
-exec_always --no-startup-id setxkbmap us -variant altgr-intl
+#exec_always --no-startup-id setxkbmap us -variant altgr-intl
 exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 #icons are showing for each open workspace
 exec_always --no-startup-id i3-autoname
 
 #Random Wallpaper
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/4K/*
 
-exec --no-startup-id redshift
-exec_always --no-startup-id compton --config $dotdir/compton/compton.conf
+#exec --no-startup-id redshift
+#exec_always --no-startup-id compton -b --config $dotdir/compton/compton.conf
 
 #for PulseAudio
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5 && pkill -RTMIN+17 i3blocks
@@ -65,7 +64,7 @@ bindsym $mod+p exec scrot '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshot
 bindsym $mod+Shift+p exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
 
 # start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec kitty
 
 
 # kill focused window
@@ -212,7 +211,7 @@ set_from_resource $base0F color15
 
 mouse_warping none
 # start rofi 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -x 1320 -y 830 -l 9 -h 50 -w 1000 -p '>' -nf '$base0F' -nb '$base00' -sb '$base00' -sf '$base07' -o 0.8 -dim 0.1 -dc '$base00' -fn 'Hack-16'"
+bindsym $mod+d exec --no-startup-id rofi -show drun
 #bindsym $mod+d exec rofi -show drun
 #bindsym $mod+g exec echo "" | rofi -dmenu -p "Search Google: " | xargs -I{} xdg-open https://www.google.com/search?q={}
 #bindsym $mod+y exec echo "" | rofi -dmenu -p "Search Youtube: " | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
@@ -224,10 +223,10 @@ bar {
 	status_command i3blocks -c $dotdir/i3/i3blocks.conf
 	mode dock
 	position top 
-	font pango:Hack, Icons 12
+	font pango:Fira Code, Icons 12
 	colors {
 		separator $base03
-		background #282828CC
+		background #2E3440CC
 		statusline $base05
 		focused_workspace $base0E $base0E $base00
 		active_workspace $base0B $base0B $base00

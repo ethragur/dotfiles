@@ -11,30 +11,34 @@ Xft.autohint: 0
 Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
-Xft.dpi:  96
+Xft.dpi:  136
+Xcursor.size: 24px
+
+
+URxvt.font: xft:Fira Code:size=12
 
 !-------------------------------------------------------------------------------
 ! Rofi Settings
 !-------------------------------------------------------------------------------
 
 ! Layout
-rofi.width:							 1920 
-rofi.height:						 1080
-rofi.padding:						 400
-rofi.lines:                          20 
-rofi.columns:                        1
-rofi.hide-scrollbar:				 true
-rofi.fullscreen:					 true
-rofi.color-enabled:                  true
-rofi.color-normal:                   background,foreground,background,color7,foreground
-rofi.color-urgent:                   background,color3,background,color3,background
-rofi.color-active:                   background,FG,background,color4,foreground
-rofi.color-window:                   background,background
-
-! Behaviour
-rofi.terminal:                       termite 
-rofi.levenshtein-sort:               true
-rofi.kb-cancel:                      Escape,Control+c
-rofi.case-sensitive:				 false
-rofi.opacity:						 80
-rofi.font:							 Hack 14
+!rofi.width:							 1920 
+!rofi.height:						 1080
+!rofi.padding:						 400
+!rofi.lines:                          20 
+!rofi.columns:                        1
+!rofi.hide-scrollbar:				 true
+!rofi.fullscreen:					 true
+!rofi.color-enabled:                  true
+!rofi.color-normal:                   .background,.foreground,.background,.color7,.foreground
+!rofi.color-urgent:                   .background,.color3,.background,.color3,.background
+!rofi.color-active:                   .background,.foreground,.background,.color4,.foreground
+!rofi.color-window:                   .background,.background
+!
+!! Behaviour
+!rofi.terminal:                       kitty
+!rofi.levenshtein-sort:               true
+!rofi.kb-cancel:                      Escape,Control+c
+!rofi.case-sensitive:				 false
+!rofi.opacity:						 80
+!rofi.font:							 Fira Code 14
