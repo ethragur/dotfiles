@@ -12,31 +12,28 @@ set runtimepath+=/home/effi/dotfiles/vim/deinvim/repos/github.com/Shougo/dein.vi
 call dein#begin('/home/effi/dotfiles/vim/deinvim')
 call dein#add('Shougo/dein.vim')
 
-
 call dein#add('bling/vim-airline')
 call dein#add('morhetz/gruvbox')
 call dein#add('ervandew/supertab')
 call dein#add('tpope/vim-sleuth')
 call dein#add('tpope/vim-commentary')
 call dein#add('Shougo/deoplete.nvim')
+call dein#add('rust-lang/rust.vim', {'on_ft' : [ 'rs']})
+call dein#add('sebastianmarkow/deoplete-rust', {'on_ft' : [ 'rs']})
 call dein#add('zchee/deoplete-clang', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
 call dein#add('dantler/vim-alternate', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
-call dein#add('rust-lang/rust.vim')
-call dein#add('sebastianmarkow/deoplete-rust')
 call dein#add('zchee/deoplete-go', {'build': 'make'}, { 'on_ft' : 'go' })
 call dein#add('petRUShka/vim-opencl', {'on_ft' : 'cl'})
 call dein#add('tikhomirov/vim-glsl', { 'on_ft' : 'glsl' })
 call dein#add('Shougo/neoinclude.vim')
 call dein#add('Yggdroot/indentLine')
+call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
 call dein#add('junegunn/fzf.vim')
 call dein#add('luochen1990/rainbow')
 call dein#add('Chiel92/vim-autoformat')
 call dein#add('vim-syntastic/syntastic')
-call dein#add('dag/vim-fish', { 'on_ft' : 'fish' } )
 call dein#add('posva/vim-vue', { 'on_ft' : 'vue' } )
 call dein#add('donRaphaco/neotex', { 'on_ft': 'tex' } )
-call dein#add('arcticicestudio/nord-vim')
-call dein#add('morhetz/gruvbox')
 call dein#add('arcticicestudio/nord-vim')
 
 call dein#end()
@@ -50,8 +47,8 @@ endif
 filetype plugin on    " required
 "let g:python_host_prog = '/usr/bin/python2.7'
 
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 nmap <leader>w :w!<cr>
 
 "set tabs and shifts to 4 spaces
@@ -109,15 +106,16 @@ set ignorecase
 "deoplete
 let g:deoplete#enable_at_startup = 1
 
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 "depoplete clang
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 let g:deoplete#sources#clang#std#cpp = 'c++14'
 
 "deoplete rust
-let g:deoplete#sources#rust#racer_binary='~/.cargo/bin/racer'
-"nord
-let g:deoplete#sources#rust#rust_source_path='~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/'
+let g:deoplete#sources#rust#racer_binary='/home/effi/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/home/effi/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
 "depoplete go
 let g:deoplete#sources#go#gocode_binary = '/home/effi/go/bin/gocode'
@@ -128,7 +126,7 @@ set completeopt -=preview
 
 " For conceal markers.
 if has('conceal')
-  set conceallevel=2 concealcursor=niv
+  set conceallevel=0 concealcursor=niv
 endif
 
 "other addons
@@ -147,8 +145,8 @@ noremap <F5> :Autoformat<CR>
 
 "autostart
 "
-set splitright
 function OpenTermSplit()
+  set splitright
   :70vs term://fish
 endfunction
 
@@ -170,3 +168,14 @@ let g:nord_comment_brightness = 20
 "let g:nord_uniform_diff_background = 1
 
 set background=dark
+
+" FZF
+let g:fzf_layout = { 'down': '~32%' }
+nnoremap <leader><space> :FZF<CR>
+nnoremap <leader>h :History<CR>
+nnoremap <leader>gc :Commits<CR>
+nnoremap <leader>n :Find 
+nnoremap <leader>fw *:Find <C-r>/<BS><BS><C-Left><Del><Del><CR>
+" let $FZF_DEFAULT_COMMAND= 'ag -g "" --ignore=\*.o'
+let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!.git/*" -g "!*.o"'
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow -g "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
