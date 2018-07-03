@@ -1,5 +1,4 @@
 export PATH="$PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /home/effi/.local/share/lutris/runners/wine/*/bin"
-export DOTFILES=/home/effi/dotfiles
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 export WINEARCH=win64

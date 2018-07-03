@@ -1,8 +1,7 @@
 export DOTFILES=$HOME/dotfiles
 
-source $DOTFILES/zsh/aliase.zsh
 source $DOTFILES/zsh/antigen.zsh
-source $DOTFILES/zsh/functions.zsh
+
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
@@ -27,3 +26,8 @@ antigen theme lambda
 # Tell Antigen that you're done.
 antigen apply
 
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
+
+source $DOTFILES/zsh/aliase.zsh
+source $DOTFILES/zsh/environment.zsh
+source $DOTFILES/zsh/functions.zsh
