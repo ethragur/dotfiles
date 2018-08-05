@@ -25,6 +25,7 @@ call dein#add('dantler/vim-alternate', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx
 call dein#add('zchee/deoplete-go', {'build': 'make'}, { 'on_ft' : 'go' })
 call dein#add('petRUShka/vim-opencl', {'on_ft' : 'cl'})
 call dein#add('tikhomirov/vim-glsl', { 'on_ft' : 'glsl' })
+call dein#add('peterhoeg/vim-qml', { 'on_ft' : 'qml' })
 call dein#add('Shougo/neoinclude.vim')
 call dein#add('Yggdroot/indentLine')
 call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
@@ -35,6 +36,7 @@ call dein#add('vim-syntastic/syntastic')
 call dein#add('posva/vim-vue', { 'on_ft' : 'vue' } )
 call dein#add('donRaphaco/neotex', { 'on_ft': 'tex' } )
 call dein#add('arcticicestudio/nord-vim')
+call dein#add('tommcdo/vim-lion')
 
 call dein#end()
 
@@ -47,7 +49,7 @@ endif
 filetype plugin on    " required
 "let g:python_host_prog = '/usr/bin/python2.7'
 
-let mapleader = "\<Space>"
+let mapleader   = "\<Space>"
 let g:mapleader = "\<Space>"
 nmap <leader>w :w!<cr>
 
@@ -65,10 +67,12 @@ set laststatus=2
 set relativenumber
 set number
 colorscheme nord
+hi Normal guibg=NONE ctermbg=NONE
+au ColorScheme * hi Normal ctermbg=none guibg=none
 set nowrap
 set background=dark
+set conceallevel=0 concealcursor=niv
 let &t_ut=''
-hi Normal guibg=NONE ctermbg=NONE
 
 "buffer bindings
 nnoremap <A-l> :bnext<cr>
@@ -81,10 +85,10 @@ nnoremap x "_x
 vnoremap x "_x
 
 " highlights
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
+let g:go_highlight_functions         = 1
+let g:go_highlight_methods           = 1
+let g:go_highlight_structs           = 1
+let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
 
 "" Airline
@@ -124,13 +128,8 @@ set completeopt -=preview
 
 " Plugin key-mappings.
 
-" For conceal markers.
-if has('conceal')
-  set conceallevel=0 concealcursor=niv
-endif
-
 "other addons
-let g:rainbow_active = 1
+let g:rainbow_active  = 1
 "indent chars
 let g:indentLine_char = '│'
 
@@ -159,23 +158,29 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list            = 1
+let g:syntastic_check_on_open            = 1
+let g:syntastic_check_on_wq              = 0
 " asm checkers are shitty
-let g:syntastic_asm_checkers=['']
-let g:nord_comment_brightness = 20
-"let g:nord_uniform_diff_background = 1
+let g:syntastic_asm_checkers             =['']
+let g:nord_comment_brightness            = 20
+"let g:nord_uniform_diff_background      = 1
 
 set background=dark
 
 " FZF
-let g:fzf_layout = { 'down': '~32%' }
+let g:fzf_layout          = { 'down': '~32%' }
 nnoremap <leader><space> :FZF<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>n :Find 
 nnoremap <leader>fw *:Find <C-r>/<BS><BS><C-Left><Del><Del><CR>
 " let $FZF_DEFAULT_COMMAND= 'ag -g "" --ignore=\*.o'
-let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!.git/*" -g "!*.o"'
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow -g "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+let $FZF_DEFAULT_COMMAND  ='rg --files --hidden --follow -g "!.git/*" -g "!*.o"'
+
+
+
+
+
+" TESTING GROUND "
+set inccommand=nosplit
