@@ -1,4 +1,4 @@
-export PATH="$PATH /usr/bin/ /usr/local/bin/ /usr/local/sbin /usr/sbin/ /home/effi/.local/share/lutris/runners/wine/*/bin"
+export PATH="$PATH /usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:/home/effi/.local/share/lutris/runners/wine/staging-3.12-x86_64/bin/"
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 export WINEARCH=win64

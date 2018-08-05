@@ -5,7 +5,8 @@ set $alt Mod1
 set $dotdir $HOME/dotfiles
 
 
-exec_always --no-startup-id bash $dotdir/scripts/display.sh 
+exec_always --no-startup-id bash $dotdir/scripts/display.sh && feh --randomize --bg-fill ~/Data/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
+
 #Set Keyboard
 #exec_always --no-startup-id setxkbmap us -variant altgr-intl
 exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
@@ -16,7 +17,6 @@ exec_always --no-startup-id i3-autoname
 #Random Wallpaper
 
 #exec --no-startup-id redshift
-#exec_always --no-startup-id compton -b --config $dotdir/compton/compton.conf
 
 #for PulseAudio
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5 && pkill -RTMIN+17 i3blocks
@@ -27,7 +27,7 @@ bindsym XF86AudioMute exec --no-startup-id ponymix toggle && pkill -RTMIN+17 i3b
 bindsym $mod+$alt+l exec sh $dotdir/scripts/i3lock.sh
 
 #File Browser
-bindsym $mod+b exec --no-startup-id exec st -e vifm
+bindsym $mod+b exec --no-startup-id exec kitty -e ranger 
 
 #Reconf Displays
 bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
@@ -207,6 +207,7 @@ set_from_resource $base0D color13
 set_from_resource $base0E color14
 set_from_resource $base0F color15
 
+for_window [class="OS-Simulator"] floating enable
 
 
 mouse_warping none

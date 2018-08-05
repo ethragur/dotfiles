@@ -3,7 +3,7 @@
 # if you have an window manager running you have to restart it
 # at the bottom are the full queries for left and right
 
-scale_factor="1.7"
+scale_factor="1.5"
 primary="DisplayPort-0"
 primary_xres="3840"
 primary_yres="2160"
@@ -48,5 +48,3 @@ $query
 #
 #queryl=$(echo $fbx $fby $primary $primary_xres $primary_yres $scaled_x $sec $scaled_x $scaled_y $scale_factor $scale_factor $sec_pos $primary | \
 #	awk '{printf "xrandr --fb %dx%d --output %s --mode %dx%d --pos %dx0 --primary --output %s --panning %dx%d+0+0 --scale %sx%s ", $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14}' )
-
-feh --randomize --bg-fill ~/Data/Pictures/Wallpapers/*
