@@ -12,7 +12,7 @@ exec_always --no-startup-id bash $dotdir/scripts/display.sh && feh --randomize -
 exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 #icons are showing for each open workspace
-exec_always --no-startup-id i3-autoname
+exec_always --no-startup-id ~/go/bin/i3-autoname
 
 #Random Wallpaper
 
@@ -208,11 +208,13 @@ set_from_resource $base0E color14
 set_from_resource $base0F color15
 
 for_window [class="OS-Simulator"] floating enable
+for_window [class="Steam"] floating enable
 
 
 mouse_warping none
 # start rofi 
 bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+w exec --no-startup-id rofi -show window 
 #bindsym $mod+d exec rofi -show drun
 #bindsym $mod+g exec echo "" | rofi -dmenu -p "Search Google: " | xargs -I{} xdg-open https://www.google.com/search?q={}
 #bindsym $mod+y exec echo "" | rofi -dmenu -p "Search Youtube: " | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}

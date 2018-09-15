@@ -22,23 +22,37 @@ URxvt.font: xft:Fira Code:size=12
 !-------------------------------------------------------------------------------
 
 ! Layout
-!rofi.width:							 1920 
-!rofi.height:						 1080
-!rofi.padding:						 400
-!rofi.lines:                          20 
-!rofi.columns:                        1
-!rofi.hide-scrollbar:				 true
-!rofi.fullscreen:					 true
-!rofi.color-enabled:                  true
-!rofi.color-normal:                   .background,.foreground,.background,.color7,.foreground
-!rofi.color-urgent:                   .background,.color3,.background,.color3,.background
-!rofi.color-active:                   .background,.foreground,.background,.color4,.foreground
-!rofi.color-window:                   .background,.background
-!
-!! Behaviour
-!rofi.terminal:                       kitty
-!rofi.levenshtein-sort:               true
-!rofi.kb-cancel:                      Escape,Control+c
-!rofi.case-sensitive:				 false
-!rofi.opacity:						 80
-!rofi.font:							 Fira Code 14
+rofi.width:							 1280 
+rofi.height:						 720
+rofi.padding:						 60
+rofi.lines:                          12 
+rofi.columns:                        1
+rofi.hide-scrollbar:				 true
+
+rofi.color-enabled:                  true
+
+! Theme
+! Property Name     BG       Border   Separator
+rofi.color-window:  #3B4252, #3B4252, #2E3440
+
+! Property Name     BG       FG       BG-alt   Head-BG  Head-FG
+rofi.color-normal:  #3B4252, #E5E9F0, #3B4252, #3B4252, #8FBCBB
+rofi.color-active:  #3B4252, #EBCB8B, #3B4252, #3B4252, #EBCB8B
+rofi.color-urgent: #3B4252, #88C0D0, #3B4252, #3B4252, #88C0D0
+
+rofi.show-icons:						 true
+
+! Behaviour
+rofi.terminal:                       kitty
+rofi.levenshtein-sort:               true
+rofi.kb-cancel:                      Escape,Control+c
+rofi.case-sensitive:				 false
+rofi.opacity:						 80
+rofi.font:							 Fira Code 20
+
+!- Xterm
+
+XTerm.termName: xterm-256color
+XTerm.vt100.saveLines: 4096
+XTerm.vt100.faceName: Fira Code:size=12:antialias=true
+XTerm.vt100.font: 7x13
