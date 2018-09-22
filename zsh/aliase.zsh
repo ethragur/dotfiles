@@ -14,6 +14,8 @@ alias ls='exa'
 alias ll='exa -l'
 alias la='exa -la'
 
+alias vim='nvim'
+
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../../'
@@ -26,12 +28,12 @@ alias fj='firejail --seccomp --private --net=none'
 alias fx='firejail --seccomp --net=none'
 alias fjn='firejail --seccomp --private'
 
-alias inst='sudo xbps-install'
-alias install='sudo xbps-install'
-alias uinst='sudo xbps-remove -R'
-alias uninstall='sudo xbps-remove -R'
-alias update='sudo xbps-install -Su'
-alias search='sudo xbps-query -Rs'
+alias inst='sudo pacman -S'
+alias install='sudo pacman -S'
+alias uinst='sudo pacman -Rsnc'
+alias uninstall='sudo pacman -Rsnc'
+alias update='sudo pacman -Syu'
+alias search='sudo pacman -Ss'
 
 alias i3conf "vim $DOTFILES/i3/config"
 alias cddot "cd $DOTFILES"

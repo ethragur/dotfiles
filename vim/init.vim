@@ -1,4 +1,4 @@
-set shell=/bin/fish
+set shell=/usr/bin/zsh
 
 "dein Scripts-----------------------------
 if &compatible
@@ -18,6 +18,7 @@ call dein#add('ervandew/supertab')
 call dein#add('tpope/vim-sleuth')
 call dein#add('tpope/vim-commentary')
 call dein#add('Shougo/deoplete.nvim')
+call dein#add('arcticicestudio/nord-vim')
 call dein#add('rust-lang/rust.vim', {'on_ft' : [ 'rs']})
 call dein#add('sebastianmarkow/deoplete-rust', {'on_ft' : [ 'rs']})
 call dein#add('zchee/deoplete-clang', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
@@ -35,7 +36,6 @@ call dein#add('Chiel92/vim-autoformat')
 call dein#add('vim-syntastic/syntastic')
 call dein#add('posva/vim-vue', { 'on_ft' : 'vue' } )
 call dein#add('donRaphaco/neotex', { 'on_ft': 'tex' } )
-call dein#add('arcticicestudio/nord-vim')
 call dein#add('tommcdo/vim-lion')
 call dein#add('beanworks/vim-phpfmt')
 
