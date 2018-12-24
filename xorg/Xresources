@@ -12,7 +12,8 @@ Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
 Xft.dpi:  136
-Xcursor.size: 24px
+Xcursor.theme: Breeze_Snow
+Xcursor.size: 32
 
 
 URxvt.font: xft:Fira Code:size=12

@@ -68,6 +68,10 @@ function goodnight () {
     sleep 1h && sudo poweroff
 }
 
+function mega64 () {
+    megadl $(echo "$1" | base64 --decode)
+}
+
 function win_reboot () {
     sudo efibootmgr -n 0000
     sudo reboot

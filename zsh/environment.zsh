@@ -1,15 +1,13 @@
-export PATH="$PATH /usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:/home/effi/.local/share/lutris/runners/wine/staging-3.12-x86_64/bin/"
+export PATH="/usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:/home/effi/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/"
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
-export WINEARCH=win64
-export WINEPREFIX=~/.wine
-export WINEDEBUG=-all
 export PLAYER=mpv
 export EDITOR=nvim
 export VISUAL=nvim
 export GOPATH=$HOME/go/
 export TERM=xterm
 
+export RUST_SRC_PATH="/home/effi/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 
 
 export color0="#282828"

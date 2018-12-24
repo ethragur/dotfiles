@@ -20,6 +20,7 @@ call dein#add('tpope/vim-commentary')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('rust-lang/rust.vim', {'on_ft' : [ 'rs']})
 call dein#add('sebastianmarkow/deoplete-rust', {'on_ft' : [ 'rs']})
+call dein#add('OmniSharp/omnisharp-vim', {'on_ft' : [ 'cs']})
 call dein#add('zchee/deoplete-clang', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
 "call dein#add('dantler/vim-alternate', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
 "call dein#add('zchee/deoplete-go', {'build': 'make'}, { 'on_ft' : 'go' })
@@ -58,6 +59,7 @@ nmap <leader>w :w!<cr>
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set expandtab
 
 
 " color and optical enhancements
@@ -72,7 +74,7 @@ hi Normal guibg=NONE ctermbg=NONE
 au ColorScheme * hi Normal ctermbg=none guibg=none
 set nowrap
 set background=dark
-set conceallevel=0 concealcursor=niv
+set conceallevel=0 
 let &t_ut=''
 
 "buffer bindings
@@ -120,7 +122,7 @@ let g:deoplete#sources#clang#std#cpp = 'c++14'
 
 "deoplete rust
 let g:deoplete#sources#rust#racer_binary='/home/effi/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/effi/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+let g:deoplete#sources#rust#rust_source_path='/home/effi/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
 "depoplete go
 let g:deoplete#sources#go#gocode_binary = '/home/effi/go/bin/gocode'
@@ -133,6 +135,7 @@ set completeopt -=preview
 let g:rainbow_active  = 1
 "indent chars
 let g:indentLine_char = '│'
+let g:indentLine_setConceal = 0
 
 
 map <A-k> :A <CR>
@@ -179,6 +182,8 @@ nnoremap <leader>fw *:Find <C-r>/<BS><BS><C-Left><Del><Del><CR>
 " let $FZF_DEFAULT_COMMAND= 'ag -g "" --ignore=\*.o'
 let $FZF_DEFAULT_COMMAND  ='rg --files --hidden --follow -g "!.git/*" -g "!*.o"'
 
+let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
 
 
 
