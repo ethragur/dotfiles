@@ -5,7 +5,7 @@ set $alt Mod1
 set $dotdir $HOME/dotfiles
 
 
-exec_always --no-startup-id bash $dotdir/scripts/display.sh && feh --randomize --bg-fill ~/Data/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
+exec_always --no-startup-id bash $dotdir/scripts/display.sh && feh --randomize --bg-fill ~/Data/Pictures/Wallpapers/* #&& compton --config $dotdir/compton/compton.conf
 #exec_always --no-startup-id feh --randomize --bg-fill ~/Data/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
 
 #Set Keyboard
@@ -15,7 +15,10 @@ exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 #icons are showing for each open workspace
 exec_always --no-startup-id ~/go/bin/i3-autoname
 
-#Random Wallpaper
+
+exec_always --no-startup-id fcitx -d
+#exec --no-startup-id fcitx -d
+##Random Wallpaper
 
 #exec --no-startup-id redshift
 
@@ -54,7 +57,7 @@ font pango:Fira Code 8
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec firejail --seccomp firefox
+bindsym $mod+c exec GTK_IM_MODULE=xim firejail --seccomp firefox
 
 #take screenshot
 ##whole screen
