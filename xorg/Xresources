@@ -11,7 +11,7 @@ Xft.autohint: 0
 Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
-Xft.dpi:  136
+Xft.dpi:  96
 Xcursor.theme: Breeze_Snow
 Xcursor.size: 32
 
@@ -23,12 +23,12 @@ URxvt.font: xft:Fira Code:size=12
 !-------------------------------------------------------------------------------
 
 ! Layout
-rofi.width:							 1280 
-rofi.height:						 720
+rofi.width:							 1024
+rofi.height:						 360
 rofi.padding:						 60
 rofi.lines:                          12 
 rofi.columns:                        1
-rofi.hide-scrollbar:				 true
+rofi.hide-scrollbar:				 false
 
 rofi.color-enabled:                  true
 

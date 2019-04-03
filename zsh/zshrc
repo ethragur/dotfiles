@@ -31,4 +31,3 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 source $DOTFILES/zsh/aliase.zsh
 source $DOTFILES/zsh/environment.zsh
 source $DOTFILES/zsh/functions.zsh
-. "/home/effi/.acme.sh/acme.sh.env"

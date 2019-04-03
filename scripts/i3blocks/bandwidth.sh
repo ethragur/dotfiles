@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-DEVICE="$(ip addr show | grep enp | tail -n 1 | awk '{print $7;}')"
+DEVICE="wlo1"
 read rx < "/sys/class/net/$DEVICE/statistics/rx_bytes"
 read tx < "/sys/class/net/$DEVICE/statistics/tx_bytes"
 

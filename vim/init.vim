@@ -19,7 +19,8 @@ call dein#add('tpope/vim-sleuth')
 call dein#add('tpope/vim-commentary')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('rust-lang/rust.vim', {'on_ft' : [ 'rs']})
-call dein#add('sebastianmarkow/deoplete-rust', {'on_ft' : [ 'rs']})
+call dein#add('racer-rust/vim-racer', {'on_ft' : [ 'rs']})
+"call dein#add('sebastianmarkow/deoplete-rust', {'on_ft' : [ 'rs']})
 call dein#add('OmniSharp/omnisharp-vim', {'on_ft' : [ 'cs']})
 call dein#add('zchee/deoplete-clang', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
 "call dein#add('dantler/vim-alternate', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
@@ -121,8 +122,11 @@ let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 let g:deoplete#sources#clang#std#cpp = 'c++14'
 
 "deoplete rust
-let g:deoplete#sources#rust#racer_binary='/home/effi/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/effi/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+let g:racer_cmd = "/usr/bin/racer"
+"let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+"let g:deoplete#sources#rust#racer_binary='/home/effi/.cargo/bin/racer'
+"let g:deoplete#sources#rust#rust_source_path='/home/effi/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
 "depoplete go
 let g:deoplete#sources#go#gocode_binary = '/home/effi/go/bin/gocode'

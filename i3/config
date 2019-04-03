@@ -5,18 +5,18 @@ set $alt Mod1
 set $dotdir $HOME/dotfiles
 
 
-exec_always --no-startup-id bash $dotdir/scripts/display.sh && feh --randomize --bg-fill ~/Data/Pictures/Wallpapers/* #&& compton --config $dotdir/compton/compton.conf
-#exec_always --no-startup-id feh --randomize --bg-fill ~/Data/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
+exec_always feh --randomize --bg-fill ~/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
 
 #Set Keyboard
-#exec_always --no-startup-id setxkbmap us -variant altgr-intl
+exec_always --no-startup-id setxkbmap us -variant altgr-intl
 exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 #icons are showing for each open workspace
-exec_always --no-startup-id ~/go/bin/i3-autoname
+#exec_always --no-startup-id ~/go/bin/i3-autoname
 
 
 exec_always --no-startup-id fcitx -d
+exec_always --no-startup-id touchegg 
 #exec --no-startup-id fcitx -d
 ##Random Wallpaper
 
@@ -34,14 +34,14 @@ bindsym $mod+$alt+l exec sh $dotdir/scripts/i3lock.sh
 bindsym $mod+b exec --no-startup-id exec kitty -e ranger 
 
 #Reconf Displays
-bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
+#bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
 
 #Rotate Screen
-bindsym $mod+$alt+r exec sh $dotdir/scripts/rotate-screen.sh -j
+bindsym $mod+$alt+r exec $dotdir/scripts/tablet-mode.sh -j
 
 #BrightnessControl done via acpi now
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -i
+bindsym XF86MonBrightnessDown exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -d 
 
 new_window pixel 4
 new_float pixel 4
@@ -57,7 +57,7 @@ font pango:Fira Code 8
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec GTK_IM_MODULE=xim firejail --seccomp firefox
+bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firejail --seccomp firefox
 
 #take screenshot
 ##whole screen

@@ -1,8 +1,10 @@
 #!/bin/bash
-batinf='acpi -b'
-perc=$(acpi -b | awk '{print $4;}' | sed 's/%//g' | sed 's/,//g')
+perc=$(cat /sys/class/power_supply/BAT*/capacity)
+onpower=$(cat /sys/class/power_supply/ADP*/online) 
 
-if (( $perc > '75' ))
+if (( $onpower == '1' ))
+then echo -e "  $perc%\n\n$color10"
+elif (( $perc > '75' ))
 then echo -e "  $perc%\n\n$color10"
 elif (( $perc > '50' ))
 then echo -e "  $perc%\n\n$color10"
