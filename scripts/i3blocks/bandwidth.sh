@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-DEVICE="wlo1"
+DEVICE="enp4s0"
 read rx < "/sys/class/net/$DEVICE/statistics/rx_bytes"
 read tx < "/sys/class/net/$DEVICE/statistics/tx_bytes"
 

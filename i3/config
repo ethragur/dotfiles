@@ -5,7 +5,7 @@ set $alt Mod1
 set $dotdir $HOME/dotfiles
 
 
-exec_always feh --randomize --bg-fill ~/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
+exec_always bash $dotdir/scripts/display.sh  && feh --randomize --bg-fill ~/Pictures/Wallpapers/* #&& compton --config $dotdir/compton/compton.conf
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap us -variant altgr-intl
