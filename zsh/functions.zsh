@@ -44,6 +44,9 @@ case "$1" in
     *.7z)
        7z x $1
        ;;
+    *.xz)
+       tar xvf $1
+       ;;
     *)
         echo "Cannot extract file"
         return -1

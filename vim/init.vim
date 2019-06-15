@@ -20,6 +20,7 @@ Plug 'peterhoeg/vim-qml', { 'for' : 'qml' }
 Plug 'posva/vim-vue', { 'for' : 'vue' } 
 Plug 'donRaphaco/neotex', { 'for': 'tex' } 
 Plug 'beanworks/vim-phpfmt', { 'for' : [ 'php' ]}
+Plug 'chrisbra/NrrwRgn'
 Plug 'arcticicestudio/nord-vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Yggdroot/indentLine'
