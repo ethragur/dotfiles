@@ -1,4 +1,3 @@
-# Xserver
 xorg 
 xrdb 
 xrandr 
@@ -9,12 +8,10 @@ libXft-devel
 xorg-server-devel 
 libX11-devel 
 
-# i3
 i3-gaps 
 i3blocks 
 i3lock 
 
-# fonts
 font-awesome 
 font-fira-otf 
 font-fira-ttf 
@@ -23,13 +20,11 @@ noto-fonts-cjk
 noto-fonts-emoji 
 noto-fonts-ttf
 
-# sensors && hardware
 acpi 
 sysstat 
 lm_sensors 
 lshw 
 
-# terminal apps
 zsh
 exa 
 fzf
@@ -42,7 +37,6 @@ ranger
 flatpak
 firejail
 
-# graphical need apps
 compton 
 redshift 
 dmenu 
@@ -52,12 +46,10 @@ sxiv
 kitty
 firefox
 
-# Multimedia 
 ffmpeg
-gst-lubins-bad1 gst-plugins-good1
+gst-plugins-bad1 gst-plugins-good1
 mpv
 
-# build tools and useful tools
 nodejs 
 clang 
 boost 
@@ -74,14 +66,12 @@ python3-devel
 p7zip
 
 
-# sound
 alsa-utils
 ConsoleKit2
 pulseaudio
 pavucontrol
 ponymix 
 
-# chinese keyboard
 fcitx
 fcitx-configtool
 libfcitx-gtk 
@@ -89,7 +79,7 @@ libfcitx-gtk3
 libfcitx-qt 
 libfcitx-qt5
 
-# theme 
 arc-icon-theme 
 arc-theme 
 lxappearance
+jq

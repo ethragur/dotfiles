@@ -5,7 +5,7 @@ set $alt Mod1
 set $dotdir $HOME/dotfiles
 
 
-exec_always feh --randomize --bg-fill ~/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
+exec_always bash $dotdir/scripts/display.sh  && feh --randomize --bg-fill ~/Pictures/Wallpapers/* #&& compton --config $dotdir/compton/compton.conf
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap us -variant altgr-intl
@@ -36,12 +36,12 @@ bindsym $mod+b exec --no-startup-id exec kitty -e ranger
 #Reconf Displays
 #bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
 
-#Rotate Screen
-bindsym $mod+$alt+r exec $dotdir/scripts/tablet-mode.sh -j
+#Rotate Screen 
+#bindsym $mod+$alt+r exec $dotdir/scripts/tablet-mode.sh -j
 
 #BrightnessControl done via acpi now
-bindsym XF86MonBrightnessUp exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -i
-bindsym XF86MonBrightnessDown exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -d 
+#bindsym XF86MonBrightnessUp exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -i
+#bindsym XF86MonBrightnessDown exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -d 
 
 new_window pixel 4
 new_float pixel 4
@@ -60,12 +60,13 @@ floating_modifier $mod
 bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
 bindsym $mod+$alt+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
 
-
 #take screenshot
 ##whole screen
 bindsym $mod+p exec scrot '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
 ##focused window
 bindsym $mod+Shift+p exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
+
+bindsym $mod+Shift+m exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mv $f /tmp/ && cat /tmp/$f | xsel -b'
 ##select area
 bindsym $mod+s exec scrot -s '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
 

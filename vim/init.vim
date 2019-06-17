@@ -1,53 +1,36 @@
-set shell=/bin/fish
+set shell=/bin/zsh
 
-"dein Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-
+call plug#begin('~/.local/share/nvim/plugged')
 " Required:
-set runtimepath+=/home/effi/dotfiles/vim/deinvim/repos/github.com/Shougo/dein.vim
+"
+Plug 'bling/vim-airline'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-commentary'
+Plug 'Shougo/deoplete.nvim'
 
-" Required:
-call dein#begin('/home/effi/dotfiles/vim/deinvim')
-call dein#add('Shougo/dein.vim')
+Plug 'rust-lang/rust.vim', {'for' : [ 'rs']}
+Plug 'racer-rust/vim-racer', {'for' : [ 'rs']}
+Plug 'OmniSharp/omnisharp-vim', {'for' : [ 'cs']}
+Plug 'zchee/deoplete-clang', {'for' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']}
+Plug 'deoplete-plugins/deoplete-go', {'do': 'make', 'for' : 'go' }
+Plug 'petRUShka/vim-opencl', {'for' : 'cl'}
+Plug 'tikhomirov/vim-glsl', { 'for' : 'glsl' }
+Plug 'peterhoeg/vim-qml', { 'for' : 'qml' }
+Plug 'posva/vim-vue', { 'for' : 'vue' } 
+Plug 'donRaphaco/neotex', { 'for': 'tex' } 
+Plug 'beanworks/vim-phpfmt', { 'for' : [ 'php' ]}
+Plug 'chrisbra/NrrwRgn'
+Plug 'arcticicestudio/nord-vim'
+Plug 'Shougo/neoinclude.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'junegunn/fzf.vim'
+Plug 'luochen1990/rainbow'
+Plug 'Chiel92/vim-autoformat'
+Plug 'tommcdo/vim-lion'
+Plug 'vim-syntastic/syntastic'
 
-call dein#add('bling/vim-airline')
-call dein#add('morhetz/gruvbox')
-call dein#add('ervandew/supertab')
-call dein#add('tpope/vim-sleuth')
-call dein#add('tpope/vim-commentary')
-call dein#add('Shougo/deoplete.nvim')
-call dein#add('rust-lang/rust.vim', {'on_ft' : [ 'rs']})
-call dein#add('racer-rust/vim-racer', {'on_ft' : [ 'rs']})
-"call dein#add('sebastianmarkow/deoplete-rust', {'on_ft' : [ 'rs']})
-call dein#add('OmniSharp/omnisharp-vim', {'on_ft' : [ 'cs']})
-call dein#add('zchee/deoplete-clang', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
-"call dein#add('dantler/vim-alternate', {'on_ft' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']})
-"call dein#add('zchee/deoplete-go', {'build': 'make'}, { 'on_ft' : 'go' })
-call dein#add('petRUShka/vim-opencl', {'on_ft' : 'cl'})
-call dein#add('tikhomirov/vim-glsl', { 'on_ft' : 'glsl' })
-call dein#add('peterhoeg/vim-qml', { 'on_ft' : 'qml' })
-call dein#add('Shougo/neoinclude.vim')
-call dein#add('Yggdroot/indentLine')
-call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
-call dein#add('junegunn/fzf.vim')
-call dein#add('luochen1990/rainbow')
-call dein#add('Chiel92/vim-autoformat')
-call dein#add('vim-syntastic/syntastic')
-call dein#add('posva/vim-vue', { 'on_ft' : 'vue' } )
-call dein#add('donRaphaco/neotex', { 'on_ft': 'tex' } )
-call dein#add('arcticicestudio/nord-vim')
-call dein#add('tommcdo/vim-lion')
-call dein#add('beanworks/vim-phpfmt')
-
-call dein#end()
-
-"check on startupp for non installed plugins
-if dein#check_install()
-  call dein#install()
-endif
-
+call plug#end()
 
 filetype plugin on    " required
 "let g:python_host_prog = '/usr/bin/python2.7'
@@ -122,8 +105,8 @@ let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 let g:deoplete#sources#clang#std#cpp = 'c++14'
 
 "deoplete rust
-let g:racer_cmd = "/usr/bin/racer"
-"let g:racer_experimental_completer = 1
+let g:racer_cmd = "/home/effi/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 "let g:deoplete#sources#rust#racer_binary='/home/effi/.cargo/bin/racer'
 "let g:deoplete#sources#rust#rust_source_path='/home/effi/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
@@ -132,6 +115,10 @@ let g:racer_insert_paren = 1
 let g:deoplete#sources#go#gocode_binary = '/home/effi/go/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 set completeopt -=preview
+
+"deoplete php
+"let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+"let g:deoplete#ignore_sources.php = ['omni']
 
 " Plugin key-mappings.
 
@@ -171,7 +158,6 @@ let g:syntastic_check_on_open            = 1
 let g:syntastic_check_on_wq              = 0
 " asm checkers are shitty
 let g:syntastic_asm_checkers             =['']
-let g:nord_comment_brightness            = 20
 "let g:nord_uniform_diff_background      = 1
 
 set background=dark
