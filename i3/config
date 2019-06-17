@@ -57,7 +57,9 @@ font pango:Fira Code 8
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firejail --seccomp firefox
+bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
+bindsym $mod+$alt+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
+
 
 #take screenshot
 ##whole screen
@@ -116,8 +118,8 @@ bindsym $mod+space focus mode_toggle
 # make window sticky
 bindsym $mod+Shift+s sticky toggle
 
-set $DISPLAY-0 DisplayPort-0
-set $DISPLAY-1 HDMI-A-0
+set $DISPLAY-0 eDP
+set $DISPLAY-1 DisplayPort-0
 #
 ##assign workspaces to different screen
 workspace 1 output $DISPLAY-0

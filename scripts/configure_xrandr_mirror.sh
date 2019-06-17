@@ -1,7 +1,7 @@
 #! /bin/bash
 
 PRIMARY=$(xrandr | grep connected | awk '{print $1;}' | grep eDP)
-EXT1=$(xrandr | grep connected | awk '{print $1;}' | grep HDMI)
+EXT1=$(xrandr | grep connected | awk '{print $1;}' | grep DisplayPort)
 
 
 if (xrandr | grep "$EXT1 connected"); then

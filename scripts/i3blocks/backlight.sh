@@ -4,7 +4,7 @@ brightloc="/sys/class/backlight/amdgpu_bl0/brightness"
 current=$(cat $brightloc)
 max=$(cat /sys/class/backlight/amdgpu_bl0/max_brightness)
 currentpc=$(echo "scale=2;($current / $max) " | bc -l | sed 's/\.//')
-tenp=$(echo "$max / 20" | bc )
+tenp=$(echo "$max / 30" | bc )
 
 
 while getopts dil option
