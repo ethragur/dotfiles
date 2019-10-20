@@ -1,4 +1,4 @@
-export PATH="/usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:/home/effi/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/"
+export PATH="/usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/:$HOME/go/bin/:$HOME/.local/share/lutris/runners/wine/lutris-experimental-4.10-x86_64/bin/"
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 export PLAYER=mpv
@@ -7,7 +7,7 @@ export VISUAL=nvim
 export GOPATH=$HOME/go/
 export TERM=xterm
 
-export RUST_SRC_PATH="/home/effi/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 
 export GPG_TTY=$(tty)
 export GTK_IM_MODULE=fcitx

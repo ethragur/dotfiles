@@ -7,13 +7,12 @@ Plug 'bling/vim-airline'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-commentary'
-Plug 'Shougo/deoplete.nvim'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 
 Plug 'rust-lang/rust.vim', {'for' : [ 'rs']}
 Plug 'racer-rust/vim-racer', {'for' : [ 'rs']}
 Plug 'OmniSharp/omnisharp-vim', {'for' : [ 'cs']}
-Plug 'zchee/deoplete-clang', {'for' : [ 'c', 'h', 'cpp', 'hpp', 'cxx']}
-Plug 'deoplete-plugins/deoplete-go', {'do': 'make', 'for' : 'go' }
+
 Plug 'petRUShka/vim-opencl', {'for' : 'cl'}
 Plug 'tikhomirov/vim-glsl', { 'for' : 'glsl' }
 Plug 'peterhoeg/vim-qml', { 'for' : 'qml' }
@@ -94,31 +93,7 @@ set ruler
 set ignorecase
 
 
-"deoplete
-let g:deoplete#enable_at_startup = 1
-
 let g:SuperTabDefaultCompletionType = "<c-n>"
-
-"depoplete clang
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-let g:deoplete#sources#clang#std#cpp = 'c++14'
-
-"deoplete rust
-let g:racer_cmd = "/home/effi/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-let g:racer_insert_paren = 1
-"let g:deoplete#sources#rust#racer_binary='/home/effi/.cargo/bin/racer'
-"let g:deoplete#sources#rust#rust_source_path='/home/effi/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-
-"depoplete go
-let g:deoplete#sources#go#gocode_binary = '/home/effi/go/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-set completeopt -=preview
-
-"deoplete php
-"let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-"let g:deoplete#ignore_sources.php = ['omni']
 
 " Plugin key-mappings.
 
@@ -176,6 +151,25 @@ let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
 
 
+" CoC
+"
+set cmdheight=2
+set signcolumn=yes
+set shortmess+=c
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 
 " TESTING GROUND "

@@ -22,6 +22,8 @@ ln -sf $dotfiles/zsh/zshrc $homedir/.zshrc
 ln -sf $dotfiles/kitty/kitty.conf $homedir/.config/kitty/kitty.conf
 ln -sf $dotfiles/mpv/mpv.conf $homedir/.config/mpv/mpv.conf
 ln -sf $dotfiles/xorg/xprofile $homedir/.profile
+ln -sf $dotfiles/vim/coc-settings.json $homedir/.config/nvim/
+
 
 sudo ln -sf $dotfiles/zsh/zshrc $rootdir/.zshrc
 sudo ln -sf $dotfiles/vim/init.vim $rootdir/.vimrc
