@@ -6,7 +6,7 @@ source $DOTFILES/zsh/antigen.zsh
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
+#antigen bundle git
 antigen bundle heroku
 antigen bundle pip
 antigen bundle lein
@@ -31,3 +31,5 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 source $DOTFILES/zsh/aliase.zsh
 source $DOTFILES/zsh/environment.zsh
 source $DOTFILES/zsh/functions.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

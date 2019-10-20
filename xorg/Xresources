@@ -11,7 +11,7 @@ Xft.autohint: 0
 Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
-Xft.dpi:  132
+Xft.dpi:  112
 Xcursor.theme: Breeze_Snow
 Xcursor.size: 32
 

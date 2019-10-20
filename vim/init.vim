@@ -8,11 +8,9 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-
 Plug 'rust-lang/rust.vim', {'for' : [ 'rs']}
 Plug 'racer-rust/vim-racer', {'for' : [ 'rs']}
 Plug 'OmniSharp/omnisharp-vim', {'for' : [ 'cs']}
-
 Plug 'petRUShka/vim-opencl', {'for' : 'cl'}
 Plug 'tikhomirov/vim-glsl', { 'for' : 'glsl' }
 Plug 'peterhoeg/vim-qml', { 'for' : 'qml' }
@@ -23,11 +21,14 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'arcticicestudio/nord-vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Yggdroot/indentLine'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
 Plug 'Chiel92/vim-autoformat'
 Plug 'tommcdo/vim-lion'
 Plug 'vim-syntastic/syntastic'
+Plug 'leafgarland/typescript-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
@@ -59,6 +60,7 @@ set nowrap
 set background=dark
 set conceallevel=0 
 let &t_ut=''
+set iskeyword-=_
 
 "buffer bindings
 nnoremap <A-l> :bnext<cr>
@@ -139,7 +141,7 @@ set background=dark
 
 " FZF
 let g:fzf_layout          = { 'down': '~32%' }
-nnoremap <leader><space> :FZF<CR>
+nnoremap <leader><space> :Files<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>n :Find 
@@ -149,7 +151,6 @@ let $FZF_DEFAULT_COMMAND  ='rg --files --hidden --follow -g "!.git/*" -g "!*.o"'
 
 let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
-
 
 " CoC
 "
@@ -170,7 +171,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
 
 " TESTING GROUND "
 set inccommand=nosplit

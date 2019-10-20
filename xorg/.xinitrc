@@ -10,7 +10,11 @@ fi
 [ -f ~/.xprofile ] && . ~/.xprofile
 
 
+
 export DESKTOP_SESSION=gnome
+
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 
 xset -dpms s off
 xrdb -load $DOTFILES/xorg/Xresources
@@ -18,5 +22,4 @@ xrdb -load $DOTFILES/xorg/Xresources
 start-pulseaudio-x11 &
 
 exec i3 -c $DOTFILES/i3/config
-#exex lxqt-session
-##exec awesome
+#exec startkde

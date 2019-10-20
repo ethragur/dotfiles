@@ -1,4 +1,4 @@
-export PATH="/usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/:$HOME/go/bin/:$HOME/.local/share/lutris/runners/wine/lutris-experimental-4.10-x86_64/bin/"
+export PATH="/usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/:$HOME/go/bin/"
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 export PLAYER=mpv
