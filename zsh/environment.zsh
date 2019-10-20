@@ -1,4 +1,5 @@
-export PATH="/usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:/home/effi/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/"
+export PATH="/usr/bin/:/usr/local/bin/:/usr/local/sbin:/usr/sbin/:/home/effi/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/:/home/effi/go/bin/"
+export JAVA_HOME="/usr/lib/jvm/openjdk/"
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 export PLAYER=mpv

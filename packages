@@ -65,6 +65,8 @@ pkg-config
 python3-devel 
 p7zip
 
+yarn
+ccls
 
 alsa-utils
 ConsoleKit2

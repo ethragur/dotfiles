@@ -31,7 +31,7 @@ alias inst='sudo xbps-install'
 alias install='sudo xbps-install'
 alias uinst='sudo xbps-remove -R'
 alias uninstall='sudo xbps-remove -R'
-alias update='sudo xbps-install -Su'
+alias update='sudo xbps-install -Su -y && sudo vkpurge rm all && flatpak update --user -y && vim -c PlugUpgrade -c PlugUpdate -c CocUpdate -c qall'
 alias search='sudo xbps-query -Rs'
 
 alias i3conf "vim $DOTFILES/i3/config"

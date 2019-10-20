@@ -9,11 +9,10 @@ sudo xbps-install -Su
 sudo xbps-install -S $(cat $dotdir/packages)
 
 
-###deinvim installation
-wget https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
-mkdir -p $dotdir/vim/deinvim
-sh installer.sh $dotdir/vim/deinvim/
-rm installer.sh
+###vim-plug installation
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 sudo pip3 install neovim
 sudo pip install neovim
 ##

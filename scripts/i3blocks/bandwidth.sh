@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-DEVICE="enp4s0"
+DEVICE="$(ip route | awk '/default/ {print $5}' | head -n 1)"
 read rx < "/sys/class/net/$DEVICE/statistics/rx_bytes"
 read tx < "/sys/class/net/$DEVICE/statistics/tx_bytes"
 
@@ -11,7 +11,7 @@ read rxo < "/sys/class/net/$DEVICE/statistics/rx_bytes"
 read txo < "/sys/class/net/$DEVICE/statistics/tx_bytes"
 
 
-rspeed=$(( ($rxo - $rx ) / 1000 ))
-tspeed=$(( ($txo - $tx ) / 1000 ))
+rspeed=$(( ($rxo - $rx ) / 1024 ))
+tspeed=$(( ($txo - $tx ) / 1024 ))
 
 echo -e "${rspeed}K ${tspeed}K\n\n$color9\n"
