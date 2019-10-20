@@ -21,5 +21,6 @@ xrdb -load $DOTFILES/xorg/Xresources
 
 start-pulseaudio-x11 &
 
+export PRIMARY_SCREEN="$(xrandr | grep ' connected primary' | awk '{ print $1 }')"
+export SECONDARY_SCREEN="$(xrandr | grep ' connected ' | awk 'FNR==2{ print $1 }')"
 exec i3 -c $DOTFILES/i3/config
-#exec startkde

@@ -3,24 +3,18 @@ set $mod Mod4
 set $alt Mod1
 
 set $dotdir $HOME/dotfiles
+set $DISPLAY-0 DisplayPort-0
+set $DISPLAY-1 $SECONDARY_SREEN
 
 
-exec_always  feh --bg-fill ~/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
+exec_always bash $dotdir/scripts/display.sh && feh --bg-fill ~/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap us -variant altgr-intl
 exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
-#icons are showing for each open workspace
-#exec_always --no-startup-id ~/go/bin/i3-autoname
-
-
 exec_always --no-startup-id fcitx -d
 exec_always --no-startup-id touchegg 
-#exec --no-startup-id fcitx -d
-##Random Wallpaper
-
-#exec --no-startup-id redshift
 
 #for PulseAudio
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5 && pkill -RTMIN+17 i3blocks
@@ -119,8 +113,6 @@ bindsym $mod+space focus mode_toggle
 # make window sticky
 bindsym $mod+Shift+s sticky toggle
 
-set $DISPLAY-0 eDP
-set $DISPLAY-1 DisplayPort-0
 #
 ##assign workspaces to different screen
 workspace 1 output $DISPLAY-0
