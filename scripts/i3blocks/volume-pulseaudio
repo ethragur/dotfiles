@@ -1,5 +1,7 @@
 #!/bin/bash
+
 # Displays the default device, volume, and mute status for i3blocks
+source ~/.cache/wal/colors.sh
 
 AUDIO_HIGH_SYMBOL='  '
 
@@ -13,8 +15,8 @@ AUDIO_MUTED_SYMBOL='  '
 
 AUDIO_INTERVAL=5
 
-DEFAULT_COLOR="$color8"
-MUTED_COLOR="color4"
+DEFAULT_COLOR="$color4"
+MUTED_COLOR="$color8"
 
 LONG_FORMAT=0
 SHORT_FORMAT=2

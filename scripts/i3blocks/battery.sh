@@ -1,4 +1,5 @@
 #!/bin/bash
+source ~/.cache/wal/colors.sh
 perc=$(cat /sys/class/power_supply/BAT*/capacity)
 onpower=$(cat /sys/class/power_supply/ADP*/online) 
 

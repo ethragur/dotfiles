@@ -1,2 +1,3 @@
 #!/bin/bash
-echo -e " "$(date '+%H:%M')"\n\n$color5\n"
+source ~/.cache/wal/colors.sh
+echo -e " "$(date '+%H:%M')"\n\n$color5"

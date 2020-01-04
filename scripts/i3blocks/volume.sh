@@ -1,10 +1,11 @@
 #!/usr/bin/bash
+source ~/.cache/wal/colors.sh
 ponymix is-muted
 if [ $? -eq 0 ]
 then
-	echo -e "MUTED \n\n$color1\n"
+	echo -e "MUTED \n\n$color1"
 else
-	echo -e "$(ponymix get-volume)%\n\n$color1\n"
+	echo -e "$(ponymix get-volume)%\n\n$color1"
 fi
 
 case $BLOCK_BUTTON in

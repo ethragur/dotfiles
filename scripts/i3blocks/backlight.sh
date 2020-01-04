@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+source ~/.cache/wal/colors.sh
+
 brightloc="/sys/class/backlight/amdgpu_bl0/brightness"
 current=$(cat $brightloc)
 max=$(cat /sys/class/backlight/amdgpu_bl0/max_brightness)
