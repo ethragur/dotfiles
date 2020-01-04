@@ -10,6 +10,7 @@ mkdir -p "$homedir/.config/fish/"
 mkdir -p "$homedir/.config/nvim/"
 mkdir -p "$homedir/.config/kitty/"
 mkdir -p "$homedir/.config/mpv/"
+mkdir -p "$homedir/.config/rofi/"
 
 ln -sf $dotfiles/vim/init.vim $homedir/.vimrc
 ln -sf $dotfiles/vim/init.vim $homedir/.config/nvim/init.vim
@@ -22,6 +23,7 @@ ln -sf $dotfiles/zsh/zshrc $homedir/.zshrc
 ln -sf $dotfiles/kitty/kitty.conf $homedir/.config/kitty/kitty.conf
 ln -sf $dotfiles/mpv/mpv.conf $homedir/.config/mpv/mpv.conf
 ln -sf $dotfiles/xorg/xprofile $homedir/.profile
+ln -sf $dotfiles/rofi/config.rasi $homedir/.config/rofi/config.rasi
 ln -sf $/dotfiles/vim/coc-settings.json $homedir/.config/nvim/coc-settings.json
 
 sudo ln -sf $dotfiles/zsh/zshrc $rootdir/.zshrc
