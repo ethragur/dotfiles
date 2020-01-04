@@ -29,6 +29,7 @@ Plug 'tommcdo/vim-lion'
 Plug 'vim-syntastic/syntastic'
 Plug 'leafgarland/typescript-vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -67,6 +68,12 @@ nnoremap <A-l> :bnext<cr>
 nnoremap <A-h> :bprev<cr>
 inoremap <A-l> <Esc>:bnext<cr>
 inoremap <A-h> <Esc>:bprev<cr>
+
+" split bindings
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
 
 " delete without yanking
 nnoremap x "_x

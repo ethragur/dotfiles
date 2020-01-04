@@ -4,10 +4,10 @@ set $alt Mod1
 
 set $dotdir $HOME/dotfiles
 set $DISPLAY-0 DisplayPort-0
-set $DISPLAY-1 $SECONDARY_SREEN
+set $DISPLAY-1 HDMI-A-0
 
 
-exec_always bash $dotdir/scripts/display.sh && feh --bg-fill ~/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
+exec_always bash $dotdir/scripts/display.sh && feh --bg-fill ~/Documents/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap us -variant altgr-intl
@@ -56,13 +56,13 @@ bindsym $mod+$alt+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
 
 #take screenshot
 ##whole screen
-bindsym $mod+p exec scrot '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
+bindsym $mod+p exec scrot '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Documents/Pictures/Screenshots/ && mv $f ~/Documents/Pictures/Screenshots/'
 ##focused window
-bindsym $mod+Shift+p exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
+bindsym $mod+Shift+p exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Documents/Pictures/Screenshots/ && mv $f ~/Documents/Pictures/Screenshots/'
 
 bindsym $mod+Shift+m exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mv $f /tmp/ && cat /tmp/$f | xsel -b'
 ##select area
-bindsym $mod+s exec scrot -s '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/Screenshots/ && mv $f ~/Pictures/Screenshots/'
+bindsym $mod+s exec scrot -s '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Documents/Pictures/Screenshots/ && mv $f ~/Documents/Pictures/Screenshots/'
 
 # start a terminal
 bindsym $mod+Return exec kitty
@@ -173,10 +173,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 1 px or 1 ppt
-        bindsym j resize grow height 1 px or 1 ppt
-        bindsym k resize shrink height 1 px or 1 ppt
-        bindsym l resize grow width 1 px or 1 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 	bindsym r resize grow width 300 px or 10 ppt; resize grow height 300 px or 10 ppt
 	bindsym s resize shrink width 300 px or 10 ppt; resize shrink grow height 300 px or 10 ppt
 
@@ -223,16 +223,18 @@ bindsym $mod+w exec --no-startup-id rofi -show window -theme $dotdir/rofi/rofi.r
 bar {
 	i3bar_command i3bar -t
 	status_command i3blocks -c $dotdir/i3/i3blocks.conf
-	mode dock
-	position top 
-	font pango:Fira Code, Icons 12
+	position top
+	tray_output primary
+	tray_padding 5
+	font pango:Fira Code, Icons 13
 	colors {
 		separator $base03
-		background #2E3440CC
+		background #00000000
 		statusline $base05
-		focused_workspace $base0E $base0E $base00
-		active_workspace $base0B $base0B $base00
-		inactive_workspace $base00 $base00 $base07
+#		focused_workspace $base0E $base0E $base00
+		focused_workspace  $base0E #00000000 $base06
+		active_workspace $base08 #0000000 $base05
+		inactive_workspace #00000000 #00000000 $base04
 		urgent_workspace $base01 $base01 $base00
 	}
 }

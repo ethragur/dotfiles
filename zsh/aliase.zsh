@@ -35,9 +35,10 @@ alias uninstall='sudo xbps-remove -R'
 alias update='sudo xbps-install -Su -y && sudo vkpurge rm all && flatpak update --user -y && vim -c PlugUpgrade -c PlugUpdate -c CocUpdate -c qall'
 alias search='sudo xbps-query -Rs'
 
-alias i3conf "vim $DOTFILES/i3/config"
-alias cddot "cd $DOTFILES"
-alias cddev "cd ~/Documents/dev"
+alias i3conf="vim $DOTFILES/i3/config"
+alias cddot="cd $DOTFILES"
+alias cddev="cd ~/Documents/dev"
+alias cdtmp="cd ~/.tmp/"
 alias givepw='cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 16; echo'
 alias rsync='rsync -a --stats --progress'
 alias ccmake='cmake .; and make'
