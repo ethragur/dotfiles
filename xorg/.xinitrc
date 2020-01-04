@@ -11,8 +11,6 @@ fi
 
 
 
-export DESKTOP_SESSION=gnome
-
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
@@ -23,4 +21,5 @@ start-pulseaudio-x11 &
 
 export PRIMARY_SCREEN="$(xrandr | grep ' connected primary' | awk '{ print $1 }')"
 export SECONDARY_SCREEN="$(xrandr | grep ' connected ' | awk 'FNR==2{ print $1 }')"
+wal -R
 exec i3 -c $DOTFILES/i3/config

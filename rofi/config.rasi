@@ -1,0 +1,123 @@
+configuration {
+    theme: "~/.cache/wal/colors-rofi-dark.rasi";
+    icon-theme:                     "Papirus-Dark";
+    font:                           "Fira Code 14";
+    display-drun:                   "";
+    display-run:                    "";
+    show-icons:                     true;
+    sidebar-mode:                   true;
+    lines:                          20;
+    terminal: "kitty";
+    case-sensitive: false;
+    hide-scrollbar: true;
+    modi: "window,run,ssh,drun";
+}
+
+window {
+	location:	 west;
+	anchor:		 west;
+	x-offset: 0px;
+	height:		 100%;
+	width:		 400px;
+	margin-right: 60px;
+	orientation: horizontal;
+	children:	 [mainbox];
+}
+
+mainbox {
+    spacing:  0em;
+    padding: 0px;
+    width:200px;
+    children: [ inputbar, listview, sidebar ];
+    expand: true;
+}
+
+button { padding: 5px 2px; }
+
+button selected {
+    background-color: @background;
+    text-color:       @background;
+}
+
+inputbar {
+    children: [ entry ];
+}
+
+textbox-prompt-colon {
+    text-color: inherit;
+    expand: false;
+    margin: 0 0.0em 0em 0em;
+}
+
+listview {
+	spacing: 2em;
+	dynamic: true;
+	cycle:   true;
+}
+
+element {
+	padding: 16px;
+	border:  0 0 0 5px solid;
+}
+
+entry {
+	expand:         true;
+	text-color:     @normal-foreground;
+	background-color: @normal-background;
+	vertical-align: 1;
+	padding:        0px;
+	font:            "Fira Code 13";
+}
+
+element normal.normal {
+	background-color: @normal-background;
+	text-color:       @normal-foreground;
+}
+
+element normal.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
+}
+
+element normal.active {
+	background-color: @active-background;
+	text-color:       @active-foreground;
+}
+
+element selected.normal {
+	background-color: @selected-normal-background;
+	text-color:       @selected-normal-foreground;
+	padding: 16px;
+	border:           0 0 0 5px solid;
+	border-color:	    @active-background;
+}
+
+element selected.urgent {
+	background-color: @selected-urgent-background;
+	text-color:       @selected-urgent-foreground;
+}
+
+element selected.active {
+	background-color: @selected-active-background;
+	text-color:       @selected-active-foreground;
+}
+
+element alternate.normal {
+	background-color: @normal-background;
+	text-color:       @normal-foreground;
+}
+
+element alternate.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
+}
+
+element alternate.active {
+	background-color: @active-background;
+	text-color:       @active-foreground;
+}
+
+element-icon {
+    size:                           32;
+    border:                         0px;
+}

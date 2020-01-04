@@ -7,7 +7,9 @@ set $DISPLAY-0 DisplayPort-0
 set $DISPLAY-1 HDMI-A-0
 
 
-exec_always bash $dotdir/scripts/display.sh && feh --bg-fill ~/Documents/Pictures/Wallpapers/* && compton --config $dotdir/compton/compton.conf
+exec_always bash $dotdir/scripts/display.sh
+exec_always --no-startup-id feh --bg-tile "$(< "${HOME}/.cache/wal/wal")" 
+exec_always --no-startup-id picom --experimental-backends --config $dotdir/compton/compton.conf
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap us -variant altgr-intl
@@ -212,8 +214,9 @@ for_window [class="Steam"] floating enable
 
 mouse_warping none
 # start rofi 
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme $dotdir/rofi/rofi.rasi
-bindsym $mod+w exec --no-startup-id rofi -show window -theme $dotdir/rofi/rofi.rasi
+bindsym $mod+d exec --no-startup-id rofi -show drun 
+bindsym $mod+w exec --no-startup-id rofi -show window 
+bindsym $mod+$alt+s exec --no-startup-id rofi -show ssh 
 #bindsym $mod+d exec rofi -show drun
 #bindsym $mod+g exec echo "" | rofi -dmenu -p "Search Google: " | xargs -I{} xdg-open https://www.google.com/search?q={}
 #bindsym $mod+y exec echo "" | rofi -dmenu -p "Search Youtube: " | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
@@ -229,9 +232,8 @@ bar {
 	font pango:Fira Code, Icons 13
 	colors {
 		separator $base03
-		background #00000000
+		background $base00
 		statusline $base05
-#		focused_workspace $base0E $base0E $base00
 		focused_workspace  $base0E #00000000 $base06
 		active_workspace $base08 #0000000 $base05
 		inactive_workspace #00000000 #00000000 $base04

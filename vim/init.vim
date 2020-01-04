@@ -3,7 +3,8 @@ set shell=/bin/zsh
 call plug#begin('~/.local/share/nvim/plugged')
 " Required:
 "
-Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-commentary'
@@ -16,20 +17,18 @@ Plug 'tikhomirov/vim-glsl', { 'for' : 'glsl' }
 Plug 'peterhoeg/vim-qml', { 'for' : 'qml' }
 Plug 'posva/vim-vue', { 'for' : 'vue' } 
 Plug 'donRaphaco/neotex', { 'for': 'tex' } 
-Plug 'beanworks/vim-phpfmt', { 'for' : [ 'php' ]}
 Plug 'chrisbra/NrrwRgn'
-Plug 'arcticicestudio/nord-vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
-Plug 'Chiel92/vim-autoformat'
 Plug 'tommcdo/vim-lion'
 Plug 'vim-syntastic/syntastic'
 Plug 'leafgarland/typescript-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'dylanaraps/wal.vim'
 
 call plug#end()
 
@@ -45,16 +44,16 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set showtabline=2
 
 
 " color and optical enhancements
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax on
-set termguicolors
 set laststatus=2
 set relativenumber
 set number
-colorscheme nord
+colorscheme wal
 hi Normal guibg=NONE ctermbg=NONE
 au ColorScheme * hi Normal ctermbg=none guibg=none
 set nowrap
@@ -70,6 +69,7 @@ inoremap <A-l> <Esc>:bnext<cr>
 inoremap <A-h> <Esc>:bprev<cr>
 
 " split bindings
+"window bindings
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
@@ -78,6 +78,8 @@ nnoremap <C-H> <C-W>h
 " delete without yanking
 nnoremap x "_x
 vnoremap x "_x
+
+au BufNewFile,BufRead /*.rasi setf css
 
 " highlights
 let g:go_highlight_functions         = 1
@@ -181,3 +183,34 @@ endfunction
 
 " TESTING GROUND "
 set inccommand=nosplit
+
+
+" lightline
+let g:lightline = {
+  \ 'colorscheme': 'nord',
+  \ 'active': {
+  \   'left': [
+  \     [ 'mode', 'paste' ],
+  \     [ 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method' ]
+  \   ],
+  \   'right':[
+  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
+  \     [ 'blame' ]
+  \   ],
+  \ },
+  \ 'component_function': {
+  \   'blame': 'LightlineGitBlame',
+  \ },
+  \ 'tabline': {
+  \    'left': [['buffers']], 'right': [['close']]
+  \ },
+  \ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
+  \ 'component_type': {'buffers': 'tabsel'}
+\ }
+
+function! LightlineGitBlame() abort
+  let blame = get(b:, 'coc_git_blame', '')
+  " return blame
+  return winwidth(0) > 120 ? blame : ''
+endfunction
+
