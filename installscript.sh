@@ -13,16 +13,15 @@ sudo xbps-install -S $(cat $dotdir/packages)
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-sudo pip3 install neovim
-sudo pip install neovim
+pip3 install --user neovim
+pip3 install --user pywal
 ##
 ##
 ##
 ####other installations
 yes | sudo sensors-detect
-sudo pip3 install i3ipc
-sudo pip3 install fontawesome
-sudo chsh -s /bin/zsh
+pip3 install --user i3ipc
+pip3 install --user fontawesome
 chsh -s /bin/zsh
 #
 sh $dotdir/installDotfiles.sh

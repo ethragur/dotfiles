@@ -8,7 +8,7 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-commentary'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim', {'for' : [ 'rs']}
 Plug 'racer-rust/vim-racer', {'for' : [ 'rs']}
 Plug 'OmniSharp/omnisharp-vim', {'for' : [ 'cs']}
@@ -29,6 +29,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'dylanaraps/wal.vim'
+Plug 'ron-rs/ron.vim'
 
 call plug#end()
 

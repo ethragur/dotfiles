@@ -7,9 +7,8 @@ set $DISPLAY-0 DisplayPort-0
 set $DISPLAY-1 HDMI-A-0
 
 
-exec_always bash $dotdir/scripts/display.sh
-exec_always --no-startup-id feh --bg-tile "$(< "${HOME}/.cache/wal/wal")" 
-exec_always --no-startup-id picom --experimental-backends --config $dotdir/compton/compton.conf
+exec_always --no-startup-id bash $dotdir/scripts/display.sh && sleep 1s && bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --config $dotdir/compton/compton.conf 
+#
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap us -variant altgr-intl
@@ -234,9 +233,9 @@ bar {
 		separator $base03
 		background $base00
 		statusline $base05
-		focused_workspace  $base0E #00000000 $base06
-		active_workspace $base08 #0000000 $base05
-		inactive_workspace #00000000 #00000000 $base04
+		focused_workspace $base0E $base0E $base00
+		active_workspace $base0B $base0B $base00
+		inactive_workspace $base00 $base00 $base07
 		urgent_workspace $base01 $base01 $base00
 	}
 }
