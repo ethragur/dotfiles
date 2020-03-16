@@ -30,6 +30,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'dylanaraps/wal.vim'
 Plug 'ron-rs/ron.vim'
+Plug 'gko/vim-coloresque'
+Plug 'stephpy/vim-yaml'
 
 call plug#end()
 
@@ -215,3 +217,7 @@ function! LightlineGitBlame() abort
   return winwidth(0) > 120 ? blame : ''
 endfunction
 
+
+" add yaml stuffs
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
