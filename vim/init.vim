@@ -115,7 +115,6 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:rainbow_active  = 1
 "indent chars
 let g:indentLine_char = '│'
-let g:indentLine_setConceal = 0
 
 
 map <A-k> :A <CR>
@@ -219,5 +218,5 @@ endfunction
 
 
 " add yaml stuffs
-au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>

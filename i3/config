@@ -7,7 +7,8 @@ set $DISPLAY-0 DisplayPort-0
 set $DISPLAY-1 HDMI-A-0
 
 
-exec_always --no-startup-id bash $dotdir/scripts/display.sh && sleep 1s && bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --config $dotdir/compton/compton.conf 
+#exec_always --no-startup-id bash $dotdir/scripts/display.sh && sleep 1s && bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --blur-method dual_kawase --blur-strength 7 --config ~/dotfiles/compton/compton.conf
+exec_always --no-startup-id bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --blur-method dual_kawase --blur-strength 7 --config ~/dotfiles/compton/compton.conf
 #
 
 #Set Keyboard
@@ -15,7 +16,7 @@ exec_always --no-startup-id setxkbmap us -variant altgr-intl
 exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 exec_always --no-startup-id fcitx -d
-exec_always --no-startup-id touchegg 
+#exec_always --no-startup-id touchegg 
 
 #for PulseAudio
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5 && pkill -RTMIN+17 i3blocks
@@ -32,7 +33,7 @@ bindsym $mod+b exec --no-startup-id exec kitty -e ranger
 #bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
 
 #Rotate Screen 
-bindsym $mod+$alt+r exec $dotdir/scripts/tablet-mode.sh -j
+#bindsym $mod+$alt+r exec $dotdir/scripts/tablet-mode.sh -j
 
 #BrightnessControl done via acpi now
 bindsym XF86MonBrightnessUp exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -i
@@ -46,13 +47,13 @@ new_float pixel 1
 font pango:Fira Code 8
 
 #open current clipboard link in mpv (for example youtube)
-#bindsym $mod+p exec mpv $(xclip -o)
+bindsym $mod+m exec mpv $(xclip -o)
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
+bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim MOZ_WEBRENDER=1 firefox
 bindsym $mod+$alt+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
 
 #take screenshot
@@ -73,8 +74,8 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 #gaps settings
-gaps inner 10
-gaps outer 5
+gaps inner 16
+gaps outer 8
 #no gaps when there is only one window on the screen
 smart_gaps on
 smart_borders on
@@ -115,45 +116,56 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+s sticky toggle
 
 #
-##assign workspaces to different screen
-workspace 1 output $DISPLAY-0
-workspace 3 output $DISPLAY-0
-workspace 5 output $DISPLAY-0
-workspace 7 output $DISPLAY-0
-workspace 9 output $DISPLAY-0
+set $ws1 "1:一"
+set $ws2 "2:二"
+set $ws3 "3:三"
+set $ws4 "4:四"
+set $ws5 "5:五"
+set $ws6 "6:六"
+set $ws7 "7:七"
+set $ws8 "8:八"
+set $ws9 "9:九"
+set $ws0 "0:十"
 
-workspace 2 output $DISPLAY-1
-workspace 4 output $DISPLAY-1
-workspace 6 output $DISPLAY-1
-workspace 8 output $DISPLAY-1
-workspace 0 output $DISPLAY-1
+##assign workspaces to different screen
+workspace $ws1 output $DISPLAY-0
+workspace $ws3 output $DISPLAY-0
+workspace $ws5 output $DISPLAY-0
+workspace $ws7 output $DISPLAY-0
+workspace $ws9 output $DISPLAY-0
+
+workspace $ws2 output $DISPLAY-1
+workspace $ws4 output $DISPLAY-1
+workspace $ws6 output $DISPLAY-1
+workspace $ws8 output $DISPLAY-1
+workspace $ws0 output $DISPLAY-1
 
 #hide borders when only one window on screen
 hide_edge_borders both
 
 # switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 0
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 0
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
 
 bindsym $mod+Page_Down workspace prev
 
@@ -225,13 +237,14 @@ bindsym $mod+$alt+s exec --no-startup-id rofi -show ssh
 bar {
 	i3bar_command i3bar -t
 	status_command i3blocks -c $dotdir/i3/i3blocks.conf
+	strip_workspace_numbers yes
 	position top
 	tray_output primary
 	tray_padding 5
 	font pango:Fira Code, Icons 13
 	colors {
 		separator $base03
-		background $base00
+		background #00000044
 		statusline $base05
 		focused_workspace $base0E $base0E $base00
 		active_workspace $base0B $base0B $base00
