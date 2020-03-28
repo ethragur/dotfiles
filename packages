@@ -1,12 +1,17 @@
-xorg 
+xorg-minimal
 xrdb 
 xrandr 
 xprop 
-xorg-server 
 xinit 
 libXft-devel 
-xorg-server-devel 
 libX11-devel 
+xf86-video-amdgpu
+ImageMagick
+xdg-desktop-portal 
+xdg-desktop-portal-gtk 
+xdg-user-dirs 
+xdg-user-dirs-gtk 
+xdg-utils
 
 i3-gaps 
 i3blocks 
@@ -25,6 +30,7 @@ sysstat
 lm_sensors 
 lshw 
 
+curl
 zsh
 exa 
 fzf
@@ -37,7 +43,7 @@ ranger
 flatpak
 firejail
 
-compton 
+picom
 redshift 
 dmenu 
 feh 

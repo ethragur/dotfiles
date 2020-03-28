@@ -8,7 +8,8 @@ set $DISPLAY-1 HDMI-A-0
 
 
 #exec_always --no-startup-id bash $dotdir/scripts/display.sh && sleep 1s && bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --blur-method dual_kawase --blur-strength 7 --config ~/dotfiles/compton/compton.conf
-exec_always --no-startup-id bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --blur-method dual_kawase --blur-strength 7 --config ~/dotfiles/compton/compton.conf
+#exec_always --no-startup-id bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --blur-method dual_kawase --blur-strength 7 --config ~/dotfiles/compton/compton.conf
+exec_always --no-startup-id bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --config ~/dotfiles/compton/compton.conf
 #
 
 #Set Keyboard

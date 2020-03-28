@@ -44,3 +44,4 @@ alias rsync='rsync -a --stats --progress'
 alias ccmake='cmake .; and make'
 
 alias dirty='watch grep -e Dirty: -e Writeback: /proc/meminfo'
+alias flatpak='flatpak --user'
