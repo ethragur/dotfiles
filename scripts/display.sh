@@ -4,11 +4,11 @@
 # at the bottom are the full queries for left and right
 
 scale_factor="1.4"
-primary="DisplayPort-0"
+primary="DisplayPort-2"
 primary_xres="3840"
 primary_yres="2160"
 
-sec="HDMI-A-0"
+sec=$SECONDARY_SCREEN
 sec_xres="1920"
 sec_yres="1080"
 sec_pos="left"

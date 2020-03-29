@@ -7,15 +7,15 @@ set $DISPLAY-0 DP-1
 set $DISPLAY-1 HDMI-A-1
 
 
-exec_always --no-startup-id bash $dotdir/scripts/display.sh && sleep 1s && bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --config $dotdir/compton/compton.conf 
+#exec_always --no-startup-id bash $dotdir/scripts/display.sh && sleep 1s && bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --config $dotdir/compton/compton.conf 
 #
 
 #Set Keyboard
-exec_always --no-startup-id setxkbmap us -variant altgr-intl
-exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+#exec_always --no-startup-id setxkbmap us -variant altgr-intl
+#exec_always --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 exec_always --no-startup-id fcitx -d
-exec_always --no-startup-id touchegg 
+#exec_always --no-startup-id touchegg 
 
 #for PulseAudio
 bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5 && pkill -RTMIN+17 i3blocks
@@ -44,8 +44,7 @@ bindsym $mod+m exec mpv $(wl-paste)
 
 
 #start browser
-bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim  MOZ_ENABLE_WAYLAND=1 firefox
-bindsym $mod+$alt+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim  MOZ_ENABLE_WAYLAND=1 firefox
+bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim GDK_BACKEND=wayland MOZ_ENABLE_WAYLAND=1 firefox-wayland
 
 #screenshot
 bindsym $mod+p exec /home/effi/dotfiles/scripts/sway/screenshot.sh -d
@@ -183,6 +182,8 @@ bindsym button8 workspace prev
 include "$HOME/.cache/wal/colors-sway"
 
 output "*" background $wallpaper fill
+#output * adaptive_sync on
+#output * max_render_time 1
 
 for_window [class="OS-Simulator"] floating enable
 for_window [class="Steam"] floating enable
@@ -204,7 +205,24 @@ bar {
 	position top
 	tray_output primary
 	tray_padding 5
-	font pango:Fira Code, Icons 13
+	output DP-3
+	font pango:Fira Code, Icons 18
+	colors {
+		separator $color3
+		background $color0
+		statusline $color5
+		focused_workspace $color14 $color14 $color0
+		active_workspace $color11 $color11 $color0
+		inactive_workspace $color0 $color0 $color7
+		urgent_workspace $color1 $color1 $color0
+	}
+}
+
+bar {
+	status_command i3blocks -c $dotdir/i3/i3blocks.conf
+	position top
+	output HDMI-A-1
+	font pango:Fira Code, Icons 14
 	colors {
 		separator $color3
 		background $color0

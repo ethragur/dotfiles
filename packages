@@ -12,6 +12,7 @@ xdg-desktop-portal-gtk
 xdg-user-dirs 
 xdg-user-dirs-gtk 
 xdg-utils
+xset
 
 i3-gaps 
 i3blocks 
@@ -91,3 +92,4 @@ arc-icon-theme
 arc-theme 
 lxappearance
 jq
+chrony

@@ -10,6 +10,7 @@ mkdir -p "$HOME/.config/nvim/"
 mkdir -p "$HOME/.config/kitty/"
 mkdir -p "$HOME/.config/mpv/"
 mkdir -p "$HOME/.config/rofi/"
+mkdir -p "$HOME/.config/sway/"
 
 ln -sf $dotfiles/vim/init.vim $HOME/.vimrc
 ln -sf $dotfiles/vim/init.vim $HOME/.config/nvim/init.vim
@@ -24,6 +25,7 @@ ln -sf $dotfiles/mpv/mpv.conf $HOME/.config/mpv/mpv.conf
 ln -sf $dotfiles/xorg/xprofile $HOME/.profile
 ln -sf $dotfiles/vim/coc-settings.json $HOME/.config/nvim/
 ln -sf $dotfiles/rofi/config.rasi $HOME/.config/rofi/config.rasi
+ln -sf $dotfiles/sway/config $HOME/.config/sway/config
 ln -sf $/dotfiles/vim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 
 sudo ln -sf $dotfiles/zsh/zshrc $rootdir/.zshrc
