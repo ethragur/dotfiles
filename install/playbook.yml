@@ -1,0 +1,176 @@
+# vim:ft=ansible:
+- hosts: localhost
+  become: true
+  vars:
+    symlinks:
+      xinitrc:
+        from: xorg/.xinitrc
+        to: .xinitrc
+      xprofile:
+        from: xorg/xprofile
+        to: .profile
+      userdir:
+        from: user-dirs.dirs
+        to: .config/user-dirs.dirs
+
+    flatpakpackages:
+      - com.discordapp.Discord
+      - com.valvesoftware.Steam
+      - com.skype.Client
+      - com.spotify.Client
+
+    pippackages:
+      - pywal
+      - i3ipc
+      - neovim
+
+    enabledservices:
+      - acpid
+      - alsa
+      - cgmanager
+      - chronyd
+      - consolekit
+      - dbus
+      - nanoklogd
+      - socklog-unix
+      - udevd
+      - ufw
+      - uuidd
+
+    neededpackages:
+      - socklog-void
+      - xorg-minimal
+      - xrdb 
+      - xrandr 
+      - xprop 
+      - xinit 
+      - libXft
+      - libX11
+      - xf86-video-amdgpu
+      - ImageMagick
+      - xdg-desktop-portal 
+      - xdg-user-dirs 
+      - xdg-utils
+      - xset
+      - setxkbmap
+      - maim
+      - xdotool
+      - i3-gaps 
+      - i3lock 
+      - font-awesome5
+      - font-fira-otf 
+      - font-fira-ttf 
+      - font-firacode
+      - noto-fonts-cjk 
+      - noto-fonts-emoji 
+      - noto-fonts-ttf
+      - acpi 
+      - sysstat 
+      - lm_sensors 
+      - lshw 
+      - curl
+      - zsh
+      - exa 
+      - fzf
+      - ripgrep
+      - htop 
+      - neovim 
+      - wget 
+      - rsync
+      - ranger
+      - flatpak
+      - firejail
+      - redshift 
+      - dmenu 
+      - feh 
+      - rofi
+      - sxiv
+      - alacritty
+      - firefox
+      - ffmpeg
+      - gst-plugins-bad1 gst-plugins-good1
+      - mpv
+      - nodejs 
+      - clang 
+      - boost 
+      - git
+      - cmake 
+      - python3 
+      - python3-pip 
+      - gcc 
+      - fontconfig-devel 
+      - pkg-config 
+      - python3-devel 
+      - p7zip
+      - yarn
+      - ccls
+      - alsa-utils
+      - ConsoleKit2
+      - pulseaudio
+      - pavucontrol
+      - ponymix 
+      - fcitx
+      - fcitx-configtool
+      - libfcitx-gtk 
+      - libfcitx-gtk3 
+      - libfcitx-qt 
+      - libfcitx-qt5
+      - lxappearance
+      - jq
+      - chrony
+      - ufw
+
+  tasks:
+    - name: Update package repos
+      become: true
+      xbps: update_cache=yes upgrade=yes
+    - name: Install packages
+      become: true
+      xbps: name={{ item }} state=latest
+      with_items: "{{ neededpackages }}"
+
+    - name: Install pip packages
+      pip:
+        name: "{{ item }}"
+        extra_args: --user
+      loop: "{{ pippackages }}"
+
+    - name: lm_sensors
+      command: sensors-detect --auto
+      
+    - name: User management
+      user:
+        append: yes
+        name: "{{ ansible_user_id }}"
+        shell: /bin/zsh
+        groups:
+          - wheel
+          - audio
+          - video
+          - cdrom
+          - kvm
+          - input
+          - users
+          - pulse-access
+          - socklog
+
+    - name: Dircolors
+      shell: dircolors -p > ~/.dircolors
+      args:
+        creates: ~/.dircolors
+
+    - name: Runit Services
+      become: true
+      runit:
+        state: started
+        name: "{{ item }}"
+        enabled: yes
+      loop: "{{ enabledservices }}"
+
+    - name:Flatpak Installations
+      flatpak: 
+        name: "{{ item }}"
+        state: present
+        method: user
+      loop: "{{ flatpakpackages }}"
+
