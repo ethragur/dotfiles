@@ -1,0 +1,6 @@
+[module/cpu]
+type = internal/cpu
+interval = 1
+label =  %percentage:2%%
+label-foreground = ${colors.color5}
+

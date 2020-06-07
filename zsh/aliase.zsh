@@ -39,9 +39,12 @@ alias i3conf="vim $DOTFILES/i3/config"
 alias cddot="cd $DOTFILES"
 alias cddev="cd ~/Documents/dev"
 alias cdtmp="cd ~/.tmp/"
+alias cddev="cd ~/Documents/devel/"
+alias cdwork="cd ~/Documents/devel/work"
 alias givepw='cat /dev/urandom | env LC_CTYPE=C tr -dc a-zA-Z0-9 | head -c 32; echo'
 alias rsync='rsync -a --stats --progress'
 alias ccmake='cmake .; and make'
 
 alias dirty='watch grep -e Dirty: -e Writeback: /proc/meminfo'
 alias flatpak='flatpak --user'
+alias protontricks-flat='flatpak run --command=protontricks com.valvesoftware.Steam --no-runtime'

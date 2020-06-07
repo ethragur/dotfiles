@@ -18,6 +18,12 @@
         "diagnosticsEnabled": true,
         "lintTool": "golint"
       }
+    },
+    "phplang": {
+      "command": "php",
+      "args": ["~/dotfiles/vim/php-language-server/bin/php-language-server.php"],
+      "filetypes": ["php"]
     }
-  }
+  },
+  "tslint.jsEnable": true,
 }

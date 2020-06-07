@@ -1,0 +1,6 @@
+[module/memory]
+type = internal/memory
+interval = 0.5
+format = <label>
+label =  %gb_free%
+label-foreground = ${colors.color2}

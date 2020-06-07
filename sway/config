@@ -3,7 +3,7 @@ set $mod Mod4
 set $alt Mod1
 
 set $dotdir $HOME/dotfiles
-set $DISPLAY-0 DP-1
+set $DISPLAY-0 DP-3
 set $DISPLAY-1 HDMI-A-1
 
 
@@ -23,7 +23,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 5 && pkill -R
 bindsym XF86AudioMute exec --no-startup-id ponymix toggle && pkill -RTMIN+17 i3blocks
 
 #File Browser
-bindsym $mod+b exec --no-startup-id exec kitty -e ranger 
+bindsym $mod+b exec --no-startup-id exec alacritty -e ranger 
 
 ##BrightnessControl done via acpi now
 #bindsym XF86MonBrightnessUp exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -i
@@ -55,7 +55,7 @@ bindsym $mod+i exec /home/effi/dotfiles/scripts/sway/screenshot.sh -w
 bindsym $mod+Shift+i exec /home/effi/dotfiles/scripts/sway/screenshot.sh -w -c
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 
 
 # kill focused window
@@ -249,3 +249,5 @@ client.focused $color2 $color2 $color0 $color1 $background
 client.focused_inactive $color13 $color13 $color13 $color13 $background
 client.unfocused $color15 $color7 $color3 $color1 $background
 client.urgent $color2 $color8 $color7 $color8 $background
+
+output HDMI-A-1 scale 0.66

@@ -9,9 +9,9 @@ Xft.autohint: 0
 Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
-Xft.dpi:  157
+Xft.dpi:  124
 Xcursor.theme: Adwaita
-Xcursor.size: 64
+Xcursor.size: 32
 
 
 URxvt.font: xft:Fira Code:size=12

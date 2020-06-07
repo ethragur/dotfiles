@@ -2,15 +2,8 @@
 set $mod Mod4 
 set $alt Mod1
 
-set $dotdir $HOME/dotfiles
-set $DISPLAY-0 DisplayPort-0
-set $DISPLAY-1 HDMI-A-0
 
-
-#exec_always --no-startup-id bash $dotdir/scripts/display.sh && sleep 1s && bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --blur-method dual_kawase --blur-strength 7 --config ~/dotfiles/compton/compton.conf
-#exec_always --no-startup-id bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --blur-method dual_kawase --blur-strength 7 --config ~/dotfiles/compton/compton.conf
-exec_always --no-startup-id bash $dotdir/scripts/display.sh && sleep 1s && bash -c 'feh --bg-fill "$(< "${HOME}/.cache/wal/wal")"' && picom --experimental-backends --config ~/dotfiles/compton/compton.conf
-#
+exec_always --no-startup-id ~/dotfiles/scripts/startup.sh &
 
 #Set Keyboard
 exec_always --no-startup-id setxkbmap us -variant altgr-intl
@@ -20,32 +13,34 @@ exec_always --no-startup-id fcitx -d
 #exec_always --no-startup-id touchegg 
 
 #for PulseAudio
-bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5 && pkill -RTMIN+17 i3blocks
-bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 5 && pkill -RTMIN+17 i3blocks
-bindsym XF86AudioMute exec --no-startup-id ponymix toggle && pkill -RTMIN+17 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix increase 5
+bindsym XF86AudioLowerVolume exec --no-startup-id ponymix decrease 5
+bindsym XF86AudioMute exec --no-startup-id ponymix toggle
 
 #Lock
-bindsym $mod+$alt+l exec sh $dotdir/scripts/i3lock.sh
+bindsym $mod+$alt+l exec sh ~/dotfiles/scripts/i3lock.sh
 
 #File Browser
-bindsym $mod+b exec --no-startup-id exec kitty -e ranger 
+bindsym $mod+b exec --no-startup-id exec alacritty -e ranger 
 
 #Reconf Displays
-#bindsym $mod+$alt+d exec sh $dotdir/scripts/configure_xrandr.sh 
+#bindsym $mod+$alt+d exec sh ~/dotfiles/scripts/configure_xrandr.sh 
 
 #Rotate Screen 
-#bindsym $mod+$alt+r exec $dotdir/scripts/tablet-mode.sh -j
+#bindsym $mod+$alt+r exec ~/dotfiles/scripts/tablet-mode.sh -j
 
 #BrightnessControl done via acpi now
-bindsym XF86MonBrightnessUp exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -i
-bindsym XF86MonBrightnessDown exec --no-startup-id $dotdir/scripts/i3blocks/backlight.sh -d 
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/dotfiles/scripts/i3blocks/backlight.sh -i
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/dotfiles/scripts/i3blocks/backlight.sh -d 
+
+# Screenshot
+bindsym $mod+o exec /home/effi/dotfiles/scripts/xorg/screenshot.sh -r -c
+bindsym $mod+Shift+o exec /home/effi/dotfiles/scripts/xorg/screenshot.sh -r
+bindsym $mod+i exec /home/effi/dotfiles/scripts/xorg/screenshot.sh -w -c
+bindsym $mod+Shift+i exec /home/effi/dotfiles/scripts/xorg/screenshot.sh -w
 
 new_window pixel 1
 new_float pixel 1
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:Fira Code 8
 
 #open current clipboard link in mpv (for example youtube)
 bindsym $mod+m exec mpv $(xclip -o)
@@ -54,29 +49,18 @@ bindsym $mod+m exec mpv $(xclip -o)
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim MOZ_WEBRENDER=1 firefox
+bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
 bindsym $mod+$alt+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
 
-#take screenshot
-##whole screen
-bindsym $mod+p exec scrot '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Documents/Pictures/Screenshots/ && mv $f ~/Documents/Pictures/Screenshots/'
-##focused window
-bindsym $mod+Shift+p exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Documents/Pictures/Screenshots/ && mv $f ~/Documents/Pictures/Screenshots/'
-
-bindsym $mod+Shift+m exec scrot -u '%Y%m%d_%H%M%S.png' -e 'mv $f /tmp/ && cat /tmp/$f | xsel -b'
-##select area
-bindsym $mod+s exec scrot -s '%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Documents/Pictures/Screenshots/ && mv $f ~/Documents/Pictures/Screenshots/'
-
 # start a terminal
-bindsym $mod+Return exec kitty
-
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 #gaps settings
-gaps inner 16
-gaps outer 8
+gaps inner 8
+gaps outer 2
 #no gaps when there is only one window on the screen
 smart_gaps on
 smart_borders on
@@ -116,7 +100,6 @@ bindsym $mod+space focus mode_toggle
 # make window sticky
 bindsym $mod+Shift+s sticky toggle
 
-#
 set $ws1 "1:一"
 set $ws2 "2:二"
 set $ws3 "3:三"
@@ -129,17 +112,17 @@ set $ws9 "9:九"
 set $ws0 "0:十"
 
 ##assign workspaces to different screen
-workspace $ws1 output $DISPLAY-0
-workspace $ws3 output $DISPLAY-0
-workspace $ws5 output $DISPLAY-0
-workspace $ws7 output $DISPLAY-0
-workspace $ws9 output $DISPLAY-0
+workspace $ws1 output DisplayPort-2 
+workspace $ws3 output DisplayPort-2 
+workspace $ws5 output DisplayPort-2 
+workspace $ws7 output DisplayPort-2 
+workspace $ws9 output DisplayPort-2 
 
-workspace $ws2 output $DISPLAY-1
-workspace $ws4 output $DISPLAY-1
-workspace $ws6 output $DISPLAY-1
-workspace $ws8 output $DISPLAY-1
-workspace $ws0 output $DISPLAY-1
+workspace $ws2 output HDMI-A-0 
+workspace $ws4 output HDMI-A-0 
+workspace $ws6 output HDMI-A-0 
+workspace $ws8 output HDMI-A-0 
+workspace $ws0 output HDMI-A-0 
 
 #hide borders when only one window on screen
 hide_edge_borders both
@@ -169,30 +152,21 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0
 
 bindsym $mod+Page_Down workspace prev
-
 bindsym $mod+Page_Up workspace next
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym j resize grow height 5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
-	bindsym r resize grow width 300 px or 10 ppt; resize grow height 300 px or 10 ppt
-	bindsym s resize shrink width 300 px or 10 ppt; resize shrink grow height 300 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+	bindsym r resize grow width 30 px or 10 ppt; resize grow height 300 px or 10 ppt
+	bindsym s resize shrink width 30 px or 10 ppt; resize shrink height 30 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -221,7 +195,11 @@ set_from_resource $base0E color14
 set_from_resource $base0F color15
 
 for_window [class="OS-Simulator"] floating enable
-for_window [class="Steam"] floating enable
+# Is annoying for steam
+#for_window [class="Steam"] floating enable
+for_window [class="qemu"] floating enable
+for_window [class="mpv"] sticky enable
+for_window [class="mpv"] floating enable
 
 
 mouse_warping none
@@ -229,32 +207,8 @@ mouse_warping none
 bindsym $mod+d exec --no-startup-id rofi -show drun 
 bindsym $mod+w exec --no-startup-id rofi -show window 
 bindsym $mod+$alt+s exec --no-startup-id rofi -show ssh 
-#bindsym $mod+d exec rofi -show drun
-#bindsym $mod+g exec echo "" | rofi -dmenu -p "Search Google: " | xargs -I{} xdg-open https://www.google.com/search?q={}
-#bindsym $mod+y exec echo "" | rofi -dmenu -p "Search Youtube: " | xargs -I{} xdg-open https://www.youtube.com/results?search_query={}
-#bindsym $mod+n exec nmcli_dmenu
-#
 
-bar {
-	i3bar_command i3bar -t
-	status_command i3blocks -c $dotdir/i3/i3blocks.conf
-	strip_workspace_numbers yes
-	position top
-	tray_output primary
-	tray_padding 5
-	font pango:Fira Code, Icons 13
-	colors {
-		separator $base03
-		background #00000044
-		statusline $base05
-		focused_workspace $base0E $base0E $base00
-		active_workspace $base0B $base0B $base00
-		inactive_workspace $base00 $base00 $base07
-		urgent_workspace $base01 $base01 $base00
-	}
-}
-
-client.focused $base02 $base02 $base00 $base01
+client.focused $base06 $base06 $base00 $base01
 client.focused_inactive $base0D $base0D $base0D $base0D
 client.unfocused $base0F $base07 $base03 $base01
 client.urgent $base02 $base08 $base07 $base08

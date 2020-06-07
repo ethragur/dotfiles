@@ -33,3 +33,7 @@ source $DOTFILES/zsh/environment.zsh
 source $DOTFILES/zsh/functions.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+(cat ~/.cache/wal/sequences &)
+
+eval "$(starship init zsh)"

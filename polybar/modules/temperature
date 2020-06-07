@@ -1,0 +1,21 @@
+[module/cputemperature]
+type = internal/temperature
+interval = 1
+thermal-zone = 0
+hwmon-path = /sys/class/hwmon/hwmon1/temp1_input
+warn-temperature = 70
+format = <label>
+label =  CPU: %temperature-c%
+label-foreground = ${colors.color3}
+label-warn-foreground = #f00
+
+[module/gputemperature]
+type = internal/temperature
+interval = 1
+thermal-zone = 0
+hwmon-path = /sys/class/hwmon/hwmon0/temp1_input
+warn-temperature = 80
+format = <label>
+label = GPU: %temperature-c%
+label-foreground = ${colors.color3}
+label-warn-foreground = #f00

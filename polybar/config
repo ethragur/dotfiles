@@ -1,0 +1,112 @@
+;                  __      __
+;     ____  ____  / /_  __/ /_  ____ ______
+;    / __ \/ __ \/ / / / / __ \/ __ `/ ___/
+;   / /_/ / /_/ / / /_/ / /_/ / /_/ / /
+;  / .___/\____/_/\__, /_.___/\__,_/_/
+; /_/            /____/
+
+[settings]
+screenchange-reload = true
+
+[colors]
+background = ${xrdb:backgrounda:#aa000000}
+foreground = ${xrdb:foreground:#dfdfdf}
+color0 = ${xrdb:color0}
+color1 = ${xrdb:color1}
+color2 = ${xrdb:color2}
+color3 = ${xrdb:color3}
+color4 = ${xrdb:color4}
+color5 = ${xrdb:color5}
+color6 = ${xrdb:color6}
+color7 = ${xrdb:color7}
+color8 = ${xrdb:color8}
+color9 = ${xrdb:color9}
+color10 = ${xrdb:color10}
+color11 = ${xrdb:color11}
+color12 = ${xrdb:color12}
+color13 = ${xrdb:color13}
+color14 = ${xrdb:color14}
+color15 = ${xrdb:color15}
+
+[bar/primary]
+monitor = ${env:MONITOR:}
+bottom = false
+override-redirect = false
+fixed-center = true
+separator =
+
+font-0 = Fira Code,Fira Code Retina:style=Retina,Regular
+font-1 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid
+font-2 = Noto Sans Mono CJK SC:style=Regular
+
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+width = 100%
+;border-top-size = 4px
+;border-bottom-size = 4px
+;border-left-size = 1%
+;border-right-size = 1%
+height = 42
+dpi = ${xrdb:Xft.dpi:-1}
+;line-size = 0
+;line-color = #fff
+module-margin = 2
+spacing = 0
+radius = 0
+dim-value = 1
+
+modules-left = i3
+modules-center = date 
+modules-right = pulseaudio-control memory cpu cputemperature gputemperature 
+
+wm-name = i3
+wm-restack = i3
+enable-ipc = false
+
+[bar/secondary]
+monitor = ${env:MONITOR:}
+bottom = false
+override-redirect = false
+fixed-center = true
+separator = 
+
+font-0 = Fira Code,Fira Code Retina:style=Retina,Regular
+font-1 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid
+font-2 = Noto Sans Mono CJK SC:style=Regular
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+width = 100%
+;border-top-size = 4px
+;border-bottom-size = 4px
+;border-left-size = 1%
+;border-right-size = 1%
+height = 36
+dpi = ${xrdb:Xft.dpi:-1}
+module-margin = 2
+spacing = 0
+radius = 0
+dim-value = 1
+
+modules-left = i3
+modules-center = date 
+modules-right = pulseaudio-control wired-network 
+
+wm-name = i3
+wm-restack = i3
+enable-ipc = false
+
+[section/i3]
+include-file = ~/.config/polybar/modules/i3
+
+[section/other_modules]
+include-file = ~/.config/polybar/modules/date
+include-file = ~/.config/polybar/modules/cpu
+include-file = ~/.config/polybar/modules/temperature
+include-file = ~/.config/polybar/modules/battery
+include-file = ~/.config/polybar/modules/memory
+include-file = ~/.config/polybar/modules/network
+include-file = ~/.config/polybar/modules/pulseaudio

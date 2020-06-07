@@ -1,7 +1,8 @@
 # vim:ft=ansible:
 - hosts: localhost
-  become: true
   vars:
+    dotfiles_dir: ~/dotfiles/
+    
     symlinks:
       xinitrc:
         from: xorg/.xinitrc
@@ -12,6 +13,33 @@
       userdir:
         from: user-dirs.dirs
         to: .config/user-dirs.dirs
+      rofi:
+        from: rofi
+        to: .config/rofi
+      alacritty:
+        from: alacritty
+        to: .config/alacritty
+      vim:
+        from: vim 
+        to: .config/nvim
+      zsh:
+        from: zsh/zshrc 
+        to: .zshrc
+      mpv:
+        from: mpv 
+        to: .config/mpv
+      sway:
+        from: sway
+        to: .config/sway
+      wal:
+        from: wal
+        to: .config/wal
+      polybar:
+        from: polybar
+        to: .config/polybar
+      dunst:
+        from: dunst
+        to: .config/dunst
 
     flatpakpackages:
       - com.discordapp.Discord
@@ -119,6 +147,8 @@
       - jq
       - chrony
       - ufw
+      - docker
+      - starship
 
   tasks:
     - name: Update package repos
@@ -128,17 +158,19 @@
       become: true
       xbps: name={{ item }} state=latest
       with_items: "{{ neededpackages }}"
-
+    
     - name: Install pip packages
       pip:
         name: "{{ item }}"
         extra_args: --user
       loop: "{{ pippackages }}"
-
+    
     - name: lm_sensors
+      become: true
       command: sensors-detect --auto
       
     - name: User management
+      become: true
       user:
         append: yes
         name: "{{ ansible_user_id }}"
@@ -153,12 +185,13 @@
           - users
           - pulse-access
           - socklog
-
+          - docker
+    
     - name: Dircolors
       shell: dircolors -p > ~/.dircolors
       args:
         creates: ~/.dircolors
-
+    
     - name: Runit Services
       become: true
       runit:
@@ -166,11 +199,39 @@
         name: "{{ item }}"
         enabled: yes
       loop: "{{ enabledservices }}"
-
-    - name:Flatpak Installations
+    
+    - name: Add flathub repo
+      flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+        method: user
+    
+    - name: Flatpak Installations
       flatpak: 
         name: "{{ item }}"
         state: present
         method: user
       loop: "{{ flatpakpackages }}"
 
+    - name: Flatpak Discord Override
+      command:
+        cmd: flatpak override --user --filesystem=~/Drive/Downloads --filesystem=/proc com.discordapp.Discord
+        creates: ~/.local/share/flatpak/overrides/com.discordapp.Discord
+
+    - name: Flatpak Steam Override
+      command:
+        cmd: flatpak override --user --filesystem=~/Drive com.valvesoftware.Steam
+        creates: ~/.local/share/flatpak/overrides/com.valvesoftware.Steam
+
+    - name: Flatpak Skype Override
+      command:
+        cmd: flatpak override --user --filesystem=~/Drive/Downloads --filesystem=~/Documents com.skype.Client
+        creates: ~/.local/share/flatpak/overrides/com.skype.Client
+
+    - name: Symlink the dotfiles
+      file:
+        src: "{{ dotfiles_dir }}{{ item.value.from }}"
+        dest: "~/{{ item.value.to }}"
+        state: link
+      loop: "{{ lookup('dict', symlinks) }}"

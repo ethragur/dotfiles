@@ -3,7 +3,7 @@
 # if you have an window manager running you have to restart it
 # at the bottom are the full queries for left and right
 
-scale_factor="1.4"
+scale_factor="1.2"
 primary="DisplayPort-2"
 primary_xres="3840"
 primary_yres="2160"
@@ -40,7 +40,6 @@ fi
 
 query="$query $primary_q $sec_q"
 
-$query
 $query
 	
 #query=$(echo $fbx $fby $primary $primary_xres $primary_yres $sec $primary_xres $scaled_x $scaled_y $primary_xres $scale_factor $scale_factor $sec_pos $primary | \
