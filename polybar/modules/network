@@ -1,6 +1,6 @@
 [module/wired-network]
 type = internal/network
-interface = enp4s0
+interface = wlo1
 interval = 5.0
 accumulate-stats = true
 label-connected =  %local_ip%  %downspeed%  %upspeed%

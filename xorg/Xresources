@@ -9,7 +9,7 @@ Xft.autohint: 0
 Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
-Xft.dpi:  124
+Xft.dpi:  96
 Xcursor.theme: Adwaita
 Xcursor.size: 32
 

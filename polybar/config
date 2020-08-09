@@ -9,8 +9,8 @@
 screenchange-reload = true
 
 [colors]
-background = ${xrdb:backgrounda:#aa000000}
-foreground = ${xrdb:foreground:#dfdfdf}
+background = ${xrdb:backgroundpolybar}
+foreground = ${xrdb:foreground}
 color0 = ${xrdb:color0}
 color1 = ${xrdb:color1}
 color2 = ${xrdb:color2}
@@ -48,18 +48,18 @@ width = 100%
 ;border-bottom-size = 4px
 ;border-left-size = 1%
 ;border-right-size = 1%
-height = 42
+height = 36
 dpi = ${xrdb:Xft.dpi:-1}
 ;line-size = 0
 ;line-color = #fff
-module-margin = 2
+module-margin = 1
 spacing = 0
 radius = 0
 dim-value = 1
 
 modules-left = i3
 modules-center = date 
-modules-right = pulseaudio-control memory cpu cputemperature gputemperature 
+modules-right = pulseaudio-control memory cpu battery cputemperature gputemperature
 
 wm-name = i3
 wm-restack = i3
@@ -86,7 +86,7 @@ width = 100%
 ;border-right-size = 1%
 height = 36
 dpi = ${xrdb:Xft.dpi:-1}
-module-margin = 2
+module-margin = 1
 spacing = 0
 radius = 0
 dim-value = 1
@@ -110,3 +110,4 @@ include-file = ~/.config/polybar/modules/battery
 include-file = ~/.config/polybar/modules/memory
 include-file = ~/.config/polybar/modules/network
 include-file = ~/.config/polybar/modules/pulseaudio
+include-file = ~/.config/polybar/modules/backlight
