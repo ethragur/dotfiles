@@ -76,6 +76,6 @@ function mega64 () {
 }
 
 function win_reboot () {
-    sudo efibootmgr -n 0002
+    sudo efibootmgr -n 0000
     sudo reboot
 }

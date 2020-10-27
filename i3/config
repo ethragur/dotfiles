@@ -39,8 +39,8 @@ bindsym $mod+Shift+o exec /home/effi/dotfiles/scripts/xorg/screenshot.sh -r
 bindsym $mod+i exec /home/effi/dotfiles/scripts/xorg/screenshot.sh -w -c
 bindsym $mod+Shift+i exec /home/effi/dotfiles/scripts/xorg/screenshot.sh -w
 
-new_window pixel 1
-new_float pixel 1
+new_window pixel 4
+new_float pixel 4
 
 #open current clipboard link in mpv (for example youtube)
 bindsym $mod+m exec mpv $(xclip -o)
@@ -49,8 +49,8 @@ bindsym $mod+m exec mpv $(xclip -o)
 floating_modifier $mod
 
 #start browser
-bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
-bindsym $mod+$alt+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim firefox
+bindsym $mod+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim MOZ_X11_EGL=1 firefox
+bindsym $mod+$alt+c exec env MOZ_USE_XINPUT2=1 GTK_IM_MODULE=xim MOZ_X11_EGL=1 firefox
 
 # start a terminal
 bindsym $mod+Return exec alacritty
