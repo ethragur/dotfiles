@@ -148,6 +148,7 @@ Plug 'neoclide/coc.nvim', {'do': 'npm install --frozen-lockfile'}
         \ 'coc-rust-analyzer',
         \ 'coc-phpls',
         \ 'coc-sh',
+        \ 'coc-go',
         \ 'coc-tslint-plugin',
         \ 'coc-tsserver',
         \ 'coc-vetur',

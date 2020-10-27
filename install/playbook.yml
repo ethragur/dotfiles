@@ -55,15 +55,15 @@
     enabledservices:
       - acpid
       - alsa
-      - cgmanager
       - chronyd
-      - consolekit
       - dbus
       - nanoklogd
       - socklog-unix
       - udevd
       - ufw
       - uuidd
+      - dhcpcd
+      - elogind
 
     neededpackages:
       - socklog-void
@@ -98,8 +98,10 @@
       - lshw 
       - curl
       - zsh
+      - xclip
       - exa 
       - fzf
+      - cargo
       - ripgrep
       - htop 
       - neovim 
@@ -133,7 +135,6 @@
       - yarn
       - ccls
       - alsa-utils
-      - ConsoleKit2
       - pulseaudio
       - pavucontrol
       - ponymix 
@@ -149,6 +150,19 @@
       - ufw
       - docker
       - starship
+      - polybar
+      - picom
+      - composer
+      - php
+      - php-devel
+      - php-intl
+      - php-mysql
+      - php-sqlite
+      - php-xsl
+      - unzip
+      - alsa-plugins-pulseaudio
+      - elogind
+      - terraform
 
   tasks:
     - name: Update package repos
@@ -228,6 +242,11 @@
       command:
         cmd: flatpak override --user --filesystem=~/Drive/Downloads --filesystem=~/Documents com.skype.Client
         creates: ~/.local/share/flatpak/overrides/com.skype.Client
+
+    - name: create config dir
+      file:
+        path: ~/.config
+        state: directory
 
     - name: Symlink the dotfiles
       file:

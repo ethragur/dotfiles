@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-OUTPUT="$HOME/Documents/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png')"
+OUTPUT="$HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S.png')"
 MAIM=$(which maim)
 
 while getopts "rwdhc" opt; do

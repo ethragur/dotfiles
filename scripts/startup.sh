@@ -3,8 +3,16 @@
 pkill polybar
 pkill picom
 
-~/dotfiles/scripts/display.sh && feh --bg-fill "$(< "${HOME}/.cache/wal/wal")" 
-MONITOR=$PRIMARY_SCREEN polybar --reload primary & 
-MONITOR=$SECONDARY_SCREEN polybar --reload secondary &
+feh --bg-fill "$(< "${HOME}/.cache/wal/wal")" &
 
-sleep 0.2s && picom --experimental-backends --config ~/dotfiles/picom/picom.conf
+polybar --list-monitors | while read m; 
+do 
+	mon=$(echo $m | cut -d":" -f1)
+	if echo $m | grep -q "primary"; then
+		MONITOR=$mon polybar --reload primary &
+	else
+		MONITOR=$mon polybar --reload secondary &
+	fi
+done
+
+picom --experimental-backends --config ~/dotfiles/picom/picom.conf
